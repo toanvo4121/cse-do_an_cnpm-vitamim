@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+<div align="center">
+VIETNAM NATIONAL UNIVERSITY, HO CHI MINH CITY
+<br />
+UNIVERSITY OF TECHNOLOGY
+<br />
+FACULTY OF COMPUTER SCIENCE AND ENGINEERING
+<br />
+<br />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![N|Solid](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HCMUT_official_logo.png/238px-HCMUT_official_logo.png)](https://www.hcmut.edu.vn/vi)
+<br />
+<br />
 
-## Available Scripts
+**Đồ án CNPM / Semester 211**
+<br/>
+**Akatsuki**
 
-In the project directory, you can run:
+</div>
 
-### `yarn start`
+# Project: VITAMIM
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Team members
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| No. | Name             | Student ID | Email                           | Contact                                                                                                                                                                                                                     |
+| :-: | ---------------- | :--------: | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  1  | Võ Minh Toàn     |  1915570   | toan.vo4121@gmail.com           | [<img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" align="left" width=20px/>][fb1] [<img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" align="left" width=20px style="margin-left:5px" />][git1] |
+|  2  | Đặng Hùng Cường  |  1912817   | cuong.danghcmut@hcmut.edu.vn    | [<img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" align="left" width=20px/>][fb2] [<img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" align="left" width=20px style="margin-left:5px" />][git2] |
+|  3  | Nguyễn Đình Hiếu |  1913341   | hieu.nguyen190125@hcmut.edu.vn  | [<img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" align="left" width=20px/>][fb3] [<img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" align="left" width=20px style="margin-left:5px" />][git3] |
+|  4  | Nguyễn Hải Linh  |  1913944   | linh.nguyen1505@hcmut.edu.vn    | [<img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" align="left" width=20px/>][fb4] [<img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" align="left" width=20px style="margin-left:5px" />][git4] |
+|  5  | Đỗ Đình Cường    |  1910892   | cuong.dobachkhoa19@hcmut.edu.vn | [<img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" align="left" width=20px/>][fb5] [<img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" align="left" width=20px style="margin-left:5px" />][git5] |
 
-### `yarn test`
+## Languages & Tools
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Front-end: <img src="https://cdn1.iconfinder.com/data/icons/social-icon-1-1/512/social_style_1_html5-256.png" align="center" style="margin-left:10px;margin-bottom:5px" width=30px/> <img src="https://cdn1.iconfinder.com/data/icons/social-icon-1-1/512/social_style_1_css3-256.png" align="center" style="margin-left:10px;margin-bottom:5px" width=30px/> <img src="https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-javascript-software-develop-command-language-256.png" align="center" style="margin-left:10px;margin-bottom:5px" width=45px/> <img src="https://cdn1.iconfinder.com/data/icons/soleicons-fill-vol-1/64/reactjs_javascript_library_atom_atomic_react-256.png" align="center" style="margin-left:5px;margin-bottom:5px" width=30px/>
+- Back-end: <img src="https://icon-library.com/images/django-icon/django-icon-0.jpg" align="center" style="margin-left:10px;margin-bottom:5px" width=30px/> <img src="https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-256.png" align="center" style="margin-left:5px;margin-bottom:5px" width=30px/>
+- API
+- Version Control: <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/github-256.png" align="center" style="margin-left:10px;margin-bottom:5px" width=30px/>
+- Report: <img src="https://images.ctfassets.net/nrgyaltdicpt/6gsvc5Ogjmu04I4Miu0uGg/cb1d4391717d2ab8d5e42ede6fb0eef1/overleaf_wide_colour_light_bg.png" align="center" style="margin-left:10px;margin-bottom:5px;" width=70px/>
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[fb1]: https://www.facebook.com/toanvo4121/
+[fb2]: https://www.facebook.com/Cuongflorid/
+[fb3]: https://www.facebook.com/kazami190125/
+[fb4]: https://www.facebook.com/hailinh.nguyen.359126/
+[fb5]: https://www.facebook.com/phi.cu.18
+[git1]: https://github.com/toanvo4121
+[git2]: https://github.com/CuongFlodric
+[git3]: https://github.com/HandsOfGoddest
+[git4]: https://github.com/Halee1505
+[git5]: https://github.com/Meovalu
