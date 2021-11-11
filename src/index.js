@@ -80,7 +80,6 @@ const Halee =
     ]
 }
 
-
 const TopTrend = [
     {
         src: 'mimCollection/146416864_454196045774516_3779436581273031988_n.png',
@@ -99,8 +98,6 @@ const TopTrend = [
     },
 ]
 
-var SubTitle = 'theloai'
-var CheckLogin = 0
 const UserPosts = [
     {
         avt: 'source/avatar.png',
@@ -207,7 +204,9 @@ const Template = [
 ]
 
 
-
+var SubTitle = 'theloai'
+var dangmim;
+var CheckLogin = 0
 var Mem = Halee
 
 function LoginPage() {
@@ -350,7 +349,7 @@ function Header({ log }) {
                     <p onClick={() => { handleShowOffControl(); SubTitle = 'viewownpage'; ReactDOM.render(<HomePage />, document.getElementById("root")) }}><img src="source/avatar.png" />Xem trang cá nhân</p>
                     <p onClick={() => { handleShowOffControl()}}><img src="source/avatar.png" />Thông tin cá nhân</p>
                     <p onClick={() => { handleShowOffControl()}}><img src="source/avatar.png" />Trợ giúp & hỗ trợ</p>
-                    <p onClick={() => { handleShowOffControl(); CheckLogin = 0; ReactDOM.render(<HomePage />, document.getElementById("root")) }}><img src="source/avatar.png" />Đăng xuất</p>
+                    <p onClick={() => { handleShowOffControl();SubTitle = 'theloai'; CheckLogin = 0; ReactDOM.render(<HomePage />, document.getElementById("root")) }}><img src="source/avatar.png" />Đăng xuất</p>
                 </div>
             </React.Fragment>
         )
@@ -437,7 +436,7 @@ function SubHeader() {
                 <div className="control-overlay"></div>
                 {showTheLoai === 1 ? <TheLoai /> : ''}
                 <p className="sub" onClick={() => { handleShowOffTheLoai(); SubTitle = 'follow'; ReactDOM.render(<HomePage />, document.getElementById("root")) }}>Follow</p>
-                <p className="sub" onClick={() => { handleShowOffTheLoai(); SubTitle = 'dangmim'; ReactDOM.render(<HomePage />, document.getElementById("root")) }}>Đăng mim</p>
+                <p className="sub" onClick={() => { handleShowOffTheLoai(); dangmim = 1; ReactDOM.render(<HomePage />, document.getElementById("root")) }}>Đăng mim</p>
                 <p className="sub" onClick={() => { handleShowOffTheLoai(); SubTitle = 'template'; ReactDOM.render(<HomePage />, document.getElementById("root")) }}>Template</p>
                 <p className="sub" onClick={() => { handleShowOffTheLoai(); SubTitle = 'binhchon'; ReactDOM.render(<HomePage />, document.getElementById("root")) }}>Bình chọn</p>
             </div>
@@ -573,7 +572,7 @@ function DangMim() {
                 <div className="dangmim-header">
                     <p className="dangmim-template"  onClick={() => {SubTitle = 'template'; ReactDOM.render(<HomePage />, document.getElementById("root")) }}>Template</p>
                     <p className="dangmim-tieude">Đăng mim</p>
-                    <img src="source/exit.png" className="dangmim-exit" onClick={() => { SubTitle = 'theloai'; ReactDOM.render(<HomePage />, document.getElementById("root")) }} />
+                    <img src="source/exit.png" className="dangmim-exit" onClick={() => { dangmim = 0; ReactDOM.render(<HomePage />, document.getElementById("root")) }} />
                 </div>
                 <div className="dangmim-title">
                     <div className="dangmim-input">
@@ -616,6 +615,7 @@ function HomePage() {
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={UserPosts} />
+                {dangmim===1?<DangMim />:''}
             </React.Fragment>
         )
     }
@@ -626,6 +626,7 @@ function HomePage() {
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={UserPosts} />
+                {dangmim===1?<DangMim />:''}
             </React.Fragment>
         )
     }
@@ -636,6 +637,7 @@ function HomePage() {
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={UserPosts} />
+                {dangmim===1?<DangMim />:''}
             </React.Fragment>
         )
     }
@@ -646,6 +648,7 @@ function HomePage() {
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={UserPosts} />
+                {dangmim===1?<DangMim />:''}
             </React.Fragment>
         )
     }
@@ -656,6 +659,7 @@ function HomePage() {
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={UserPosts} />
+                {dangmim===1?<DangMim />:''}
             </React.Fragment>
         )
     }
@@ -666,17 +670,7 @@ function HomePage() {
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={UserPosts} />
-            </React.Fragment>
-        )
-    }
-    if (SubTitle === 'dangmim') {
-        return (
-            <React.Fragment>
-                <Header log={CheckLogin} />
-                <SubHeader />
-                <TopTrending />
-                <ShowMim Post={UserPosts} />
-                <DangMim />
+                {dangmim===1?<DangMim />:''}
             </React.Fragment>
         )
     }
@@ -686,6 +680,7 @@ function HomePage() {
                 <Header log={CheckLogin} />
                 <SubHeader />
                 <ShowTemplate />
+                {dangmim===1?<DangMim />:''}
             </React.Fragment>
         )
     }
@@ -696,6 +691,7 @@ function HomePage() {
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={UserPosts} />
+                {dangmim===1?<DangMim />:''}
             </React.Fragment>
         )
     }
@@ -706,6 +702,7 @@ function HomePage() {
                 <SubHeader />
                 <ViewOwnPage />
                 <ShowMim Post={Mem.post} CheckRank={1} />
+                {dangmim===1?<DangMim />:''}
             </React.Fragment>
         )
     }
