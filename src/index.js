@@ -519,7 +519,7 @@ function ShowMim({ Post, CheckRank }) {
                                 <div className="user-info">
                                     <img className="user-avt" src={UserPost.avt} alt="" />
                                     <p className="user-name">{UserPost.ten}</p>
-                                    <img src="source/follow-icon.png" />
+                                    {(UserPost.ten===Mem.ten && CheckLogin === 1)?'':<img src="source/follow-icon.png" />}
                                     <div className="space" ></div>
                                     <img className="timer" src="source/clock.png" alt="" />
                                     <p className="thoigian">{UserPost.thoigian} giờ</p>
