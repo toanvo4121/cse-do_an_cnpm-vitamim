@@ -1,24 +1,49 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import mongoose from 'mongoose'
-import cors from 'cors'
-import loginRoutes from './routes/login.js'
+const express = require('express');
+const templates = require('./data/Templates.js');
+const top_mems = require('./data/TopMems.js');
+const top_trends = require('./data/TopTrends.js');
+const user_posts = require('./data/UserPosts.js');
 
-const app = express()
+const app = express();
 
-app.use('/login', loginRoutes)
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
 
-app.use(bodyParser.json({ limit: '30mb', extended: true }))
-app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
-app.use(cors())
+app.get('/templates', (req, res) => {
+  res.json(templates);
+});
 
-const CONNECTION_URL =
-  'mongodb+srv://toanvo7120:tonv4121@cluster0.6njz1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-const PORT = process.env.PORT || 3000
+app.get('/templates/:id', (req, res) => {
+  const template = templates.find((t) => t._id === req.params.id);
+  res.json(template);
+});
 
-mongoose
-  .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() =>
-    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
-  )
-  .catch((error) => console.log(error.message))
+app.get('/top_mems', (req, res) => {
+  res.json(top_mems);
+});
+
+app.get('/top_mems/:id', (req, res) => {
+  const top_mem = top_mems.find((t) => t._id === req.params.id);
+  res.json(top_mem);
+});
+
+app.get('/top_trends', (req, res) => {
+  res.json(top_trends);
+});
+
+app.get('/top_trends/:id', (req, res) => {
+  const top_trend = top_trends.find((t) => t._id === req.params.id);
+  res.json(top_trend);
+});
+
+app.get('/posts', (req, res) => {
+  res.json(user_posts);
+});
+
+app.get('/posts/:id', (req, res) => {
+  const user_post = user_posts.find((t) => t._id === req.params.id);
+  res.json(user_post);
+});
+
+app.listen(5000, console.log('Server running on port 5000'));

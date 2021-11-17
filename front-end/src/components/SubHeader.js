@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
 import HomePage from '../views/HomePage.js';
-import variables from '../variables.js';
+import variables from '../components/Variables.js';
 
 function SubHeader() {
   function TheLoai() {

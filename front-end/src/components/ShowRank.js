@@ -1,5 +1,5 @@
-import React from 'react'
-import variables from '../variables.js'
+import React from 'react';
+import variables from '../components/Variables.js';
 
 function ShowRank() {
   return (
@@ -23,6 +23,6 @@ function ShowRank() {
         ))}
       </div>
     </React.Fragment>
-  )
+  );
 }
-export default ShowRank
+export default ShowRank;

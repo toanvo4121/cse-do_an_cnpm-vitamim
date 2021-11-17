@@ -6,74 +6,29 @@ import ShowMim from '../components/ShowMim.js';
 import DangMim from './DangMim.js';
 import ShowTemplate from './ShowTemplate.js';
 import ViewOwnPage from './ViewOwnPage.js';
-import variables from '../variables.js';
-
-const UserPosts = [
-  {
-    avt: 'source/avatar.png',
-    ten: 'Cuong-chan',
-    thoigian: 1,
-    stt: 'Mực ống trò chơi',
-    hashtag: ['#squidgame'],
-    src: 'url(mimCollection/242860568_910326049562160_4107595597808129557_n.png)',
-    quadark: 127578,
-    soweak: 18742,
-    comment: 69237,
-  },
-  {
-    avt: 'source/avatar.png',
-    ten: 'Hiếu ưbu',
-    thoigian: 2,
-    stt: 'Ai rồi cũng wibu thôi',
-    hashtag: ['#wibuneverdie', '#2D'],
-    src: 'url(mimCollection/146416864_454196045774516_3779436581273031988_n.png)',
-    quadark: 118346,
-    soweak: 24520,
-    comment: 2701,
-  },
-  {
-    avt: 'source/avatar.png',
-    ten: 'Vua lỳ đòn',
-    thoigian: 2,
-    stt: 'Ai rồi cũng lỳ đòn thôi',
-    hashtag: ['#lydonneverdie', '#3D'],
-    src: 'url(mimCollection/163973021_796538227967231_4931855032479318559_n.png)',
-    quadark: 118346,
-    soweak: 24520,
-    comment: 2701,
-  },
-  {
-    avt: 'source/avatar.png',
-    ten: 'Halee',
-    thoigian: 2,
-    stt: 'Chiến',
-    hashtag: ['#chien'],
-    src: 'url(mimCollection/242860568_910326049562160_4107595597808129557_n.png)',
-    quadark: 328346,
-    soweak: 23520,
-    comment: 2701,
-  },
-  {
-    avt: 'source/avatar.png',
-    ten: 'Hecker',
-    thoigian: 2,
-    stt: 'I am hecker',
-    hashtag: ['#hecker', '#123'],
-    src: 'url(mimCollection/245545926_601516814326028_1385808038578148858_n.png)',
-    quadark: 338346,
-    soweak: 23520,
-    comment: 2701,
-  },
-];
+import variables from '../components/Variables.js';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const HomePage = () => {
+  const [user_posts, setUserPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchUserPosts = async () => {
+      const { data } = await axios.get('/templates/:id');
+      setUserPosts(data);
+    };
+
+    fetchUserPosts();
+  }, []);
+
   if (variables.SubTitle === 'theloai') {
     return (
       <React.Fragment>
         <Header log={variables.CheckLogin} />
         <SubHeader />
         <TopTrending />
-        <ShowMim Post={UserPosts} />
+        <ShowMim Post={user_posts} />
         {variables.dangmim === 1 ? <DangMim /> : ''}
       </React.Fragment>
     );
@@ -84,7 +39,7 @@ const HomePage = () => {
         <Header log={variables.CheckLogin} />
         <SubHeader />
         <TopTrending />
-        <ShowMim Post={UserPosts} />
+        <ShowMim Post={user_posts} />
         {variables.dangmim === 1 ? <DangMim /> : ''}
       </React.Fragment>
     );
@@ -95,7 +50,7 @@ const HomePage = () => {
         <Header log={variables.CheckLogin} />
         <SubHeader />
         <TopTrending />
-        <ShowMim Post={UserPosts} />
+        <ShowMim Post={user_posts} />
         {variables.dangmim === 1 ? <DangMim /> : ''}
       </React.Fragment>
     );
@@ -106,7 +61,7 @@ const HomePage = () => {
         <Header log={variables.CheckLogin} />
         <SubHeader />
         <TopTrending />
-        <ShowMim Post={UserPosts} />
+        <ShowMim Post={user_posts} />
         {variables.dangmim === 1 ? <DangMim /> : ''}
       </React.Fragment>
     );
@@ -117,7 +72,7 @@ const HomePage = () => {
         <Header log={variables.CheckLogin} />
         <SubHeader />
         <TopTrending />
-        <ShowMim Post={UserPosts} />
+        <ShowMim Post={user_posts} />
         {variables.dangmim === 1 ? <DangMim /> : ''}
       </React.Fragment>
     );
@@ -128,7 +83,7 @@ const HomePage = () => {
         <Header log={variables.CheckLogin} />
         <SubHeader />
         <TopTrending />
-        <ShowMim Post={UserPosts} />
+        <ShowMim Post={user_posts} />
         {variables.dangmim === 1 ? <DangMim /> : ''}
       </React.Fragment>
     );
@@ -149,7 +104,7 @@ const HomePage = () => {
         <Header log={variables.CheckLogin} />
         <SubHeader />
         <TopTrending />
-        <ShowMim Post={UserPosts} />
+        <ShowMim Post={user_posts} />
         {variables.dangmim === 1 ? <DangMim /> : ''}
       </React.Fragment>
     );

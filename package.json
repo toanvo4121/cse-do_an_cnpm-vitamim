@@ -1,0 +1,29 @@
+{
+  "name": "cse-do_an_cnpm-vitamim",
+  "version": "1.0.0",
+  "description": "MERN social network app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node back-end/server.js",
+    "server": "nodemon back-end/server.js",
+    "client": "npm start --prefix front-end",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toanvo4121/cse-do_an_cnpm-vitamim.git"
+  },
+  "author": "toanvo4121",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toanvo4121/cse-do_an_cnpm-vitamim/issues"
+  },
+  "homepage": "https://github.com/toanvo4121/cse-do_an_cnpm-vitamim#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.4.0",
+    "nodemon": "^2.0.15"
+  }
+}

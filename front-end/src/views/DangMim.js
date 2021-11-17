@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import HomePage from './HomePage.js';
-import variables from '../variables.js';
+import variables from '../components/Variables.js';
 
 function DangMim() {
   return (
@@ -20,7 +20,7 @@ function DangMim() {
           <p className='dangmim-tieude'>Đăng mim</p>
           <img
             alt=''
-            src='../../public/source/exit.png'
+            src='source/exit.png'
             className='dangmim-exit'
             onClick={() => {
               variables.dangmim = 0;

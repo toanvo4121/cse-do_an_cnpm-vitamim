@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { useState } from 'react';
 import HomePage from '../views/HomePage.js';
 import { renderLogin } from '../views/LoginPage.js';
-import { renderSignup } from '../views/SignupPage.js';
-import variables from '../variables.js';
+import { renderSignUp } from '../views/SignupPage.js';
+import variables from '../components/Variables.js';
 
 function Header({ log }) {
   function ShowControl() {
@@ -78,7 +78,7 @@ function Header({ log }) {
           />
         </div>
         <div className='header-btn'>
-          <p className='signup-btn' onClick={renderSignup}>
+          <p className='signup-btn' onClick={renderSignUp}>
             Signup
           </p>
           <p className='login-btn' onClick={renderLogin}>

@@ -1,5 +1,5 @@
-import React from 'react'
-import variables from '../variables'
+import React from 'react';
+import variables from '../components/Variables.js';
 
 function ViewOwnPage() {
   return (
@@ -50,7 +50,7 @@ function ViewOwnPage() {
         </div>
       </div>
     </React.Fragment>
-  )
+  );
 }
 
-export default ViewOwnPage
+export default ViewOwnPage;

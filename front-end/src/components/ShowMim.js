@@ -1,14 +1,27 @@
-import variables from '../variables.js'
-import ShowThongKe from './ShowThongKe.js'
-import ShowRank from './ShowRank.js'
+import variables from './Variables.js';
+import ShowThongKe from './ShowThongKe.js';
+import ShowRank from './ShowRank.js';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ShowMim({ Post, CheckRank }) {
-  console.log(CheckRank)
+  const [user_posts, setUserPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchUserPosts = async () => {
+      const { data } = await axios.get('/posts/');
+      setUserPosts(data);
+    };
+
+    fetchUserPosts();
+  }, []);
+
+  console.log(CheckRank);
   function convert(i) {
     if (i >= 1000) {
-      return String((i - (i % 1000)) / 1000) + 'k'
+      return String((i - (i % 1000)) / 1000) + 'k';
     } else {
-      return String(i)
+      return String(i);
     }
   }
   return (
@@ -16,7 +29,7 @@ function ShowMim({ Post, CheckRank }) {
       <div className='main-content_overlay'>
         <div className='post'>
           <div className='main-content_main-title'>
-            {Post.map((UserPost, index) => (
+            {user_posts.map((UserPost, index) => (
               <div className='user-post'>
                 <div className='user-info'>
                   <img className='user-avt' src={UserPost.avt} alt='' />
@@ -79,7 +92,7 @@ function ShowMim({ Post, CheckRank }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default ShowMim
+export default ShowMim;

@@ -1,34 +1,24 @@
-import React from 'react'
-
-const TopMem = [
-  {
-    avt: 'source/avatar.png',
-    ten: 'Cuong-chan',
-  },
-  {
-    avt: 'source/avatar.png',
-    ten: 'Vua lỳ đòn',
-  },
-  {
-    avt: 'source/avatar.png',
-    ten: 'Halee',
-  },
-  {
-    avt: 'source/avatar.png',
-    ten: 'Simping man',
-  },
-  {
-    avt: 'source/avatar.png',
-    ten: 'Hecker',
-  },
-]
+import React from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ShowThongKe() {
+  const [top_mems, setTopMems] = useState([]);
+
+  useEffect(() => {
+    const fetchTopMems = async () => {
+      const { data } = await axios.get('/top_mems/');
+      setTopMems(data);
+    };
+
+    fetchTopMems();
+  }, []);
+
   return (
     <React.Fragment>
       <div className='top-thang'>
         <p className='topdanhhaithang'>Top danh hài tháng:</p>
-        {TopMem.map((top, index) => (
+        {top_mems.map((top, index) => (
           <div className='top-mem' id={index}>
             <h5>{index}</h5>
             <img src={top.avt} alt='' className='top-avt' />
@@ -44,7 +34,7 @@ function ShowThongKe() {
         ></div>
       </div>
     </React.Fragment>
-  )
+  );
 }
 
-export default ShowThongKe
+export default ShowThongKe;

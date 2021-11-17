@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import variables from '../variables';
+import variables from '../components/Variables.js';
 import HomePage from './HomePage.js';
-import { renderSignup } from './SignupPage.js';
+import { renderSignUp } from './SignupPage.js';
 
 export function renderLogin() {
   // history.pushState(null,'','/login')
@@ -61,7 +61,7 @@ const LoginPage = () => {
           <p id='login-btn' className='dangnhap' onClick={login}>
             Login
           </p>
-          <p id='signup-btn' onClick={renderSignup}>
+          <p id='signup-btn' onClick={renderSignUp}>
             Sign up
           </p>
         </div>
