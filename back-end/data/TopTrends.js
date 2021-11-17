@@ -19,4 +19,4 @@ const TopTrends = [
   },
 ];
 
-module.exports = TopTrends;
+export default TopTrends;

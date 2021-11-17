@@ -1,8 +1,16 @@
-const express = require('express');
-const templates = require('./data/Templates.js');
-const top_mems = require('./data/TopMems.js');
-const top_trends = require('./data/TopTrends.js');
-const user_posts = require('./data/UserPosts.js');
+import express from 'express';
+import colors from 'colors';
+import dotenv from 'dotenv';
+import top_mems from './data/TopMems.js';
+import top_trends from './data/TopTrends.js';
+import user_posts from './data/UserPosts.js';
+import connectDB from './config/db.js';
+
+import templateRoutes from './routes/templateRoutes.js';
+
+dotenv.config();
+
+connectDB();
 
 const app = express();
 
@@ -10,14 +18,7 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-app.get('/templates', (req, res) => {
-  res.json(templates);
-});
-
-app.get('/templates/:id', (req, res) => {
-  const template = templates.find((t) => t._id === req.params.id);
-  res.json(template);
-});
+app.use('/templates', templateRoutes);
 
 app.get('/top_mems', (req, res) => {
   res.json(top_mems);
@@ -46,4 +47,12 @@ app.get('/posts/:id', (req, res) => {
   res.json(user_post);
 });
 
-app.listen(5000, console.log('Server running on port 5000'));
+const PORT = process.env.PORT || 5000;
+
+app.listen(
+  PORT,
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.magenta
+      .bold
+  )
+);

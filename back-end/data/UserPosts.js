@@ -61,4 +61,4 @@ const UserPosts = [
   },
 ];
 
-module.exports = UserPosts;
+export default UserPosts;

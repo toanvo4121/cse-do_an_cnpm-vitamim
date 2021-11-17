@@ -26,4 +26,4 @@ const TopMems = [
   },
 ];
 
-module.exports = TopMems;
+export default TopMems;
