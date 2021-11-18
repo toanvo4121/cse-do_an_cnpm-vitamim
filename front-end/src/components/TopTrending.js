@@ -6,7 +6,7 @@ function TopTrending() {
 
   useEffect(() => {
     const fetchTopTrends = async () => {
-      const { data } = await axios.get('/top_trends/');
+      const { data } = await axios.get('/api/top_trends/');
       setTopTrends(data);
     };
 

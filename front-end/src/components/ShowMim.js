@@ -9,7 +9,7 @@ function ShowMim({ Post, CheckRank }) {
 
   useEffect(() => {
     const fetchUserPosts = async () => {
-      const { data } = await axios.get('/posts/');
+      const { data } = await axios.get('/api/posts/');
       setUserPosts(data);
     };
 

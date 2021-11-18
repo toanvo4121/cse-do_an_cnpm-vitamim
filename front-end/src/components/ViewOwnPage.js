@@ -1,5 +1,5 @@
 import React from 'react';
-import variables from '../components/Variables.js';
+import variables from './Variables.js';
 
 function ViewOwnPage() {
   return (

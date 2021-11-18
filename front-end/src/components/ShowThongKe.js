@@ -7,7 +7,7 @@ function ShowThongKe() {
 
   useEffect(() => {
     const fetchTopMems = async () => {
-      const { data } = await axios.get('/top_mems/');
+      const { data } = await axios.get('/api/top_mems/');
       setTopMems(data);
     };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HomePage from './HomePage.js';
-import variables from '../components/Variables.js';
+import HomePage from '../views/HomePage.js';
+import variables from './Variables.js';
 
 function DangMim() {
   return (

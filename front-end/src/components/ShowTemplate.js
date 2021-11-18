@@ -6,7 +6,7 @@ function ShowTemplate() {
 
   useEffect(() => {
     const fetchTemplates = async () => {
-      const { data } = await axios.get('/templates/');
+      const { data } = await axios.get('/api/templates/');
       setTemplates(data);
     };
 

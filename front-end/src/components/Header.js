@@ -4,7 +4,7 @@ import { useState } from 'react';
 import HomePage from '../views/HomePage.js';
 import { renderLogin } from '../views/LoginPage.js';
 import { renderSignUp } from '../views/SignupPage.js';
-import variables from '../components/Variables.js';
+import variables from './Variables.js';
 
 function Header({ log }) {
   function ShowControl() {

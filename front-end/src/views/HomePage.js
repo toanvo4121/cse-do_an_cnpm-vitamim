@@ -3,9 +3,9 @@ import Header from '../components/Header.js';
 import SubHeader from '../components/SubHeader.js';
 import TopTrending from '../components/TopTrending.js';
 import ShowMim from '../components/ShowMim.js';
-import DangMim from './DangMim.js';
-import ShowTemplate from './ShowTemplate.js';
-import ViewOwnPage from './ViewOwnPage.js';
+import DangMim from '../components/DangMim.js';
+import ShowTemplate from '../components/ShowTemplate.js';
+import ViewOwnPage from '../components/ViewOwnPage.js';
 import variables from '../components/Variables.js';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -15,7 +15,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchUserPosts = async () => {
-      const { data } = await axios.get('/templates/:id');
+      const { data } = await axios.get('/api/posts/:id');
       setUserPosts(data);
     };
 
