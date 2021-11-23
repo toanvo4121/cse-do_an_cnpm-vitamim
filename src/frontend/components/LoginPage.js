@@ -58,7 +58,7 @@ function LoginPage() {
                     <button id="login-btn" className="dangnhap" onClick={() => Login(MemberList)}>Login</button>
                     <Link to="/signup"><p id="signup-btn" >Sign up</p></Link>
                 </div>
-                <a href="forgotpass" className="forgot">Quên mật khẩu</a>
+                {/* <a href="forgotpass" className="forgot">Quên mật khẩu</a> */}
             </div>
         </div>
     )

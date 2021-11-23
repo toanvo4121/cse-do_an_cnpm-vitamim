@@ -16,7 +16,7 @@ function TheLoai(){
             <TopTrending />
             <ShowMim Post={UserPosts} />
             {dangmim === 1 ? <DangMim /> : ''}
-            {post === '' ? '' : <ShowPost userpost={post} />}
+            {JSON.parse(localStorage.getItem('showdangmim'))== 1 ? <DangMim /> : ''}
         </React.Fragment>
     )
 }

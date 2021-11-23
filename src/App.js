@@ -27,16 +27,16 @@ function App() {
         <Route path="/csmim" element = {<CsMim/>}/>
         <Route path="/hotmim" element = {<HotMim/>}/>
         <Route path="/follow" element = {<Follow/>}/>
-        <Route path="/dangmim" element = {<DangMim/>}/>
+        {/* <Route path="/dangmim" element = {<DangMim/>}/> */}
         <Route path="/template" element = {<Template/>}/>
         <Route path="/binhchon" element = {<BinhChon/>}/>
-        <Route path="mimthuong/dangmim" element = {<DangMim/>}/>
+        {/* <Route path="mimthuong/dangmim" element = {<DangMim/>}/>
         <Route path="darkmim/dangmim" element = {<DangMim/>}/>
         <Route path="csmim/dangmim" element = {<DangMim/>}/>
         <Route path="hotmim/dangmim" element = {<DangMim/>}/>
         <Route path="follow/dangmim" element = {<DangMim/>}/>
         <Route path="template/dangmim" element = {<DangMim/>}/>
-        <Route path="binhchon/dangmim" element = {<DangMim/>}/>
+        <Route path="binhchon/dangmim" element = {<DangMim/>}/> */}
         <Route path="/user" element = {<OwnPage/>}/>
       </Routes>
   )

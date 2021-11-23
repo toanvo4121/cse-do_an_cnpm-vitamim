@@ -13,7 +13,7 @@ function BinhChon(){
             <SubHeader />
             <TopTrending />
             <ShowMim Post={UserPosts} />
-            {dangmim === 1 ? <DangMim /> : ''}
+            {JSON.parse(localStorage.getItem('showdangmim'))== 1 ? <DangMim /> : ''}
         </React.Fragment>
     )
 }

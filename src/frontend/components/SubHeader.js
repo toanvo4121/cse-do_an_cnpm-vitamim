@@ -43,7 +43,7 @@ function SubHeader() {
                 <div className="control-overlay"></div>
                 {showTheLoai === 1 ? <TheLoai /> : ''}
                 <Link to="/follow"><p className="sub" onClick={() => { handleShowOffTheLoai(); }}>Follow</p></Link>
-                <Link to="dangmim"><p className="sub" onClick={() => { handleShowOffTheLoai(); }}>Đăng mim</p></Link>
+                <p className="sub" onClick={() => { handleShowOffTheLoai();localStorage.setItem('showdangmim',JSON.stringify(1));window.location.reload()}}>Đăng mim</p>
                 <Link to="/template"><p className="sub" onClick={() => { handleShowOffTheLoai(); }}>Template</p></Link>
                 <Link to="/binhchon"><p className="sub" onClick={() => { handleShowOffTheLoai(); }}>Bình chọn</p></Link>
             </div>

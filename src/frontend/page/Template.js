@@ -12,7 +12,7 @@ function Template(){
             <Header log={CheckLogin} />
             <SubHeader />
             <ShowTemplate />
-            {dangmim === 1 ? <DangMim /> : ''}
+            {JSON.parse(localStorage.getItem('showdangmim'))== 1 ? <DangMim /> : ''}
         </React.Fragment>
     )
 }

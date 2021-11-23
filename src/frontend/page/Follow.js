@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import Header from "../components/Header"
 import SubHeader from "../components/SubHeader"
 import TopTrending from "../components/TopTrending"
@@ -12,7 +13,7 @@ function Follow(){
             <SubHeader />
             <TopTrending />
             <ShowMim Post={UserPosts} />
-            {dangmim === 1 ? <DangMim /> : ''}
+            {JSON.parse(localStorage.getItem('showdangmim'))== 1 ? <DangMim /> : ''}
         </React.Fragment>
     )
 }

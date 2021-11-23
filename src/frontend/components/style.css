@@ -294,7 +294,18 @@ body{
     font-size:12px;
     color: rgb(255,0,0);
     position: absolute;
-    left: 42%;
+    width: 100%;
+    text-align: center;
+    left: 0px;
+  }
+  .error1{
+    display: none;
+    font-size:12px;
+    color: rgb(255,0,0);
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 0px;
   }
   .dieukhoan{
     font-size:14px;
@@ -940,7 +951,16 @@ body{
     width: 50%;
     height:350px;
     border-radius: 20px;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #loadanh{
+    background-color: #efb14d;
+    text-align: center;
+  }
+  input#file-upload-button{
+    display: none;
   }
   .dangmim-check-button{
     margin: 15px 0px;

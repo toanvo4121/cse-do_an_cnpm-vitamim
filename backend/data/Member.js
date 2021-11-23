@@ -2,9 +2,9 @@ const Member= [
     {
         ho: 'Nguyễn',
         ten: 'Hải Linh',
-        ten_tai_khoan: 'halle22',
-        mat_khau: 'LinhCuteDth',
-        email: 'halle@gmail.com',
+        ten_tai_khoan: 'Halee',
+        mat_khau: '123123',
+        email: 'halee@gmail.com',
         ngay_sinh: '15',
         thang_sinh: '05',
         nam_sinh: '2001',
