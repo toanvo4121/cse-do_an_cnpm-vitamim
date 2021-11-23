@@ -10,14 +10,14 @@ function ShowPost({ userpost }) {
                 <div className="dangmim-header">
                     <div className="user-info">
                     </div>
-                    <img src="source/exit.png" className="dangmim-exit" onClick={() => { post = ''}} />
+                    <img src="source/exit.png" alt="" className="dangmim-exit" onClick={() => { post = ''}} />
                 </div>
                 <div className="dangmim-title">
                     <div className="user-show-post">
                         <div className="user-info">
                             <img className="user-avt" src={userpost.avt} alt="" />
                             <p className="user-name">{userpost.ten}</p>
-                            {(userpost.ten === Mem.ten && CheckLogin === 1) ? '' : <img src="source/follow-icon.png" />}
+                            {(userpost.ten === Mem.ten && CheckLogin === 1) ? '' : <img src="source/follow-icon.png" alt=""/>}
                             <div className="space" ></div>
                             <img className="timer" src="source/clock.png" alt="" />
                             <p className="thoigian">{userpost.thoigian} giờ</p>

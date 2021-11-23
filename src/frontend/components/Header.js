@@ -3,17 +3,10 @@ import './style.css'
 import { useState } from 'react'
 import {Mem} from "../Constant/Variable"
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
+
+const User = JSON.parse(localStorage.getItem('user'))
 function Header({ log }) {
-    axios.get('http://localhost:4000/Member')
-            .then(response => {
-                console.log(response.data[0]);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-
 
     function ShowControl() {
         return (
@@ -23,7 +16,7 @@ function Header({ log }) {
                     <p onClick={() => { handleShowOffControl() }}><img src="source/avatar.png" alt="anh" />Xem trang cá nhân</p>
                     <p onClick={() => { handleShowOffControl() }}><img src="source/avatar.png" alt="anh" />Thông tin cá nhân</p>
                     <p onClick={() => { handleShowOffControl() }}><img src="source/avatar.png" alt="anh" />Trợ giúp & hỗ trợ</p>
-                    <p onClick={() => { handleShowOffControl() }}><img src="source/avatar.png" alt="anh" />Đăng xuất</p>
+                    <a href='/'><p onClick={() => { handleShowOffControl();localStorage.removeItem('user'); }}><img src="source/avatar.png" alt="anh" />Đăng xuất</p></a>
                 </div>
             </React.Fragment>
         )
@@ -35,7 +28,7 @@ function Header({ log }) {
     const handleShowOffControl = () => {
         show === 1 ? setShowControl(show - 1) : setShowControl(show + 0)
     }
-    if (log === 0) {
+    if (User == null) {
         return (
             <div className="header">
                 <img src="source/logo-page.png" onClick={window.location.reload} alt="" className="Logo" download />
@@ -60,7 +53,7 @@ function Header({ log }) {
                     <img src="source/search-button.png" alt="" className="search-button"  alt="search"/>
                 </div>
                 <div className="UserInfo">
-                    <div className="name"><p>{Mem.ten}</p></div>
+                    <div className="name"><p>{User.ten_tai_khoan}</p></div>
                     <img src={Mem.avt} className="avt" alt="avt" />
                     <img src="source/tamgiacxoxuong.png" className="tamgiacxoxuong" alt="anh" onClick={handleControl} />
                     {show === 1 ? <ShowControl /> : ''}

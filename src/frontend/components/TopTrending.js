@@ -12,7 +12,7 @@ function TopTrending() {
                 <img src="source/back.png" alt="" className="move" />
                 {
                     TopTrend.map((trend, index) =>
-                        <img className="trend" id={index} key={index} src={trend.src}></img>
+                        <img className="trend" alt="" id={index} key={index} src={trend.src}></img>
                     )}
                 <img src="source/next.png" alt="" className="move" />
             </div>

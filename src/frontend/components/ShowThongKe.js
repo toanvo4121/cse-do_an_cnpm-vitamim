@@ -8,7 +8,7 @@ function ShowThongKe() {
             <div className="top-thang">
                 <p className="topdanhhaithang">Top danh hài tháng:</p>
                 {TopMem.map((top, index) =>
-                    <div className="top-mem" id={index}>
+                    <div key={index} className="top-mem" id={index}>
                         <h5>{index}</h5>
                         <img src={top.avt} alt="" className="top-avt" />
                         <p>{top.ten}</p>

@@ -12,11 +12,11 @@ function ShowMim({ Post, CheckRank }) {
                 <div className="post">
                     <div className="main-content_main-title">
                         {Post.map((UserPost, index) =>
-                            <div className="user-post">
+                            <div key={index} className="user-post">
                                 <div className="user-info">
                                     <img className="user-avt" src={UserPost.avt} alt="" />
                                     <p className="user-name">{UserPost.ten}</p>
-                                    {(UserPost.ten === Mem.ten && CheckLogin === 1) ? '' : <img src="source/follow-icon.png" />}
+                                    {(UserPost.ten === Mem.ten && CheckLogin === 1) ? '' : <img src="source/follow-icon.png" alt=""/>}
                                     <div className="space" ></div>
                                     <img className="timer" src="source/clock.png" alt="" />
                                     <p className="thoigian">{UserPost.thoigian} giờ</p>
