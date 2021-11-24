@@ -58,7 +58,7 @@ function SignUpPage() {
             axios.post('http://localhost:4000/Member/signup', newMem)
                 .then(res => console.log(res.data));
             alert("added")
-            window.location = '/login'
+            // window.location = '/login'
         }
     }
     return (
@@ -73,7 +73,7 @@ function SignUpPage() {
                         <input className="signup" id="ho" type="text" placeholder="Họ" autoFocus />
                         <input className="signup" id="ten" type="text" placeholder="Tên" />
                     </div>
-                    <input className="signup" id="username" type="text" placeholder="Tên tài khoản" />
+                    <input className="signup" id="username" type="text" placeholder="Tên người dùng" />
                     <input className="signup" id="password" type="text" placeholder="Mật khẩu" />
                     <input className="signup" id="email" type="text" placeholder="Email" />
                     <div className="birthday">

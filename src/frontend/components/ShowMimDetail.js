@@ -3,7 +3,7 @@ import './style.css';
 import {post,CheckLogin,Mem} from "../Constant/Variable"
 import convert from "../action/convert"
 
-function ShowPost({ userpost }) {
+function ShowMimDetail({ userpost }) {
     return (
         <div className="dangmim-overlay">
             <div className="showpost-content">
@@ -50,4 +50,4 @@ function ShowPost({ userpost }) {
         </div>
     )
 }
-export default ShowPost
+export default ShowMimDetail

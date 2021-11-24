@@ -1,19 +1,20 @@
 import React from 'react'
+import axios from 'axios'
 import Header from "../components/Header"
 import SubHeader from "../components/SubHeader"
 import TopTrending from "../components/TopTrending"
 import ShowMim from "../components/ShowMim"
 import DangMim from "../components/DangMim"
-import { useState } from 'react'
-import axios from 'axios'
-
+import ShowMimDetail from '../components/ShowMimDetail'
+import {useState} from 'react'
 const getMims = () => axios.get('http://localhost:4000/upload')
     .then((res) => res.data)
-function MimThuong(){
+
+function HomePage() {
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.categ == "Mim thường"))  
+            setPosts(res)   
         })
     }
     return (
@@ -22,8 +23,8 @@ function MimThuong(){
             <SubHeader />
             <TopTrending />
             <ShowMim Post={Posts} />
-            {JSON.parse(localStorage.getItem('showdangmim'))== 1 ? <DangMim /> : ''}
+            {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
         </React.Fragment>
     )
 }
-export default MimThuong
+export default HomePage

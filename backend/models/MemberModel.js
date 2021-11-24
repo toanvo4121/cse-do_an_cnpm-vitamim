@@ -12,6 +12,19 @@ let Member = new Schema({
     thang_sinh: Number,
     nam_sinh: Number,
     gioi_tinh: String,
+    avatar:{
+        type: String,
+        default: 'https://res.cloudinary.com/vitamim/image/upload/v1637764238/avatar/rqcorrhg6zeavfxozpko.png'
+    },
+    so_bai_viet:{
+        type:Number,
+        default:0
+    },
+    slogan:{
+        type:String,
+        default:"Slogan:"
+    }
+
 });
 
 module.exports = mongoose.model('Account', Member);

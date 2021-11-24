@@ -6,17 +6,17 @@ import { Link } from 'react-router-dom'
 
 
 const User = JSON.parse(localStorage.getItem('user'))
-function Header({ log }) {
+function Header() {
 
     function ShowControl() {
         return (
             <React.Fragment>
                 <div className="control-overlay"></div>
                 <div className="control">
-                    <p onClick={() => { handleShowOffControl() }}><img src="source/avatar.png" alt="anh" />Xem trang cá nhân</p>
-                    <p onClick={() => { handleShowOffControl() }}><img src="source/avatar.png" alt="anh" />Thông tin cá nhân</p>
+                    <a href="/user"><p onClick={() => { handleShowOffControl() }}><img src="source/avatar.png" alt="anh" />Xem trang cá nhân</p></a>
+                    <a href="/edit-profile"><p onClick={() => { handleShowOffControl() }}><img src="source/avatar.png" alt="anh" />Sửa thông tin cá nhân</p></a>
                     <p onClick={() => { handleShowOffControl() }}><img src="source/avatar.png" alt="anh" />Trợ giúp & hỗ trợ</p>
-                    <a href='/'><p onClick={() => { handleShowOffControl();localStorage.removeItem('user'); }}><img src="source/avatar.png" alt="anh" />Đăng xuất</p></a>
+                    <a href='/login'><p onClick={() => { handleShowOffControl();localStorage.removeItem('user')}}><img src="source/avatar.png" alt="anh" />Đăng xuất</p></a>
                 </div>
             </React.Fragment>
         )
@@ -31,7 +31,7 @@ function Header({ log }) {
     if (User == null) {
         return (
             <div className="header">
-                <img src="source/logo-page.png" onClick={window.location.reload} alt="" className="Logo" download />
+                <Link to="/"><img src="source/logo-page.png" onClick={window.location.reload} alt="" className="Logo" /></Link>
                 <div className="search-bar">
                     <input type="text" className="search" placeholder="Search..." />
                     <img src="source/search-button.png" alt="" className="search-button"  alt="search"/>
@@ -47,14 +47,14 @@ function Header({ log }) {
     else {
         return (
             <div className="header">
-                <img src="source/logo-page.png" onClick={window.location.reload} alt="logo" className="Logo" />
+                <a href="/"><img src="source/logo-page.png" onClick={window.location.reload} alt="" className="Logo" /></a>
                 <div className="search-bar">
                     <input type="text" className="search" placeholder="Search..." />
                     <img src="source/search-button.png" alt="" className="search-button"  alt="search"/>
                 </div>
                 <div className="UserInfo">
                     <div className="name"><p>{User.ten_tai_khoan}</p></div>
-                    <img src={Mem.avt} className="avt" alt="avt" />
+                    <img src={User.avatar} className="avt" alt="avt" />
                     <img src="source/tamgiacxoxuong.png" className="tamgiacxoxuong" alt="anh" onClick={handleControl} />
                     {show === 1 ? <ShowControl /> : ''}
                 </div>

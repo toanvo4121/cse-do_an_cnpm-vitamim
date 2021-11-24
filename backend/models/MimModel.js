@@ -8,6 +8,10 @@ const mimSchema = mongoose.Schema(
       required: true,
       ref: 'Account',
     },
+    user_name: {
+      type: String,
+    },
+    avatar:String,
     mim_src: {
       type: String,
       required: true,
@@ -16,12 +20,10 @@ const mimSchema = mongoose.Schema(
       type: String,
       default: ''
     },
-    hashtag: [
-      {
-        type: String,
-      },
-    ],
-    catag: {
+    hashtag:{
+      type: String,
+    },
+    categ: {
       type: String,
       required: true,
     },
@@ -37,8 +39,8 @@ const mimSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    isAccept:{
-      type: Num,
+    isAccept: {
+      type: Number,
       default: 0,
     },
     comments: {
@@ -49,7 +51,7 @@ const mimSchema = mongoose.Schema(
       cmts: [
         {
           type: mongoose.Schema.Types.ObjectId,
-          required: true,
+          default: '',
           ref: 'Comment',
         },
       ],

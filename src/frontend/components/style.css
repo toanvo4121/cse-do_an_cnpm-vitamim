@@ -187,6 +187,15 @@ body{
     margin-bottom: 20px;
     width: 490px;
   }
+  #slogan{
+    font-size:20px;
+    margin-bottom: 10px;
+    border: 1px solid #000000;
+    border-radius:20px;
+    height:40px;
+    margin-bottom: 20px;
+    width: 490px;
+  }
   #email{
     font-size:20px;
     margin-bottom: 10px;
@@ -199,6 +208,9 @@ body{
   .signup1{
     display: flex;
     margin-bottom: 10px;
+  }
+  .signup{
+    padding-left: 10px;
   }
   #ho{
     font-size:20px;
@@ -418,6 +430,8 @@ body{
   }
   .avt{
     height:40px;
+    width: 40px;
+    border-radius: 50%;
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
@@ -463,8 +477,8 @@ body{
   .sub-header{
     display: flex;
     justify-content:space-around;
-    width: 44%;
-    margin-left: 28%;
+    width: 56%;
+    margin-left: 22%;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px 10px;
@@ -933,31 +947,60 @@ body{
   }
   .dangmim-post{
     font-size:25px;
+    margin: 10px 0px;
   }
   .dangmim-status{
-    height:90%;
+    height:fit-content;
     width: 90%;
     border-radius: 20px;
+    font-size: 15px;
+    text-align: start;
+    padding-bottom: 20%;
+    padding-top: 10px;
+    padding-left: 10px;
     font-size: 20px;
+    overflow:hidden  ;
+  }
+  .dangmim-hashtag{
+    height:8%;
+    width: 90%;
+    border-radius: 20px;
+    font-size: 15px;
     text-align: start;
   }
-  .dangmim-status ::placeholder{
-    margin-top:-1000px;
+  .loadanh-overlay{
+    width: 50%;
   }
   .dangmim-loadanh{
     background-color:#ffffff;
     border: 2px solid #000;
     border-radius:20px;
-    width: 50%;
-    height:350px;
+    width: 100%;
+    height:300px;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  }
+  .upload-button{
+    width: 20%;
+    border-radius: 20%;
+    margin-top: 10px;
+    margin-left: 40%
+  }
+  #showanh{
+    width: 96%;
+    height: 96%;
+    margin: 2% 2%;
+    text-align: center;
+    background-size: cover;
+    background-repeat: repeat;
+    background-position:center;
   }
   #loadanh{
-    background-color: #efb14d;
-    text-align: center;
+    position: relative;
+    top:-100%;
+    opacity: 0;
+    margin-top: -100%;
+    width: 100%;
+    height: 100%;
   }
   input#file-upload-button{
     display: none;
@@ -966,19 +1009,26 @@ body{
     margin: 15px 0px;
     padding:8px 20%;
     background-color: #efb14d;  
-  
+    border: 0px;
+    cursor: pointer;
     color: #fff;
     font-size: 25px;
     border-radius: 40px;
+  }
+  .dangmim-check-button:active{
+    background-color: #ce963c;  
+  }
+  .ViewOwnPage-overlay{
+    margin-top:150px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
   }
   .ownpage-header{
     background-color: #fff;
     border: 2px solid #000000;
     border-radius:40px;
-    margin-top:150px;
-    margin-bottom: 25px;
-    width: 50%;
-    margin-left: 25%;
+    width: max-content;
     height:max-content;
     display: flex;
     align-items: center;
@@ -986,7 +1036,7 @@ body{
     box-shadow: 0px 0px 0px 12px #ebebeb;
   }
   .ownpage-user{
-    width: 15%;
+    width: max-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -994,6 +1044,8 @@ body{
   }
   .ownpage-info{
     width: 80%;
+    margin-top: 20px;
+    margin-right: 20px;
   }
   .ownpage-info-border{
     width: 100%;
@@ -1014,6 +1066,7 @@ body{
     margin-top:10px;
     height:100px;
     width: 100px;
+    border-radius: 50%;
   }
   .ownpage-name{
     font-size:30px;
@@ -1025,9 +1078,10 @@ body{
     width: 100%;
   }
   .ownpage-header-sub{
-    width: 25%;
+    width: max-content;
     height:max-content;
     text-align: center;
+    margin: 0px 20px;
     border-radius:20px;
     padding:5px 0px;
   }
@@ -1162,4 +1216,88 @@ body{
     border: 2px solid #000;
     border-radius: 20px;
     cursor: pointer;
+  }
+  .button{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: max-content;
+    justify-content: center;
+  }
+  .huybo{
+    margin-left: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #ffb443;
+    border:2px solid #ffb443;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .xacnhan{
+    color: #fff;
+    background-color: #ffb443;
+    margin-right: 20px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 20px;
+    border:2px solid #ffb443;
+    cursor: pointer;
+  }
+  .edit-user{
+    width: 25%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-top: -100px;
+    margin-left:10px;
+    margin-right:30px;
+    align-items: center;
+  }
+  .edit-user1{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+  }
+  #showavt{
+    width: 150px;
+    height: 150px;
+    margin: 2% 2%;
+    text-align: center;
+    background-size: cover;
+    background-repeat: repeat;
+    background-position:center;
+    border-radius: 50%;
+    border: 2px solid #000;
+    
+  }
+  #loadavt{
+    position: relative;
+    opacity: 0;
+    margin-top: -160px;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+  }
+  #loadavt1{
+    margin-top: -25%;
+    margin-left: 75%;
+    width: 20%;
+    height: 20%;
+    cursor: pointer;
+    opacity: 1;
+    background-color: #fff;
+    border:2px solid #000;
+    padding: 5px 5px;
+    border-radius: 50%;
+  }
+  #upload-avt{
+    margin-top: 10px;
+    text-align: center;
+    padding: 2px 8px;
+    opacity: 0;
   }

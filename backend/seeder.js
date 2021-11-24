@@ -8,9 +8,10 @@ const member = require('./data/Member');
 const templates = require('./data/Templates');
 
 // Import Models
-const memberModel = require('./models/Member');
+const memberModel = require('./models/MemberModel');
 const templatesModel = require('./models/TemplateModel');
-const connectDB = require('./db.js')
+const connectDB = require('./config/db');
+const MimModel = require('./models/MimModel');
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ const importData = async () => {
   try {
     // await MimModel.deleteMany();
     await templatesModel.deleteMany(); // Clean Templates in DB
+    await MimModel.deleteMany(); // Clean Templates in DB
     await memberModel.deleteMany(); // Clean Members in DB
 
     await memberModel.insertMany(member); // Insert member to DB
