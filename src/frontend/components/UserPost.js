@@ -5,12 +5,20 @@ import ShowMimDetail from './ShowMimDetail';
 import { useState } from 'react'
 import axios from 'axios'
 const User = JSON.parse(localStorage.getItem('user'))
+function DeletePost(Post) {
+    if (window.confirm("Ủa, bạn chắc chưa ???")) {
+        axios.post('http://localhost:4000/upload/delete/' + String(Post._id))
+        .then(res => console.log(res.data));
+    window.location.reload()
+      } else {
+      }
 
+}
 var d = new Date()
 function UserPost({ Post }) {
     const [like, setLike] = useState(Post.likers.length);
     const [Dislike, setDislike] = useState(Post.haters.length);
-    const [ShowPostDetail,setShowPostDetail] = useState(0)
+    const [ShowPostDetail, setShowPostDetail] = useState(0)
 
     const likeHandler = () => {
         if (User == null) {
@@ -36,7 +44,7 @@ function UserPost({ Post }) {
     };
     return (
         <React.Fragment>
-            <div className="user-post" onClick = {()=>{setShowPostDetail(1)}}>
+            <div className="user-post">
                 <div className="user-info">
                     <img className="user-avt" src={Post.avatar} alt="" />
                     <p className="user-name">{Post.user_name}</p>
@@ -45,7 +53,7 @@ function UserPost({ Post }) {
                     <p className="thoigian">{(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ? (String(d.getMinutes() - parseInt(Post.createdAt.split(":")[1]) == 0 ? "Vừa xong" : (d.getMinutes() - parseInt(Post.createdAt.split(":")[1])) + " phút")) : (d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 < 24 ? (String(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7) + " giờ") : Post.createdAt.split(":")[0].split("T")[0])}</p>
                 </div>
                 <p className="status">{Post.caption} #{Post.hashtag}</p>
-                <div className="mim" style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></div>
+                <div className="mim" onClick={() => { setShowPostDetail(1) }} style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></div>
                 <div className="react">
 
                     <button onClick={likeHandler} className="react1" style={{ backgroundImage: 'url(source/react1.png)' }}></button>
@@ -61,13 +69,15 @@ function UserPost({ Post }) {
                     <div className="count">{convert(Post.comments.length)}</div>
 
                     <div className="space" ></div>
+                    <div className="delbtn"  onClick={() => { DeletePost(Post) }}>
 
-                    {(User !== null) ? ((Post.user === User._id) ? <img src="source/del.png" alt="" className="del-btn" /> : "") : ""}
+                        {(User !== null) ? ((Post.user === User._id) ? <img src="source/del.png" alt="" className="del-btn" /> : "") : ""}
 
-                    {(User !== null) ? ((Post.user === User._id) ? <div className="count">Xóa bài</div> : "") : ""}
+                        {(User !== null) ? ((Post.user === User._id) ? <div className="count">Xóa bài</div> : "") : ""}
+                    </div>
                 </div>
             </div>
-        {ShowPostDetail===1?<ShowMimDetail userpost={Post}/>:''}
+            {ShowPostDetail === 1 ? <ShowMimDetail userpost={Post} /> : ''}
         </React.Fragment>
     )
 }

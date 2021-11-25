@@ -61,6 +61,11 @@ UploadRouter.route('/dislike/:id').post(function (req, res) {
     });
 });
 
-
+UploadRouter.route('/delete/:id').post(function (req, res) {
+    Img.findByIdAndRemove({_id: req.params.id}, function(err, person){
+        if(err) res.json(err);
+        else res.json('Successfully removed');
+    });
+});
 module.exports = UploadRouter;
 

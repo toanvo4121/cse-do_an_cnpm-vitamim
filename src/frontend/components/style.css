@@ -691,6 +691,10 @@ body{
     height:30px;
     width:30px;
   }
+  .delbtn{
+    display: flex;
+    cursor: pointer;
+  }
   .del{
     text-decoration: underline;
   }
@@ -1081,6 +1085,9 @@ body{
   }
   .ownpage-name{
     font-size:30px;
+  }
+  .name-user{
+    width: max-content;
   }
   .ownpage-header-subcrible{
     margin-top: 25px;

@@ -26,12 +26,12 @@ function ShowMimDetail({ userpost }) {
 
     };
     return (
-        <div className="dangmim-overlay">
+        <div className="dangmim-overlay" id="post" >
             <div className="showpost-content">
                 <div className="dangmim-header">
                     <div className="user-info">
                     </div>
-                    <img src="source/exit.png" alt="" className="dangmim-exit" onClick={() => { post = '' }} />
+                    <img src="source/exit.png" alt="" className="dangmim-exit" onClick={()=>{document.getElementById("post").style.display = "none"}}/>
                 </div>
                 <div className="dangmim-title">
                     <div className="user-show-post">

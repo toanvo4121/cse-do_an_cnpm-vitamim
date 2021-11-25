@@ -12,7 +12,6 @@ function ViewOwnPage() {
     const [Posts,setPosts] = useState("")
     if (Posts === "") {
         getMims().then((res) => {
-            console.log(res)
             setPosts(res.filter(p=>p.user == User._id))  
         })
     }
@@ -23,7 +22,7 @@ function ViewOwnPage() {
                 <div className="ownpage-header">
                     <div className="ownpage-user">
                         <img src={User.avatar} className="ownpage-avt" alt="" />
-                        <div className="ownpage-name"><p>{User.ten_tai_khoan}</p></div>
+                        <div className="ownpage-name"><p className="name-user">{User.ten_tai_khoan}</p></div>
                     </div>
                     <div className="ownpage-info">
                         <div className="ownpage-header-subcrible">
