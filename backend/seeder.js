@@ -6,9 +6,11 @@ const mongoose = require('mongoose');
 // Import data
 const member = require('./data/Member');
 const templates = require('./data/Templates');
+const admin = require('./data/Admin');
 
 // Import Models
 const memberModel = require('./models/MemberModel');
+const adminModel = require('./models/AdminModel');
 const templatesModel = require('./models/TemplateModel');
 const connectDB = require('./config/db');
 const MimModel = require('./models/MimModel');
@@ -28,10 +30,10 @@ const importData = async () => {
     await templatesModel.deleteMany(); // Clean Templates in DB
     await MimModel.deleteMany(); // Clean Templates in DB
     await memberModel.deleteMany(); // Clean Members in DB
+    await adminModel.deleteMany();
     
-    
-    a= await memberModel.insertMany(member); // Insert member to DB
-    console.log(a)
+    await memberModel.insertMany(member); // Insert member to DB
+    await adminModel.insertMany(admin); // Insert admin to DB
     await templatesModel.insertMany(templates); // Insert Template to DB
 
     console.log('Data imported');
