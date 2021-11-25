@@ -28,8 +28,10 @@ const importData = async () => {
     await templatesModel.deleteMany(); // Clean Templates in DB
     await MimModel.deleteMany(); // Clean Templates in DB
     await memberModel.deleteMany(); // Clean Members in DB
-
-    await memberModel.insertMany(member); // Insert member to DB
+    
+    
+    a= await memberModel.insertMany(member); // Insert member to DB
+    console.log(a)
     await templatesModel.insertMany(templates); // Insert Template to DB
 
     console.log('Data imported');

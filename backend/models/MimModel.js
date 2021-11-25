@@ -31,10 +31,24 @@ const mimSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    likers:[
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Account',
+        default: null,
+      },
+    ],
     dislikes: {
       type: Number,
       default: 0,
     },
+    haters:[
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Account',
+        default: null,
+      },
+    ],
     reports: {
       type: Number,
       default: 0,
@@ -51,7 +65,7 @@ const mimSchema = mongoose.Schema(
       cmts: [
         {
           type: mongoose.Schema.Types.ObjectId,
-          default: '',
+          default: null,
           ref: 'Comment',
         },
       ],
