@@ -20,7 +20,7 @@ function CsMim(){
         return (
             <React.Fragment>
                 <Header />
-                <SubHeader />
+                <SubHeader  checkMim={"csmim"}/>
                 <TopTrending />
                 <ShowMim Post={Posts.reverse()} />
                 {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}

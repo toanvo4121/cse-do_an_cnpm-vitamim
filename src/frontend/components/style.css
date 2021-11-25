@@ -665,7 +665,10 @@ body{
     cursor: pointer;
   }
   .react1:active{
-    border: 1px solid rgb(0, 255, 85);
+    border: 3px solid rgb(255, 0, 0);
+  }
+  .react2:active{
+    border: 3px solid rgb(255, 0, 0);
   }
   .react2{
     height: 30px;
@@ -1074,6 +1077,7 @@ body{
     height:100px;
     width: 100px;
     border-radius: 50%;
+    box-shadow: 2px 2px 7px 0px #000;  
   }
   .ownpage-name{
     font-size:30px;

@@ -30,7 +30,7 @@ function DangMim() {
         // console.log(newMem)
         axios.post('http://localhost:4000/upload/img', Mim)
             .then(res => console.log(res.data));
-        alert("added")
+        alert("Your mim is mine!!")
         localStorage.removeItem('showdangmim')
         window.location = "/"
     }

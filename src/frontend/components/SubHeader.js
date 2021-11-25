@@ -4,7 +4,27 @@ import { useState } from 'react';
 import { Link } from "react-router-dom"
 const User = JSON.parse(localStorage.getItem('user'))
 
-function SubHeader() {
+function SubHeader({checkMim}) {
+    if(checkMim === "mimthuong"){
+        document.getElementsByClassName("sub")[0].style.backgroundColor="#efb14d";
+        document.getElementsByClassName("sub")[0].style.color="#fff";
+    }
+    if(checkMim === "darkmim"){
+        document.getElementsByClassName("sub")[1].style.backgroundColor="#efb14d";
+        document.getElementsByClassName("sub")[1].style.color="#fff";
+    }
+    if(checkMim === "csmim"){
+        document.getElementsByClassName("sub")[2].style.backgroundColor="#efb14d";
+        document.getElementsByClassName("sub")[2].style.color="#fff";
+    }
+    if(checkMim === "hotmim"){
+        document.getElementsByClassName("sub")[3].style.backgroundColor="#efb14d";
+        document.getElementsByClassName("sub")[3].style.color="#fff";
+    }
+    if(checkMim === "template"){
+        document.getElementsByClassName("sub")[5].style.backgroundColor="#efb14d";
+        document.getElementsByClassName("sub")[5].style.color="#fff";
+    }
     function ClickDangMim() {
         if (User !== null) {
             localStorage.setItem('showdangmim', JSON.stringify(1));

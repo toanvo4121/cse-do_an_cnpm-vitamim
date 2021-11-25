@@ -20,7 +20,7 @@ function DarkMim(){
         return (
             <React.Fragment>
                 <Header />
-                <SubHeader />
+                <SubHeader  checkMim={"darkmim"}/>
                 <TopTrending />
                 <ShowMim Post={Posts.reverse()} />
                 {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}

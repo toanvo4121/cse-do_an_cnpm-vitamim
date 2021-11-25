@@ -20,7 +20,7 @@ function HotMim(){
         return (
             <React.Fragment>
                 <Header />
-                <SubHeader />
+                <SubHeader  checkMim={"hotmim"}/>
                 <TopTrending />
                 <ShowMim Post={Posts.reverse()} />
                 {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
