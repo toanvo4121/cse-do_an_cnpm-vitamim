@@ -1,6 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const CommentSchema = new Schema({
+  cmt: {
+      type: String,
+      required: true,
+  },
+  user:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Account',
+  },
+});
+
 const mimSchema = mongoose.Schema(
   {
     user: {
@@ -50,13 +61,7 @@ const mimSchema = mongoose.Schema(
         type: Number,
         default: 0,
       },
-      cmts: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          default: null,
-          ref: 'Comment',
-        },
-      ],
+      cmts: [CommentSchema],
     },
   },
   {
