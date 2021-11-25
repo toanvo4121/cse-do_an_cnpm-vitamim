@@ -53,7 +53,7 @@ function EditProfile() {
             .then(res => console.log(res.data));
             localStorage.setItem('user',JSON.stringify(newInfo))
         alert("cập nhật tài khoản thành công")
-        // window.location = '/edit-profile'
+        window.location = '/edit-profile'
     }
     return (
         <div className="ViewOwnPage-overlay">

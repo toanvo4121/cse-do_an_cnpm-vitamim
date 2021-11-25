@@ -435,6 +435,7 @@ body{
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
+    border: solid 1px #000;
   }
   .control-overlay{
     width: 100%;
@@ -601,8 +602,11 @@ body{
   }
   .user-avt{
     width:30px;
+    height:30px;
     align-self: center;
     margin-left: 15px;
+    border: #000 1px solid;
+    border-radius: 50%;
   }
   .user-name{
     align-self: center;
@@ -732,6 +736,7 @@ body{
     width: 20px;
     margin-left: 20px;
     margin-right: 10px;
+
   }
   .ads{
     margin-top: 20px;

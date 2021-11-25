@@ -16,14 +16,28 @@ function DarkMim(){
             setPosts(res.filter(p=>p.categ == "Dark mim"))  
         })
     }
-    return (
-        <React.Fragment>
-            <Header />
-            <SubHeader />
-            <TopTrending />
-            <ShowMim Post={Posts} />
-            {JSON.parse(localStorage.getItem('showdangmim'))== 1 ? <DangMim /> : ''}
-        </React.Fragment>
-    )
+    if(Posts !== null){
+        return (
+            <React.Fragment>
+                <Header />
+                <SubHeader />
+                <TopTrending />
+                <ShowMim Post={Posts.reverse()} />
+                {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
+            </React.Fragment>
+        )
+    }
+    else{
+        return (
+            <React.Fragment>
+                <Header />
+                <SubHeader />
+                <TopTrending />
+                <ShowMim Post={Posts} />
+                {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
+            </React.Fragment>
+        )
+    }
+
 }
 export default DarkMim
