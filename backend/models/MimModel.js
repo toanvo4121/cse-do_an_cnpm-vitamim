@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
   cmt: {
-      type: String,
-      required: true,
+    type: String,
+    required: true,
   },
-  user:{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Account',
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Account',
   },
 });
 
@@ -22,7 +22,7 @@ const mimSchema = mongoose.Schema(
     user_name: {
       type: String,
     },
-    avatar:String,
+    avatar: String,
     mim_src: {
       type: String,
       required: true,
@@ -31,21 +31,21 @@ const mimSchema = mongoose.Schema(
       type: String,
       default: ''
     },
-    hashtag:{
+    hashtag: {
       type: String,
     },
     categ: {
       type: String,
       required: true,
     },
-    likers:[
+    likers: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account',
         default: null,
       },
     ],
-    haters:[
+    haters: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account',
@@ -56,13 +56,9 @@ const mimSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    comments: {
-      numOfComments: {
-        type: Number,
-        default: 0,
-      },
-      cmts: [CommentSchema],
-    },
+    comments: [
+      CommentSchema,
+    ]
   },
   {
     timestamps: true,

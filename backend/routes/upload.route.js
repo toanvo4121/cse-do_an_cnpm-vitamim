@@ -25,5 +25,28 @@ UploadRouter.route('/').get(function (req, res) {
         }
     });
 });
+
+
+//update router
+UploadRouter.route('/update/:id').post(function (req, res) {
+    Img.findById(req.params.id,function(err,img){
+        if(err){
+            console.log(err);
+        }
+        else {
+            img.likers = req.body.likers,
+            img.haters = req.body.haters,
+            img.save()
+            .then(img => {
+                res.status(200).json({'person': 'person in added successfully'});
+            })
+            .catch(err => {
+                res.status(400).send("unable to save to database");
+            });
+        }
+    })
+
+});
+
 module.exports = UploadRouter;
 

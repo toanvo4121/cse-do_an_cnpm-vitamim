@@ -655,11 +655,13 @@ body{
     height: 30px;
     width: 30px;
     border: 1px solid #000;
-    border-radius: 50px;
-  
+    border-radius: 50%;
     background-clip: cover;
     margin-left: 10px;
     cursor: pointer;
+  }
+  .react1:active{
+    border: 1px solid rgb(0, 255, 85);
   }
   .react2{
     height: 30px;

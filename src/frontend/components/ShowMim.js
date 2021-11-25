@@ -4,7 +4,24 @@ import { CheckLogin, Mem } from "../Constant/Variable"
 import convert from "../action/convert"
 import ShowRank from '../components/ShowRank';
 import ShowThongKe from '../components/ShowThongKe';
-
+import axios from 'axios'
+const User = JSON.parse(localStorage.getItem('user'))
+function Like(UserPost){
+    if(User===null){
+        window.location = "/login"
+    }
+    else{
+        const UpdateLike = {
+            likers: UserPost.likers.concat(User._id)
+        }
+        // console.log(newMem)
+        axios.post('http://localhost:4000/upload/update/'+String(UserPost._id), UpdateLike)
+            .then(res => console.log(res.data));
+    }
+}
+function DisLike(){
+    console.log("Disliked")
+}
 function ShowMim({ Post, CheckRank }) {
     if (Post !== null) {
         return (
@@ -17,7 +34,6 @@ function ShowMim({ Post, CheckRank }) {
                                     <div className="user-info">
                                         <img className="user-avt" src={UserPost.avatar} alt="" />
                                         <p className="user-name">{UserPost.user_name}</p>
-                                        {(UserPost.ten === Mem.ten && CheckLogin === 1) ? '' : <img src="source/follow-icon.png" alt="" />}
                                         <div className="space" ></div>
                                         <img className="timer" src="source/clock.png" alt="" />
                                         <p className="thoigian">{UserPost.thoigian} giờ</p>
@@ -25,15 +41,24 @@ function ShowMim({ Post, CheckRank }) {
                                     <p className="status">{UserPost.caption} #{UserPost.hashtag}</p>
                                     <div className="mim" style={{ backgroundImage:('url('+String(UserPost.mim_src)+')')}}></div>
                                     <div className="react">
-                                        <div className="react1" style={{ backgroundImage: 'url(source/react1.png)' }}></div>
-                                        <div className="count">{convert(UserPost.likes)}</div>
-                                        <div className="react2" style={{ backgroundImage: 'url(source/react2.png)' }}></div>
-                                        <div className="count">{convert(UserPost.dislikes)}</div>
+
+                                        <button onClick={()=>Like(UserPost)} className="react1" style={{ backgroundImage: 'url(source/react1.png)' }}></button>
+
+                                        <div className="count">{convert(UserPost.likers.length)}</div>
+
+                                        <button onClick={()=>DisLike(UserPost)} className="react2" style={{ backgroundImage: 'url(source/react2.png)' }}></button>
+
+                                        <div className="count">{convert(UserPost.haters.length)}</div>
+
                                         <img src="source/comment.png" alt="" className="comment" />
-                                        <div className="count">{convert(UserPost.comments.numOfComments)}</div>
+
+                                        <div className="count">{convert(UserPost.comments.length)}</div>
+
                                         <div className="space" ></div>
-                                        {(UserPost.ten === Mem.ten && CheckLogin === 1) ? <img src="source/del.png" alt="" className="del-btn" /> : <img src="source/report.png" alt="" className="del-btn" />}
-                                        {(UserPost.ten === Mem.ten && CheckLogin === 1) ? <div className="count">Xóa bài</div> : <div className="count">Report</div>}
+
+                                        {(User!==null)?((UserPost.user === User._id ) ? <img src="source/del.png" alt="" className="del-btn" /> : ""):""}
+                                        
+                                        {(User!==null)?((UserPost.user === User._id ) ? <div className="count">Xóa bài</div>:""):""}
                                     </div>
                                 </div>
                             )}
@@ -44,6 +69,7 @@ function ShowMim({ Post, CheckRank }) {
                         <div className="footer">
                             <p>Contact us:</p>
                             <img id="fb" src="source/fb.png" alt="" onClick={() => { window.location = "https://www.facebook.com/hailinh.nguyen.359126/" }} />
+
                             <img id="ig" src="source/ig.png" alt="" onClick={() => { window.location = "https://www.instagram.com/halee_4u_/" }} />
                         </div>
                     </div>
