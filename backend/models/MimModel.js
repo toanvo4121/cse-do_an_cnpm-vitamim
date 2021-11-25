@@ -27,10 +27,6 @@ const mimSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    likes: {
-      type: Number,
-      default: 0,
-    },
     likers:[
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -38,10 +34,6 @@ const mimSchema = mongoose.Schema(
         default: null,
       },
     ],
-    dislikes: {
-      type: Number,
-      default: 0,
-    },
     haters:[
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -49,10 +41,6 @@ const mimSchema = mongoose.Schema(
         default: null,
       },
     ],
-    reports: {
-      type: Number,
-      default: 0,
-    },
     isAccept: {
       type: Number,
       default: 0,
