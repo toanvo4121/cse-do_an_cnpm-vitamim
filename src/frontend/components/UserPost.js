@@ -42,14 +42,21 @@ function UserPost({ Post }) {
             setDislike(Dislike + 1);
         }
     };
+
+    function ShowUserPage(User){
+        // console.log(User)
+        // axios.post( 'http://localhost:3000/userpage', User )
+        localStorage.setItem('userpage',JSON.stringify(User))
+        window.location = "/userpage/"+User
+    }
     return (
         <React.Fragment>
             <div className="user-post">
                 <div className="user-info">
                     <img className="user-avt" src={Post.avatar} alt="" />
-                    <p className="user-name">{Post.user_name}</p>
+                    <div onClick={()=>{ShowUserPage(Post.user)}}><p className="user-name">{Post.user_name}</p></div>
                     <div className="space" ></div>
-                    <img className="timer" src="source/clock.png" alt="" />
+                    <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
                     <p className="thoigian">
                         {(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ?
                             (String(d.getMinutes() - parseInt(Post.createdAt.split(":")[1]) == 0 ? "Vừa xong" :
@@ -65,22 +72,22 @@ function UserPost({ Post }) {
                 </Popup>
                 <div className="react">
 
-                    <button onClick={likeHandler} className="react1" style={{ backgroundImage: 'url(source/react1.png)' }}></button>
+                    <button onClick={likeHandler} className="react1" style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/react1_xgjunq.png)' }}></button>
 
                     <div className="count">{convert(like)}</div>
 
-                    <button onClick={DislikeHandler} className="react2" style={{ backgroundImage: 'url(source/react2.png)' }}></button>
+                    <button onClick={DislikeHandler} className="react2" style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/react2_uf5zj1.png)' }}></button>
 
                     <div className="count">{convert(Dislike)}</div>
 
-                    <img src="source/comment.png" alt="" className="comment" />
+                    <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/comment_itv1py.png" alt="" className="comment" />
 
                     <div className="count">{convert(Post.comments.length)}</div>
 
                     <div className="space" ></div>
                     <div className="delbtn" onClick={() => { DeletePost(Post) }}>
 
-                        {(User !== null) ? ((Post.user === User._id) ? <img src="source/del.png" alt="" className="del-btn" /> : "") : ""}
+                        {(User !== null) ? ((Post.user === User._id) ? <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/del_qwb5qa.png" alt="" className="del-btn" /> : "") : ""}
 
                         {(User !== null) ? ((Post.user === User._id) ? <div className="count">Xóa bài</div> : "") : ""}
                     </div>

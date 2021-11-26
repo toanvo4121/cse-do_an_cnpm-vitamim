@@ -65,7 +65,7 @@ function ShowMimDetail({ userpost,close }) {
                 <div className="dangmim-header">
                     <div className="user-info">
                     </div>
-                    <img src="source/exit.png" alt="" className="dangmim-exit" onClick={close}/>
+                    <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/exit_y0l2wz.png" alt="" className="dangmim-exit" onClick={close}/>
                 </div>
                 <div className="showpost-title">
                     <div className="user-show-post">
@@ -73,7 +73,7 @@ function ShowMimDetail({ userpost,close }) {
                             <img className="user-avt" src={userpost.avatar} alt="" />
                             <p className="user-name">{userpost.user_name}</p>
                             <div className="space" ></div>
-                            <img className="timer" src="source/clock.png" alt="" />
+                            <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
                             <p className="thoigian">
                                 {(d.getHours() - parseInt(userpost.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ?
                                  (String(d.getMinutes() - parseInt(userpost.createdAt.split(":")[1]) == 0 ? "Vừa xong" :
@@ -86,11 +86,11 @@ function ShowMimDetail({ userpost,close }) {
                         <p className="status">{userpost.caption} #{userpost.hashtag}</p>
                         <div className="mim" style={{ backgroundImage: ('url(' + String(userpost.mim_src) + ')') }}></div>
                         <div className="react">
-                            <button className="react1" onClick={likeHandler} style={{ backgroundImage: 'url(source/react1.png)' }}></button>
+                            <button className="react1" onClick={likeHandler} style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/react1_xgjunq.png)' }}></button>
                             <div className="count">{convert(like)}</div>
-                            <button onClick={DislikeHandler} className="react2" style={{ backgroundImage: 'url(source/react2.png)' }}></button>
+                            <button onClick={DislikeHandler} className="react2" style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/react2_uf5zj1.png)' }}></button>
                             <div className="count">{convert(Dislike)}</div>
-                            <img src="source/comment.png" alt="" className="comment" />
+                            <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/comment_itv1py.png" alt="" className="comment" />
                             <div className="count">{convert(Comment)}</div>
                         </div>
                     </div>

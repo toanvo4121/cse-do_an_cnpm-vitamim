@@ -36,6 +36,7 @@ function ShowMim({ Post, CheckRank }) {
                 <div className="main-content_overlay">
                     <div className="post">
                         <div className="main-content_main-title">
+                            <p className="khong-tim-thay-mim">không tìm thấy mim của bạn</p>
                         </div>
                     </div>
                     <div className="main-content_thong-ke">

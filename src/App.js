@@ -6,6 +6,7 @@ import {Routes, Route } from "react-router-dom";
 import SignUp from "./frontend/action/SignUp"
 import Login from "./frontend/components/LoginPage"
 import OwnPage from './frontend/page/OwnPage';
+import UserPage from './frontend/page/UserPage';
 import TheLoai from "./frontend/page/HomePage";
 import MimThuong from "./frontend/page/MimThuong";
 import DarkMim from "./frontend/page/DarkMim";
@@ -31,7 +32,8 @@ function App() {
         <Route path="/template" element = {<Template/>}/>
         <Route path="/binhchon" element = {<BinhChon/>}/>
         <Route path="/search" element = {<Search/>}/>
-        <Route path="/user" element = {<OwnPage/>}/>
+        <Route path="/user/" element = {<OwnPage/>}/>
+        <Route path="/userpage/:id" element = {<UserPage/>}/>
         <Route path="/edit-profile" element = {<EditProfilePage/>}/>
       </Routes>
   )

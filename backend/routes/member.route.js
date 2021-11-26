@@ -28,6 +28,12 @@ MemberRoutes.route('/').get(function (req, res) {
         }
     });
 });
+//get the member ownpage
+MemberRoutes.route('/:id').get(function (req, res) {
+    Person.findById(req.params.id, function (err, person){
+        res.send(person);
+    });
+});
 // Defined edit route
 MemberRoutes.route('/edit/:id').get(function (req, res) {
     let id = req.params.id;

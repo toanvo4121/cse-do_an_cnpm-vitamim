@@ -7,7 +7,6 @@ import ShowMim from "../components/ShowMim"
 import DangMim from "../components/DangMim"
 import {useState} from 'react'
 const Posts = JSON.parse(localStorage.getItem('search'))
-const Khonghashtag = JSON.parse(localStorage.getItem('khongtimthay'))
 function HomePage() {
     console.log(Posts)
     if(Posts[0].length !== 0){
@@ -27,7 +26,7 @@ function HomePage() {
                 <Header />
                 <SubHeader />
                 <TopTrending />
-                <ShowMim Post={Khonghashtag} />
+                <ShowMim Post={null} />
                 {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
             </React.Fragment>
         )
