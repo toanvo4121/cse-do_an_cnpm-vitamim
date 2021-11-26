@@ -15,6 +15,7 @@ import Follow from "./frontend/page/Follow";
 import Template from './frontend/page/Template'
 import BinhChon from './frontend/page/BinhChon'
 import EditProfilePage from './frontend/page/EditProfilePage'
+import Search from './frontend/page/Search'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/follow" element = {<Follow/>}/>
         <Route path="/template" element = {<Template/>}/>
         <Route path="/binhchon" element = {<BinhChon/>}/>
+        <Route path="/search" element = {<Search/>}/>
         <Route path="/user" element = {<OwnPage/>}/>
         <Route path="/edit-profile" element = {<EditProfilePage/>}/>
       </Routes>

@@ -15,7 +15,7 @@ UploadRouter.route('/img').post(function (req, res) {
             res.status(400).send("unable to save to database");
         });
 });
-
+//lay dư lieu tư bd
 UploadRouter.route('/').get(function (req, res) {
     Img.find(function(err, img){
         if(err){
@@ -26,6 +26,7 @@ UploadRouter.route('/').get(function (req, res) {
         }
     });
 });
+
 UploadRouter.route('/like/:id').post(function (req, res) {
     Img.findById(req.params.id,function(err,img){
         if(err){

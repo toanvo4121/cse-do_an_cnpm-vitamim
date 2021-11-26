@@ -2,11 +2,21 @@ import React from 'react'
 import './style.css'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
 
 const User = JSON.parse(localStorage.getItem('user'))
-function Header() {
+const getMims = () => axios.get('http://localhost:4000/upload')
+    .then((res) => res.data)
 
+
+function Header() {
+    const [Posts,setPosts] = useState(null)
+    const [SearchPost,setSearchPost] = useState([])
+    if (Posts === null) {
+        getMims().then((res) => {
+            setPosts(res)   
+        })
+    }
     function ShowControl() {
         return (
             <React.Fragment>
@@ -20,12 +30,21 @@ function Header() {
             </React.Fragment>
         )
     }
+
     const [show, setShowControl] = useState(0)
     const handleControl = () => {
         show === 1 ? setShowControl(show - 1) : setShowControl(show + 1)
     }
+
     const handleShowOffControl = () => {
         show === 1 ? setShowControl(show - 1) : setShowControl(show + 0)
+    }
+
+    function SearchHandle(){
+            localStorage.removeItem('search')
+        setSearchPost(SearchPost.push(Posts.filter(p=>p.hashtag == document.getElementById("search").value)))
+            localStorage.setItem('search',JSON.stringify(SearchPost))
+            localStorage.setItem('khongtimthay',JSON.stringify(Posts.filter(p=>p.hashtag == "khonghashtag")))
     }
     if (User == null) {
         return (
@@ -33,7 +52,7 @@ function Header() {
                 <Link to="/"><img src="source/logo-page.png" onClick={window.location.reload} alt="" className="Logo" /></Link>
                 <div className="search-bar">
                     <input type="text" className="search" placeholder="Search..." />
-                    <img src="source/search-button.png" alt="" className="search-button"  alt="search"/>
+                    <img src="source/search.png" alt="" className="search-button"  alt="search"/>
                 </div>
                 <div className="header-btn">
                     <Link to="/signup"><p className="signup-btn">Signup</p></Link>
@@ -48,8 +67,8 @@ function Header() {
             <div className="header">
                 <a href="/"><img src="source/logo-page.png" onClick={window.location.reload} alt="" className="Logo" /></a>
                 <div className="search-bar">
-                    <input type="text" className="search" placeholder="Search..." />
-                    <img src="source/search-button.png" alt="" className="search-button"  alt="search"/>
+                    <input type="text" className="search" id="search" name="q" placeholder="Search..." />
+                    <a className="button-search" href="/search"><img onClick={SearchHandle} src="source/search.png" alt="" className="search-button"  alt="search"/></a>
                 </div>
                 <div className="UserInfo">
                     <div className="name"><p>{User.ten_tai_khoan}</p></div>

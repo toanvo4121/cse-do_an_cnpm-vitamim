@@ -17,9 +17,9 @@ function DeletePost(Post) {
 }
 var d = new Date()
 function UserPost({ Post }) {
+
     const [like, setLike] = useState(Post.likers.length);
     const [Dislike, setDislike] = useState(Post.haters.length);
-
     const likeHandler = () => {
         if (User == null) {
             window.location = "/login"
@@ -54,7 +54,7 @@ function UserPost({ Post }) {
                         {(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ?
                             (String(d.getMinutes() - parseInt(Post.createdAt.split(":")[1]) == 0 ? "Vừa xong" :
                                 (d.getMinutes() - parseInt(Post.createdAt.split(":")[1])) + " phút")) :
-                            (d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 >0 ?
+                            (d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 > 0 ?
                                 (String(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7) + " giờ") :
                                 Post.createdAt.split(":")[0].split("T")[0])}
                     </p>

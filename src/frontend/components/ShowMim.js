@@ -6,14 +6,14 @@ import ShowThongKe from '../components/ShowThongKe';
 import UserPost from './UserPost';
 
 function ShowMim({ Post, CheckRank }) {
-    if (Post !== null) {
+    if (Post !==null) {
         return (
             <div className="main-content">
                 <div className="main-content_overlay">
                     <div className="post">
                         <div className="main-content_main-title">
                             {Post.map((UserPosts, index) =>
-                                <UserPost  key={index} Post = {UserPosts}/>
+                                <UserPost key={index} Post={UserPosts} />
                             )}
                         </div>
                     </div>
@@ -30,7 +30,7 @@ function ShowMim({ Post, CheckRank }) {
             </div>
         )
     }
-    else{
+    else {
         return (
             <div className="main-content">
                 <div className="main-content_overlay">

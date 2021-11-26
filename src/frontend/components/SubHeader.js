@@ -43,7 +43,7 @@ function SubHeader({checkMim}) {
                 <Link to="/darkmim"><p className="sub" >Dảk mim</p></Link>
                 <Link to="/csmim"><p className="sub" >CS mim</p></Link>
                 <Link to="/hotmim"><p className="sub" >Hot mim</p></Link>
-                <p className="sub" onClick={ClickDangMim}>Đăng mim</p>
+                <Link to=""><p className="sub" onClick={ClickDangMim}>Đăng mim</p></Link>
                 <Link to="/template"><p className="sub">Template</p></Link>
             </div>
         </React.Fragment>

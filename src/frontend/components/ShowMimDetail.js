@@ -31,25 +31,31 @@ function ShowMimDetail({ userpost,close }) {
 
     };
     function CommentHandler (cmts){
-        if(cmts==="")
-        {
-            document.getElementById("write").style.border = "2px solid rgb(255,0,0)"
-            setTimeout(()=>{
-                document.getElementById("write").style.border = "2px solid rgb(0,0,0)"
-            },1000)
+        if(User == null){
+            window.location = "/login"
         }
         else{
-            const Commt={
-                comments: {cmt: cmts,
-                user:User.ten_tai_khoan}
+            if(cmts==="")
+            {
+                document.getElementById("write").style.border = "2px solid rgb(255,0,0)"
+                setTimeout(()=>{
+                    document.getElementById("write").style.border = "2px solid rgb(0,0,0)"
+                },1000)
             }
-            try {
-                axios.post("http://localhost:4000/upload/comment/" + String(userpost._id), Commt);
-            } catch (err) { }
-            document.getElementById("write").value=""
-            setShowComment(ShowComment.concat(Commt))
-            setComment(Comment + 1);
-            console.log(ShowComment)
+            else{
+                const Commt={
+                    comments: {cmt: cmts,
+                                user:User.ten_tai_khoan}
+                }
+                console.log(Commt)
+                try {
+                    axios.post("http://localhost:4000/upload/comment/" + String(userpost._id), Commt);
+                } catch (err) { }
+                document.getElementById("write").value=""
+                setShowComment(ShowComment.concat(Commt.comments))
+                setComment(Comment + 1);
+                
+            }
         }
         
     };
