@@ -3,6 +3,7 @@ import './style.css';
 import convert from "../action/convert"
 import ShowMimDetail from './ShowMimDetail';
 import { useState } from 'react'
+import Popup from "reactjs-popup"
 import axios from 'axios'
 const User = JSON.parse(localStorage.getItem('user'))
 function DeletePost(Post) {
@@ -53,7 +54,9 @@ function UserPost({ Post }) {
                     <p className="thoigian">{(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ? (String(d.getMinutes() - parseInt(Post.createdAt.split(":")[1]) == 0 ? "Vừa xong" : (d.getMinutes() - parseInt(Post.createdAt.split(":")[1])) + " phút")) : (d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 < 24 ? (String(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7) + " giờ") : Post.createdAt.split(":")[0].split("T")[0])}</p>
                 </div>
                 <p className="status">{Post.caption} #{Post.hashtag}</p>
-                <div className="mim" onClick={() => { setShowPostDetail(1) }} style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></div>
+                <Popup modal trigger={<button className="mim" style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></button>}>
+                    {close=><ShowMimDetail userpost={Post} close={close}/>}
+                    </Popup>
                 <div className="react">
 
                     <button onClick={likeHandler} className="react1" style={{ backgroundImage: 'url(source/react1.png)' }}></button>
@@ -77,7 +80,7 @@ function UserPost({ Post }) {
                     </div>
                 </div>
             </div>
-            {ShowPostDetail === 1 ? <ShowMimDetail userpost={Post} /> : ''}
+            
         </React.Fragment>
     )
 }

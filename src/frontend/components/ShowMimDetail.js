@@ -5,7 +5,7 @@ import convert from "../action/convert"
 import { useState } from 'react'
 import axios from 'axios'
 var d = new Date()
-function ShowMimDetail({ userpost }) {
+function ShowMimDetail({ userpost,close }) {
     const [like, setLike] = useState(userpost.likers.length);
     const [Dislike, setDislike] = useState(userpost.haters.length);
 
@@ -31,7 +31,7 @@ function ShowMimDetail({ userpost }) {
                 <div className="dangmim-header">
                     <div className="user-info">
                     </div>
-                    <img src="source/exit.png" alt="" className="dangmim-exit" onClick={()=>{document.getElementById("post").style.display = "none"}}/>
+                    <img src="source/exit.png" alt="" className="dangmim-exit" onClick={close}/>
                 </div>
                 <div className="dangmim-title">
                     <div className="user-show-post">
