@@ -645,7 +645,7 @@ body{
   }
   .react{
     display: flex;
-    justify-content:space-between;
+    justify-content:flex-start;
   }
   .showpost-react{
     display: flex;
@@ -1158,7 +1158,7 @@ body{
     margin-left: 10px;
   }
   .user-show-post{
-    width:60%;
+    width:100%;
     height: fit-content;
     background-color: #fff;
     margin-right: 15px;
@@ -1168,11 +1168,17 @@ body{
     border-radius: 10px;
     border: 1px solid #000;
   }
+  .showpost-title{
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+  }
   .showpost-content{
     background-color: #fff;
     border: 2px solid rgb(123, 123, 123);
     border-radius:20px;
     height:max-content;
+
     width: 60%;
     animation: show1 0.3s;
   }
@@ -1209,22 +1215,35 @@ body{
     cursor: pointer;
   }
   .comment-overlay{
-    width: 36%;
+    width:75%;
     height: max-content;
+    display: flex;
+    flex-direction: column;
   }
   .showcomment{
-    width: 100%;
-    height: 400px;
+    width: 85%;
+    height: 380px;
     border: 2px solid #000;
     border-radius: 20px;
+    padding: 10px 10px;
+    font-size: 18px;
+    margin: 0px 10px;
+  }
+  .writecomment{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
   }
   .write{
-    width: 70%;
+    font-size: 20px;
+    width: 60%;
     height: 30px;
     margin-left: 2.5%;
     margin-top: 5px;
     border: 2px solid #000;
-    border-radius: 20px;
+    border-radius: 15px;
+    padding: 2px 8px;
   }
   .postcomment{
     width: 20%;

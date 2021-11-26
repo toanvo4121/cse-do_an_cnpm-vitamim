@@ -7,7 +7,7 @@ const CommentSchema = new Schema({
     required: true,
   },
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'Account',
   },
 });
@@ -57,7 +57,10 @@ const mimSchema = mongoose.Schema(
       default: 0,
     },
     comments: [
-      CommentSchema,
+      {
+        type:CommentSchema,
+        default:[]
+      }
     ]
   },
   {
