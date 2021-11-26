@@ -23,12 +23,11 @@ function ViewUserPage() {
     };
     if (User === "") {
         getUser().then((res) => {
-            setUser(res.filter(p=>p._id == userId))
+            setUser(res.find(p=>p._id == userId))
             
         })
     };
-    let ttk =User[0]
-    console.log(ttk.gioi_tinh)
+
         return (
             <div className="ViewOwnPage-overlay">
                 <div className="ownpage-header">

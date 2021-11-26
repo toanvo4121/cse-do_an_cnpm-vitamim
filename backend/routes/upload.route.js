@@ -82,6 +82,25 @@ UploadRouter.route('/comment/:id').post(function (req, res) {
     });
 });
 
+
+UploadRouter.route('/accept/:id').post(function (req, res) {
+    Img.findById(req.params.id,function(err,img){
+        if(err){
+            console.log(err);
+        }
+        else {
+            img.isAccept = 1,
+            img.save()
+            .then(img => {
+                res.status(200).json({'Like': 'Like in added successfully'});
+            })
+            .catch(err => {
+                res.status(400).send("unable to save to database");
+            });
+        }
+    });
+});
+
 UploadRouter.route('/delete/:id').post(function (req, res) {
     Img.findByIdAndRemove({_id: req.params.id}, function(err, person){
         if(err) res.json(err);

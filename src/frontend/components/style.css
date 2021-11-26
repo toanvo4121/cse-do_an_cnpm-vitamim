@@ -38,6 +38,19 @@ body{
     justify-content: center;
     align-items: center;
   }
+  .admin{
+    width: 100%;
+    height: fit-content;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+  }
+  .admin-duyetbai{
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    font-size: 30px;
+  }
   .logo{
     margin-top: -150px !important;
   }

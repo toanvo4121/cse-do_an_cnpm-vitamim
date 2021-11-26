@@ -17,6 +17,7 @@ import Template from './frontend/page/Template'
 import BinhChon from './frontend/page/BinhChon'
 import EditProfilePage from './frontend/page/EditProfilePage'
 import Search from './frontend/page/Search'
+import Admin from './frontend/page/Admin'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/template" element = {<Template/>}/>
         <Route path="/binhchon" element = {<BinhChon/>}/>
         <Route path="/search" element = {<Search/>}/>
+        <Route path="/admin" element = {<Admin/>}/>
         <Route path="/user/" element = {<OwnPage/>}/>
         <Route path="/userpage/:id" element = {<UserPage/>}/>
         <Route path="/edit-profile" element = {<EditProfilePage/>}/>

@@ -15,7 +15,14 @@ function Login(list) {
             var MemberInfo = list[login]
             MemberInfo = JSON.stringify(MemberInfo)
             localStorage.setItem('user',MemberInfo)
-        window.location = '/'
+            if(document.getElementById("mail").value === "admin" && document.getElementById("pass").value === "admin")
+            {
+                window.location = '/admin'
+            }
+            else{
+                window.location = '/'
+            }
+        
     }
     else {
         document.getElementsByClassName("check-login")[0].style.display = 'block';
