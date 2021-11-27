@@ -2,12 +2,8 @@ import React from 'react';
 import './style.css';
 import ShowRank from '../components/ShowRank';
 import ShowThongKe from '../components/ShowThongKe';
-import AdminUserPost from './AdminUserPost';
 import './style.css';
-import convert from "../action/convert"
-import ShowMimDetail from './ShowMimDetail';
 import { useState } from 'react'
-import Popup from "reactjs-popup"
 import axios from 'axios'
 const getMims = () => axios.get('http://localhost:4000/upload')
     .then((res) => res.data)
@@ -25,9 +21,8 @@ function DeletePost(Post) {
 var d = new Date()
 function ShowMim({ CheckRank }) {
 
-    const [Post, setPosts] = useState(null)
-    const [duyet,setduyet] = useState(0)
-    if (Post === null) {
+    const [Posts, setPosts] = useState(null)
+    if (Posts === null) {
         getMims().then((res) => {
             setPosts(res.filter(p => p.isAccept == 0))
         })
@@ -38,18 +33,18 @@ function ShowMim({ CheckRank }) {
         }
         else {
             try {
-                axios.post("http://localhost:4000/upload/accept/" + String(Post._id), 1);
-                setduyet(duyet+1)
+                axios.post("http://localhost:4000/upload/accept/" + String(Post._id), 1)                  
+                        setPosts(Posts.filter(p=>p._id !== Post._id))
             } catch (err) { }
         }
     };
-    if (Post !== null) {
+    if (Posts !== null) {
         return (
             <div className="main-content">
                 <div className="main-content_overlay">
                     <div className="post">
                         <div className="main-content_main-title">
-                            {Post.map((Post, index) =>
+                            {Posts.map((Post, index) =>
                                 <div className="user-post">
                                     <div className="user-info">
                                         <img className="user-avt" src={Post.avatar} alt="" />
@@ -68,14 +63,13 @@ function ShowMim({ CheckRank }) {
                                     <p className="status">{Post.caption} #{Post.hashtag}</p>
                                     <button className="mim" style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></button>
                                        
-                                    <div className="react">
+                                    <div className="react_admin">
                                         <div className="delbtn" onClick={() => {AcpHandler(Post) }}>
 
                                             {(User !== null) ? <img src="https://res.cloudinary.com/vitamim/image/upload/v1637949264/source/tich-xanh_jff0gz.png" alt="" className="del-btn" /> : ""}
 
                                             {(User !== null) ? <div className="count">Duyệt bài</div> : ""}
                                         </div>
-                                        <div className="space" ></div>
                                         <div className="delbtn" onClick={() => { DeletePost(Post) }}>
 
                                             {(User !== null) ? <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/del_qwb5qa.png" alt="" className="del-btn" /> : ""}

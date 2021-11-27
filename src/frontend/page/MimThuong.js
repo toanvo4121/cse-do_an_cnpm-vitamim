@@ -14,6 +14,7 @@ function MimThuong(){
     if (Posts === null) {
         getMims().then((res) => {
             setPosts(res.filter(p=>p.categ == "Mim thường"))  
+            setPosts(Posts.filter(p=>p.isAccept !== 0))
         })
     }
     if(Posts !== null){

@@ -102,7 +102,7 @@ body{
     font-size:12px;
     color: rgb(255,0,0);
     position: absolute;
-    top: 400px;
+    top: 420px;
   
   }
   #login-btn{
@@ -680,6 +680,10 @@ body{
   .react{
     display: flex;
     justify-content:flex-start;
+  }
+  .react_admin{
+    display: flex;
+    justify-content:space-around;
   }
   .showpost-react{
     display: flex;

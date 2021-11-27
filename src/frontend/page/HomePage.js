@@ -14,7 +14,7 @@ function HomePage() {
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res)   
+            setPosts(res.filter(p=>p.isAccept !== 0))
         })
     }
     if(Posts !== null){

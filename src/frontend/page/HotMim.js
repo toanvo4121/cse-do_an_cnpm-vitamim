@@ -14,6 +14,7 @@ function HotMim(){
     if (Posts === null) {
         getMims().then((res) => {
             setPosts(res.filter(p=>p.categ == "Hotmim"))  
+            setPosts(Posts.filter(p=>p.isAccept !== 0))
         })
     }
     if(Posts !== null){

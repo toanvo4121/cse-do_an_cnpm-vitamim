@@ -13,7 +13,8 @@ function CsMim(){
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.categ == "Cs mim"))  
+            setPosts(res.filter(p=>p.categ == "Cs mim"))
+            setPosts(Posts.filter(p=>p.isAccept !== 0))
         })
     }
     if(Posts !== null){
