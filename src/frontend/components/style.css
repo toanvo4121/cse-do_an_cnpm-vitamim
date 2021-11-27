@@ -486,13 +486,16 @@ body{
     margin-bottom: -6px;
   }
   .control p{
-    margin-left: 10px;
-    margin-top:8px;
-    margin-bottom: 8px;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius:10px;
     cursor: pointer;
   }
   .control p:hover{
-    text-decoration: underline;
+    color: #fff;
+    background-color:#efb14d;
+
   }
   .name{
     font-size: 20px;
@@ -527,7 +530,7 @@ body{
     background-color: #dadada;
     border-radius: 40px;
     cursor: pointer;
-    width: 100px;
+    width: 110px;
     text-align: center;
     display: flex;
     justify-content:center;
@@ -535,7 +538,8 @@ body{
   }
 
   .sub-header p:hover{
-    text-decoration: underline;
+    color: #fff;
+    background-color:#efb14d;
   }
   .theloai{
     background-color: whitesmoke;

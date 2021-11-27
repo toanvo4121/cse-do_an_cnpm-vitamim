@@ -25,6 +25,28 @@ function UserPost({ Post }) {
         else {
             try {
                 axios.post("http://localhost:4000/upload/accept/" + String(Post._id), 1);
+
+                let count = User.so_bai_viet + 1
+                const newInfo = {
+                    email: User.email,
+                    _id: User._id,
+                    so_bai_viet: count,
+                    ho: User.ho,
+                    ten: User.ten,
+                    ten_tai_khoan: User.ten_tai_khoan,
+                    avatar: User.avatar,
+                    slogan: User.slogan,
+                    ngay_sinh: User.ngay_sinh,
+                    thang_sinh: User.thang_sinh,
+                    nam_sinh: User.nam_sinh,
+                    gioi_tinh: User.gioi_tinh,
+                }
+
+                // console.log(newMem)
+                axios.post('http://localhost:4000/Member/update/' + String(User._id), newInfo)
+                    .then(res => console.log(res.data));
+                localStorage.setItem('user', JSON.stringify(newInfo))
+
             } catch (err) { }
         }
     };
