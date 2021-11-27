@@ -1,9 +1,7 @@
 import React from 'react';
 import './style.css';
 import convert from "../action/convert"
-import ShowMimDetail from './ShowMimDetail';
 import { useState } from 'react'
-import Popup from "reactjs-popup"
 import axios from 'axios'
 
 
@@ -53,58 +51,45 @@ function UserPost({ Post }) {
     const [Ps, setPs] = useState("")
 
     if (Ps === "") {
-        getMims().then((res) => {
-            setPs(res.find(p => p._id == Post._id))
-        })
+        setTimeout(()=>{
+            getMims().then((res) => {
+                setPs(res.find(p => p._id === Post._id))
+            })
+        },500)
     };
-
-    if (Ps.likers) {
+    if(Ps){
+        if (Ps.likers && User) {
  
-        if(Ps.likers.find(p=>p ===User._id ))
-        {
-            if(CheckLike ===0){
-                setCheckLike(1)
+            if(Ps.likers.find(p=>p === User._id ))
+            {
+                
+                if(CheckLike ===0){
+                    setCheckLike(1)   
+                }
             }
         }
-        if(CheckLike === 1){
-            document.getElementById("react1").style.border = "2px solid #66ff33";
-        }
-        else{
-            document.getElementById("react1").style.border = "1px solid #000";
-        }
-
     }
-    if (Ps.haters) {
- 
-        if(Ps.haters.find(p=>p ===User._id ))
-        {
-            if(CheckDislike ===0){
-                setCheckDislike(1)
-            }
-        }
-        if(CheckDislike === 1){
-            document.getElementById("react2").style.border = "2px solid #ff0000";
-        }
-        else{
-            document.getElementById("react2").style.border = "1px solid #000";
-        }
-
+    if(CheckLike === 1){
+        document.getElementById("react1").style.border="2px solid #18F607"
     }
-    function likeAction(){
+    function LikeAction(){
         try {
             console.log(User._id)
             axios.post("http://localhost:4000/upload/like/" + String(Post._id), { likers: User._id });
         } catch (err) { }
-        setLike(like + 1);
         setCheckLike(1)
+        setPs("")
+        document.getElementById("react1").style.border="2px solid #18F607"
+        setLike(like + 1);
     }
-    function unlikeAction(){
+    function UnlikeAction(){
         try {
             axios.post("http://localhost:4000/upload/unlike/" + String(Post._id), { likers: User._id });
         } catch (err) { }
+        setCheckLike(0)
+        setPs("")
+        document.getElementById("react1").style.border="1px solid #000"
         setLike(like - 1);
-        setCheckLike(0);
-        
     }
     const likeHandler = () => {
         if (User == null) {
@@ -112,46 +97,44 @@ function UserPost({ Post }) {
         }
         else {
             if (CheckLike === 0) {
-                if(CheckDislike === 1)
-                {
-                    undislikeAction()
-                }
-                likeAction()
+                LikeAction()
             }
             else {
-                unlikeAction()
+                UnlikeAction()
             }
         }
     };
 
-    function dislikeaction(){
-        try {
-            axios.post("http://localhost:4000/upload/dislike/" + String(Post._id), { haters: User._id });
-        } catch (err) { }
-        setDislike(Dislike + 1);
-        setCheckDislike(1)
+    if (Ps.haters  && User) {
+ 
+        if(Ps.haters.find(p=>p ===User._id ))
+        {
+            if(CheckDislike ===0){
+                setCheckDislike(1)
+            }
+        }
     }
-    function undislikeAction(){
-        try {
-            axios.post("http://localhost:4000/upload/undislike/" + String(Post._id), { haters: User._id });
-        } catch (err) { }
-        setDislike(Dislike - 1);
-        setCheckDislike(0)
-    }
+
     const DislikeHandler = () => {
         if (User == null) {
             window.location = "/login"
         }
         else {
             if (CheckDislike === 0) {
-                if(CheckLike === 1){
-                    unlikeAction()
-
-                }
-                dislikeaction()
+                try {
+                    axios.post("http://localhost:4000/upload/dislike/" + String(Post._id), { haters: User._id });
+                } catch (err) { }
+                setCheckDislike(1)
+                setDislike(Dislike + 1);
+                setPs("")
             }
             else {
-                undislikeAction()
+                try {
+                    axios.post("http://localhost:4000/upload/undislike/" + String(Post._id), { haters: User._id });
+                } catch (err) { }
+                setCheckDislike(0)
+                setDislike(Dislike - 1);
+                setPs("")
             }
         }
     };
@@ -180,10 +163,10 @@ function UserPost({ Post }) {
         }
 
         {
-            (d.getHours() - parseInt(gio[0]) == 0) ?
+            (d.getHours() - parseInt(gio[0]) === 0) ?
             (x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
                 (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
-            ((d.getDate() - parseInt(ngay[2]) == 0) ?
+            ((d.getDate() - parseInt(ngay[2]) === 0) ?
                 (x = String(d.getHours() - parseInt(gio[0])) + " giờ") :
                 (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0])))
         }
@@ -202,9 +185,7 @@ function UserPost({ Post }) {
                     </p>
                 </div>
                 <p className="status">{Post.caption} #{Post.hashtag}</p>
-                <Popup modal trigger={<button className="mim" style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></button>}>
-                    {close => <ShowMimDetail userpost={Post} close={close} />}
-                </Popup>
+                <a href="show-mim-detail"><button className="mim" style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></button></a>
                 <div className="react">
 
                     <button onClick={likeHandler} className="react1" id="react1" style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/react1_xgjunq.png)' }}></button>

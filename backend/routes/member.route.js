@@ -44,6 +44,7 @@ MemberRoutes.route('/edit/:id').get(function (req, res) {
 
 //  Defined update route
 MemberRoutes.route('/update/:id').post(function (req, res) {
+    console.log(req.body)
     Person.findById(req.params.id,function(err,persons){
         if(err){
             console.log(err);

@@ -18,6 +18,7 @@ import BinhChon from './frontend/page/BinhChon'
 import EditProfilePage from './frontend/page/EditProfilePage'
 import Search from './frontend/page/Search'
 import Admin from './frontend/page/Admin'
+import ShowMimDetail from './frontend/components/ShowMimDetail'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/binhchon" element = {<BinhChon/>}/>
         <Route path="/search" element = {<Search/>}/>
         <Route path="/admin" element = {<Admin/>}/>
+        <Route path="/show-mim-detail" element = {<ShowMimDetail/>}/>
         <Route path="/user/" element = {<OwnPage/>}/>
         <Route path="/userpage/:id" element = {<UserPage/>}/>
         <Route path="/edit-profile" element = {<EditProfilePage/>}/>

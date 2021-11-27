@@ -35,7 +35,10 @@ function ShowThongKe() {
     let id = []
     InterchangeSort(User, User.length, ans, avt, id)
 
-
+    function ShowUserPage(User){
+        localStorage.setItem('userpage',JSON.stringify(User))
+        window.location = "/userpage/"+User
+    }
     return (
         <React.Fragment>
             <div className="top-thang">
@@ -45,32 +48,32 @@ function ShowThongKe() {
                     <div className="mem">
                         <h3>{1}</h3>
                         <img src={avt[0]} alt="" className="top-avt" />
-                        <h3>{ans[0]}</h3>
+                        <h3 onClick={()=>{ShowUserPage(id[0])}}>{ans[0]}</h3>
 
                     </div>
                     <div className="mem">
                         <h3>{2}</h3>
                         <img src={avt[1]} alt="" className="top-avt" />
-                        <h3>{ans[1]}</h3>
+                        <h3 onClick={()=>{ShowUserPage(id[1])}}>{ans[1]}</h3>
                     </div>
 
                     <div className="mem">
                         <h3>{3}</h3>
                         <img src={avt[2]} alt="" className="top-avt" />
-                        <h3>{ans[2]}</h3>
+                        <h3 onClick={()=>{ShowUserPage(id[2])}}>{ans[2]}</h3>
                     </div>
 
                     <div className="mem">
                         <h3>{4}</h3>
                         <img src={avt[3]} alt="" className="top-avt" />
-                        <h3>{ans[3]}</h3>
+                        <h3 onClick={()=>{ShowUserPage(id[3])}}>{ans[3]}</h3>
                     </div>
 
 
                     <div className="mem">
                         <h3>{5}</h3>
                         <img src={avt[4]} alt="" className="top-avt" />
-                        <h3>{ans[4]}</h3>
+                        <h3  onClick={()=>{ShowUserPage(id[4])}}>{ans[4]}</h3>
                     </div>
                 </div>
 

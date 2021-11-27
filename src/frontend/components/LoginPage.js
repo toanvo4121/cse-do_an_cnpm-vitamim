@@ -42,6 +42,7 @@ const getMemberList = () => axios.get('http://localhost:4000/Member')
     .then((res) => res.data)
 
 function LoginPage() {
+    localStorage.removeItem('user')
     const [MemberList, setMemberList] = useState(null)
     if (MemberList === null) {
         getMemberList().then((res) => {

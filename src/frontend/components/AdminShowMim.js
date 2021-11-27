@@ -5,7 +5,9 @@ import ShowThongKe from '../components/ShowThongKe';
 import './style.css';
 import { useState } from 'react'
 import axios from 'axios'
-const getMims = () => axios.get('http://localhost:4000/upload')
+const getPosts = () => axios.get('http://localhost:4000/upload')
+    .then((res) => res.data)
+const getUsers = () => axios.get('http://localhost:4000/Member')
     .then((res) => res.data)
 
 const User = JSON.parse(localStorage.getItem('user'))
@@ -22,19 +24,60 @@ var d = new Date()
 function ShowMim({ CheckRank }) {
 
     const [Posts, setPosts] = useState(null)
+    const [Users, setUsers] = useState(null)
+  let u 
     if (Posts === null) {
-        getMims().then((res) => {
+        getPosts().then((res) => {
             setPosts(res.filter(p => p.isAccept == 0))
         })
     }
+    if (Users === null) {
+        getUsers().then((res) => {
+            setUsers(res)
+        })
+    }
     function AcpHandler(Post) {
+        
+        // console.log(Users)
+        Users.map((p)=>{
+            console.log(p._id)
+            if(p._id === Post.user)
+            {
+                u = p
+            }
+        })
+        
+        
         if (User == null) {
             window.location = "/login"
         }
         else {
             try {
-                axios.post("http://localhost:4000/upload/accept/" + String(Post._id), 1)                  
+                axios.post("http://localhost:4000/upload/accept/" + String(Post._id), 1) 
+
+
+                let count = u.so_bai_viet + 1
+                const newInfo = {
+                    email: u.email,
+                    _id: u._id,
+                    so_bai_viet: count,
+                    ho: u.ho,
+                    ten: u.ten,
+                    ten_tai_khoan: u.ten_tai_khoan,
+                    avatar: u.avatar,
+                    slogan: u.slogan,
+                    ngay_sinh: u.ngay_sinh,
+                    thang_sinh: u.thang_sinh,
+                    nam_sinh: u.nam_sinh,
+                    gioi_tinh: u.gioi_tinh,
+                }
+                
+                // console.log(newInfo)
+                // console.log("newInfo")
+                axios.post('http://localhost:4000/Member/update/' + String(u._id), newInfo)
+                .then(res => console.log(res.data));                 
                         setPosts(Posts.filter(p=>p._id !== Post._id))
+                        localStorage.setItem('user', JSON.stringify(newInfo))
             } catch (err) { }
         }
     };
