@@ -26,7 +26,7 @@ function ViewOwnPage() {
                     </div>
                     <div className="ownpage-info">
                         <div className="ownpage-header-subcrible">
-                            <div className="ownpage-header-sub"><p className="ownpage-header-sub-count" style={{ color: '#efb14d' }}>{Posts.length}</p><br />Số bài viết </div>
+                            <div className="ownpage-header-sub"><p className="ownpage-header-sub-count" style={{ color: '#efb14d' }}>{User.so_bai_viet}</p><br />Số bài viết </div>
                             <div className="ownpage-header-sub"><p className="ownpage-header-sub-count" style={{ color: '#a1a1ef' }}>{User.ngay_sinh+"/"+User.thang_sinh+"/"+User.nam_sinh}</p><br />Sinh nhật</div>
                             <div className="ownpage-header-sub"><p className="ownpage-header-sub-count" style={{ color: '#e16de1' }}>{User.gioi_tinh}</p><br />Giới tính</div>
                         </div>
