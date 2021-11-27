@@ -5,6 +5,8 @@ import convert from "../action/convert"
 import { useState } from 'react'
 import axios from 'axios'
 
+const getMims = () => axios.get('http://localhost:4000/upload')
+    .then((res) => res.data)
 const User = JSON.parse(localStorage.getItem('user'))
 var d = new Date()
 function ShowMimDetail({ userpost,close }) {

@@ -35,9 +35,6 @@ function ShowThongKe() {
     let id = []
     InterchangeSort(User, User.length, ans, avt, id)
 
-    console.log("ans" + ans)
-    console.log("avt" + avt)
-    console.log("id" + id)
 
     return (
         <React.Fragment>
