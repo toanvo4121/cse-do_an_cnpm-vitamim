@@ -76,17 +76,17 @@ export const Halee =
 
 export const TopTrend = [
     {
-        src: 'mimCollection/146416864_454196045774516_3779436581273031988_n.png',
+        src: 'mimCollection/1.png',
         avt: 'url(source/avatar.png)',
         caption: 'Wibu never die'
     },
     {
-        src: 'mimCollection/245545926_601516814326028_1385808038578148858_n.png',
+        src: 'mimCollection/2.png',
         avt: 'url(source/avatar.png)',
         caption: 'Kích thước quan trọng đến thế sao'
     },
     {
-        src: 'mimCollection/246736027_929307174647021_6619103308168609391_n.png',
+        src: 'mimCollection/3.png',
         avt: 'url(source/avatar.png)',
         caption: 'Anh lúc nào cũng quát em'
     },

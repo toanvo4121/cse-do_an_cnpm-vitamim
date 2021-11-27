@@ -13,8 +13,7 @@ function MimThuong(){
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.categ == "Mim thường"))  
-            setPosts(Posts.filter(p=>p.isAccept !== 0))
+            setPosts(res.filter(p=>p.categ == "Mim thường" && p.isAccept !== 0))  
         })
     }
     if(Posts !== null){

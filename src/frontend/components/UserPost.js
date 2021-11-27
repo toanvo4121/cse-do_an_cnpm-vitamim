@@ -70,6 +70,8 @@ function UserPost({ Post }) {
         localStorage.setItem('userpage',JSON.stringify(User))
         window.location = "/userpage/"+User
     }
+    let ngay = Post.createdAt.split("T")[0]
+    let gio = Post.createdAt.split("T")[1].split(".")[0]
     return (
         <React.Fragment>
             <div className="user-post">
@@ -79,12 +81,12 @@ function UserPost({ Post }) {
                     <div className="space" ></div>
                     <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
                     <p className="thoigian">
-                        {(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ?
+                        {/* {(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ?
                             (String(d.getMinutes() - parseInt(Post.createdAt.split(":")[1]) == 0 ? "Vừa xong" :
                                 (d.getMinutes() - parseInt(Post.createdAt.split(":")[1])) + " phút")) :
                             (d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 > 0 ?
                                 (String(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7) + " giờ") :
-                                Post.createdAt.split(":")[0].split("T")[0])}
+                                Post.createdAt.split(":")[0].split("T")[0])} */}
                     </p>
                 </div>
                 <p className="status">{Post.caption} #{Post.hashtag}</p>

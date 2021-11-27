@@ -21,9 +21,9 @@ function ShowMim({ Post, CheckRank }) {
                         {CheckRank === 1 ? <ShowRank /> : <ShowThongKe />}
                         <div className="footer">
                             <p>Contact us:</p>
-                            <img id="fb" src="source/fb.png" alt="" onClick={() => { window.location = "https://www.facebook.com/hailinh.nguyen.359126/" }} />
+                            <img id="fb" src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/fb_lkegwt.png" alt="" onClick={() => { window.location = "https://www.facebook.com/hailinh.nguyen.359126/" }} />
 
-                            <img id="ig" src="source/ig.png" alt="" onClick={() => { window.location = "https://www.instagram.com/halee_4u_/" }} />
+                            <img id="ig" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/ig_znx86q.png" alt="" onClick={() => { window.location = "https://www.instagram.com/halee_4u_/" }} />
                         </div>
                     </div>
                 </div>
@@ -43,8 +43,8 @@ function ShowMim({ Post, CheckRank }) {
                         {CheckRank === 1 ? <ShowRank /> : <ShowThongKe />}
                         <div className="footer">
                             <p>Contact us:</p>
-                            <img id="fb" src="source/fb.png" alt="" onClick={() => { window.location = "https://www.facebook.com/hailinh.nguyen.359126/" }} />
-                            <img id="ig" src="source/ig.png" alt="" onClick={() => { window.location = "https://www.instagram.com/halee_4u_/" }} />
+                            <img id="fb" src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/fb_lkegwt.png" alt="" onClick={() => { window.location = "https://www.facebook.com/hailinh.nguyen.359126/" }} />
+                            <img id="ig" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/ig_znx86q.png" alt="" onClick={() => { window.location = "https://www.instagram.com/halee_4u_/" }} />
                         </div>
                     </div>
                 </div>

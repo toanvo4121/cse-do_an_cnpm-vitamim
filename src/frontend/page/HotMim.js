@@ -13,8 +13,7 @@ function HotMim(){
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.categ == "Hotmim"))  
-            setPosts(Posts.filter(p=>p.isAccept !== 0))
+            setPosts(res.filter(p=>p.categ == "Hotmim" && p.isAccept !== 0))  
         })
     }
     if(Posts !== null){

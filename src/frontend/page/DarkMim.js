@@ -13,8 +13,7 @@ function DarkMim(){
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.categ == "Dark mim"))  
-            setPosts(Posts.filter(p=>p.isAccept !== 0))
+            setPosts(res.filter(p=>p.categ == "Dark mim" && p.isAccept !== 0))  
         })
     }
     if(Posts !== null){
