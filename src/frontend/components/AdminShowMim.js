@@ -25,7 +25,8 @@ function ShowMim({ CheckRank }) {
 
     const [Posts, setPosts] = useState(null)
     const [Users, setUsers] = useState(null)
-  let u 
+    const [Member, setMember] = useState(null)
+    let u 
     if (Posts === null) {
         getPosts().then((res) => {
             setPosts(res.filter(p => p.isAccept == 0))
@@ -34,6 +35,11 @@ function ShowMim({ CheckRank }) {
     if (Users === null) {
         getUsers().then((res) => {
             setUsers(res)
+        })
+    }
+    if (Member === null) {
+        getUsers().then((res) => {
+            setMember(res)
         })
     }
     function AcpHandler(Post) {
@@ -46,8 +52,6 @@ function ShowMim({ CheckRank }) {
                 u = p
             }
         })
-        
-        
         if (User == null) {
             window.location = "/login"
         }
@@ -75,13 +79,43 @@ function ShowMim({ CheckRank }) {
                 // console.log(newInfo)
                 // console.log("newInfo")
                 axios.post('http://localhost:4000/Member/update/' + String(u._id), newInfo)
-                .then(res => console.log(res.data));                 
-                        setPosts(Posts.filter(p=>p._id !== Post._id))
-                        localStorage.setItem('user', JSON.stringify(newInfo))
+                    .then(res => console.log(res.data));                 
+                setTimeout(() => {
+                    // setPosts(Posts.filter(p=>p._id !== Post._id))
+                    window.location.reload()
+                }, 500);
+                localStorage.setItem('user', JSON.stringify(newInfo))
             } catch (err) { }
         }
     };
-    if (Posts !== null) {
+    var d = new Date()
+    function timeCalculate(time) {
+        var x;
+        let ngay = time.split("T")[0].split("-")
+        let gio = time.split("T")[1].split(".")[0].split(":")
+        if (parseInt(gio[0]) + 7 >= 24) {
+            gio[0] = parseInt(gio[0]) + 7 - 24
+            ngay[2] = parseInt(ngay[2]) + 1
+            if (ngay[2] == 31 && parseInt(ngay[1]) == 11) {
+                ngay[2] = 1
+                ngay[1] = parseInt(12)
+            }
+        }
+        else {
+            gio[0] = parseInt(gio[0]) + 7
+        }
+
+        {
+            (d.getHours() - parseInt(gio[0]) === 0) ?
+            (x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
+                (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
+            ((d.getDate() - parseInt(ngay[2]) === 0) ?
+                (x = String(d.getHours() - parseInt(gio[0])) + " giờ") :
+                (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0])))
+        }
+        return x
+    }
+    if (Posts !== null && Member !==null) {
         return (
             <div className="main-content">
                 <div className="main-content_overlay">
@@ -90,17 +124,12 @@ function ShowMim({ CheckRank }) {
                             {Posts.map((Post, index) =>
                                 <div className="user-post">
                                     <div className="user-info">
-                                        <img className="user-avt" src={Post.avatar} alt="" />
-                                        <div><p className="user-name">{Post.user_name}</p></div>
+                                        <img className="user-avt" src={Member.find(m=>m._id===Post.user).avatar} alt="" />
+                                        <div><p className="user-name">{Member.find(m=>m._id===Post.user).ten_tai_khoan}</p></div>
                                         <div className="space" ></div>
                                         <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
                                         <p className="thoigian">
-                                            {(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ?
-                                                (String(d.getMinutes() - parseInt(Post.createdAt.split(":")[1]) == 0 ? "Vừa xong" :
-                                                    (d.getMinutes() - parseInt(Post.createdAt.split(":")[1])) + " phút")) :
-                                                (d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 > 0 ?
-                                                    (String(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7) + " giờ") :
-                                                    Post.createdAt.split(":")[0].split("T")[0])}
+                                        {timeCalculate(Post.createdAt)}
                                         </p>
                                     </div>
                                     <p className="status">{Post.caption} #{Post.hashtag}</p>

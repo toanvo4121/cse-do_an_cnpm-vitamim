@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const User = JSON.parse(localStorage.getItem('user'))
+
 const getMims = () => axios.get('http://localhost:4000/upload')
+    .then((res) => res.data)
+
+const getUsers = () => axios.get('http://localhost:4000/Member')
     .then((res) => res.data)
 
 
@@ -17,6 +21,15 @@ function Header() {
             setPosts(res)   
         })
     }
+
+    const [Users,setUsers] = useState("")
+
+    if (Users === "" && User !== null) {
+        getUsers().then((res) => {
+            setUsers(res.find(p=>p._id == User._id))  
+        })
+    }
+
     function ShowControl() {
         return (
             <React.Fragment>
@@ -70,8 +83,8 @@ function Header() {
                     <a className="button-search" href="/search"><img onClick={SearchHandle} src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" alt="" className="search-button"  alt="search"/></a>
                 </div>
                 <div className="UserInfo">
-                    <div className="name"><p>{User.ten_tai_khoan}</p></div>
-                    <img src={User.avatar} className="avt" alt="avt" />
+                    <div className="name"><p>{Users.ten_tai_khoan}</p></div>
+                    <img src={Users.avatar} className="avt" alt="avt" />
                     <img src="https://res.cloudinary.com/vitamim/image/upload/v1637942816/vitamim/ms3g98ctfkv3gecw7qdd.png" className="tamgiacxoxuong" alt="anh" onClick={handleControl} />
                     {show === 1 ? <ShowControl /> : ''}
                 </div>

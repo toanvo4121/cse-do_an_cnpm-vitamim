@@ -685,6 +685,10 @@ body{
     display: flex;
     justify-content:flex-start;
   }
+  .reactdetail{
+    display: flex;
+    justify-content:flex-end;
+  }
   .react_admin{
     display: flex;
     justify-content:space-around;

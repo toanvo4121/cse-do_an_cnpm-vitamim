@@ -10,56 +10,11 @@ const getMims = () => axios.get('http://localhost:4000/upload')
 const User = JSON.parse(localStorage.getItem('user'))
 var d = new Date()
 function ShowMimDetail({ userpost,close }) {
-    const [like, setLike] = useState(userpost.likers.length);
-    const [Dislike, setDislike] = useState(userpost.haters.length);
+
     const [Comment, setComment] = useState(userpost.comments.length);
     const [ShowComment, setShowComment] = useState(userpost.comments);
-    const [CheckLike, setCheckLike] =useState(0)
-    const [CheckDislike, setCheckDislike] =useState(0)
 
-    const likeHandler = () => {
-        if (User == null) {
-            window.location = "/login"
-        }
-        else {
-            if(CheckLike === 0){
-                try {
-                    console.log(User._id)
-                    axios.post("http://localhost:4000/upload/like/" + String(userpost._id), {likers:User._id} );
-                } catch (err) { }
-                setLike(like + 1);
-                setCheckLike(1)
-            }
-            else{
-                try {
-                    axios.post("http://localhost:4000/upload/unlike/" + String(userpost._id), { likers:User._id});
-                } catch (err) { }
-                setLike(like - 1);
-                setCheckLike(0)
-            }
-        }
-    };
-    const DislikeHandler = () => {
-        if (User == null) {
-            window.location = "/login"
-        }
-        else {
-            if(CheckDislike ===0 ){
-                try {
-                    axios.post("http://localhost:4000/upload/dislike/" + String(userpost._id), { haters:User._id});
-                } catch (err) { }
-                setDislike(Dislike + 1);
-                setCheckDislike(1)
-            }
-            else{
-                try {
-                    axios.post("http://localhost:4000/upload/undislike/" + String(userpost._id), { haters:User._id});
-                } catch (err) { }
-                setDislike(Dislike - 1);
-                setCheckDislike(0)
-            }
-        }
-    };
+ 
 
     function CommentHandler (cmts){
         if(User == null){
@@ -121,7 +76,7 @@ function ShowMimDetail({ userpost,close }) {
                 <div className="dangmim-header">
                     <div className="user-info">
                     </div>
-                    <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/exit_y0l2wz.png" alt="" className="dangmim-exit" onClick={close}/>
+                    <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/exit_y0l2wz.png" alt="" className="dangmim-exit" onClick={()=>{close();setTimeout(() => { window.location.reload()}, 500);}}/>
                 </div>
                 <div className="showpost-title">
                     <div className="user-show-post">
@@ -130,17 +85,11 @@ function ShowMimDetail({ userpost,close }) {
                             <p className="user-name">{userpost.user_name}</p>
                             <div className="space" ></div>
                             <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                            <p className="thoigian">
-                            {timeCalculate(userpost.createdAt)}
-                                     </p>
+                            <p className="thoigian">  {timeCalculate(userpost.createdAt)} </p>
                         </div>
                         <p className="status">{userpost.caption} #{userpost.hashtag}</p>
                         <div className="mim" style={{ backgroundImage: ('url(' + String(userpost.mim_src) + ')') }}></div>
-                        <div className="react">
-                            <button className="react1" onClick={likeHandler} style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/react1_xgjunq.png)' }}></button>
-                            <div className="count">{convert(like)}</div>
-                            <button onClick={DislikeHandler} className="react2" style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/react2_uf5zj1.png)' }}></button>
-                            <div className="count">{convert(Dislike)}</div>
+                        <div className="reactdetail">
                             <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/comment_itv1py.png" alt="" className="comment" />
                             <div className="count">{convert(Comment)}</div>
                         </div>

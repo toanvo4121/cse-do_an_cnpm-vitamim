@@ -11,10 +11,10 @@ const getUser = () => axios.get('http://localhost:4000/Member')
     .then((res) => res.data)
 
 function ViewOwnPage() {
-    const [Posts,setPosts] = useState("")
-    if (Posts === "") {
+    const [Posts,setPosts] = useState(null)
+    if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.user == User._id))  
+            setPosts(res.filter(p=>p.user == User._id && p.isAccept !==0))  
         })
     }
     const [Users,setUsers] = useState("")

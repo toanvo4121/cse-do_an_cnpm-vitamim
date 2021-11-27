@@ -3,10 +3,16 @@ import './style.css';
 import convert from "../action/convert"
 import { useState } from 'react'
 import axios from 'axios'
+import ShowMimDetail from './ShowMimDetail'
+import Popup from "reactjs-popup";
 
 
 const getMims = () => axios.get('http://localhost:4000/upload')
     .then((res) => res.data)
+
+const getUsers = () => axios.get('http://localhost:4000/Member')
+    .then((res) => res.data)
+
 
 const User = JSON.parse(localStorage.getItem('user'))
 
@@ -37,7 +43,9 @@ function DeletePost(Post) {
 
         axios.post('http://localhost:4000/upload/delete/' + String(Post._id))
             .then(res => console.log(res.data));
-        window.location.reload()
+        setTimeout(() => {
+            window.location.reload()
+        }, 500);
     }
     else { }
 }
@@ -49,6 +57,13 @@ function UserPost({ Post }) {
     const [CheckLike, setCheckLike] = useState(0)
     const [CheckDislike, setCheckDislike] = useState(0)
     const [Ps, setPs] = useState("")
+    const [Users,setUsers] = useState("")
+
+    if (Users === "") {
+        getUsers().then((res) => {
+            setUsers(res.find(p=>p._id == Post.user))  
+        })
+    }
 
     if (Ps === "") {
         setTimeout(()=>{
@@ -176,8 +191,8 @@ function UserPost({ Post }) {
         <React.Fragment>
             <div className="user-post">
                 <div className="user-info">
-                    <img className="user-avt" src={Post.avatar} alt="" />
-                    <div onClick={() => { ShowUserPage(Post.user) }}><p className="user-name">{Post.user_name}</p></div>
+                    <img className="user-avt" src={Users.avatar} alt="" />
+                    <div onClick={() => { ShowUserPage(Post.user) }}><p className="user-name">{Users.ten_tai_khoan}</p></div>
                     <div className="space" ></div>
                     <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
                     <p className="thoigian">
@@ -185,7 +200,9 @@ function UserPost({ Post }) {
                     </p>
                 </div>
                 <p className="status">{Post.caption} #{Post.hashtag}</p>
-                <a href="show-mim-detail"><button className="mim" style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></button></a>
+                <Popup modal trigger={<button className="mim" style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></button>}>
+                {close => <ShowMimDetail userpost={Post} close={close} />}
+                </Popup>
                 <div className="react">
 
                     <button onClick={likeHandler} className="react1" id="react1" style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/react1_xgjunq.png)' }}></button>
@@ -197,8 +214,6 @@ function UserPost({ Post }) {
                     <div className="count">{convert(Dislike)}</div>
 
                     <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/comment_itv1py.png" alt="" className="comment" />
-
-                    <div className="count">{convert(Post.comments.length)}</div>
 
                     <div className="space" ></div>
                     <div className="delbtn" onClick={() => { DeletePost(Post) }}>
