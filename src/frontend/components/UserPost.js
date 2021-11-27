@@ -5,7 +5,14 @@ import ShowMimDetail from './ShowMimDetail';
 import { useState } from 'react'
 import Popup from "reactjs-popup"
 import axios from 'axios'
+
+
+const getMims = () => axios.get('http://localhost:4000/upload')
+    .then((res) => res.data)
+
 const User = JSON.parse(localStorage.getItem('user'))
+
+
 function DeletePost(Post) {
 
     if (window.confirm("Ủa, bạn chắc chưa ???")) {
@@ -36,20 +43,48 @@ function DeletePost(Post) {
     } 
     else {}
 }
-var d = new Date()
+
 function UserPost({ Post }) {
 
     const [like, setLike] = useState(Post.likers.length);
     const [Dislike, setDislike] = useState(Post.haters.length);
+    const [CheckLike, setCheckLike] =useState(0)
+    const [CheckDislike, setCheckDislike] =useState(0)
+    const [Ps,setPs] = useState("")
+
+    if (Ps === "") {
+        getMims().then((res) => {
+            setPs(res.find(p=>p._id == Post._id))
+        })
+    };
+    console.log(Ps.likers)
+    // for(let i = 0;i<Ps.haters.length;i++)
+    // {
+    //     if(Ps.haters[i]===User._id)
+    //     {
+    //         setCheckDislike(1)
+    //     }
+    // }
     const likeHandler = () => {
         if (User == null) {
             window.location = "/login"
         }
         else {
-            try {
-                axios.post("http://localhost:4000/upload/like/" + String(Post._id), { userId: Post._id });
-            } catch (err) { }
-            setLike(like + 1);
+            if(CheckLike === 0){
+                try {
+                    console.log(User._id)
+                    axios.post("http://localhost:4000/upload/like/" + String(Post._id), {likers:User._id} );
+                } catch (err) { }
+                setLike(like + 1);
+                setCheckLike(1)
+            }
+            else{
+                try {
+                    axios.post("http://localhost:4000/upload/unlike/" + String(Post._id), { likers:User._id});
+                } catch (err) { }
+                setLike(like - 1);
+                setCheckLike(0)
+            }
         }
     };
     const DislikeHandler = () => {
@@ -57,10 +92,20 @@ function UserPost({ Post }) {
             window.location = "/login"
         }
         else {
-            try {
-                axios.post("http://localhost:4000/upload/dislike/" + String(Post._id), { userId: Post._id });
-            } catch (err) { }
-            setDislike(Dislike + 1);
+            if(CheckDislike ===0 ){
+                try {
+                    axios.post("http://localhost:4000/upload/dislike/" + String(Post._id), { haters:User._id});
+                } catch (err) { }
+                setDislike(Dislike + 1);
+                setCheckDislike(1)
+            }
+            else{
+                try {
+                    axios.post("http://localhost:4000/upload/undislike/" + String(Post._id), { haters:User._id});
+                } catch (err) { }
+                setDislike(Dislike - 1);
+                setCheckDislike(0)
+            }
         }
     };
 
@@ -70,8 +115,31 @@ function UserPost({ Post }) {
         localStorage.setItem('userpage',JSON.stringify(User))
         window.location = "/userpage/"+User
     }
-    let ngay = Post.createdAt.split("T")[0]
-    let gio = Post.createdAt.split("T")[1].split(".")[0]
+    var d = new Date()
+    function timeCalculate(time){
+        var x;
+        let ngay = time.split("T")[0].split("-")
+        let gio = time.split("T")[1].split(".")[0].split(":")
+        if (parseInt(gio[0])+ 7 >= 24) {
+            gio[0] = parseInt(gio[0]) + 7 - 24
+            ngay[2] = parseInt(ngay[2])+ 1
+            if(ngay[2] == 31 && parseInt(ngay[1]) == 11){
+                ngay[2] = 1
+                ngay[1] = parseInt(12)
+            }
+        }
+        else {
+            gio[0] = parseInt(gio[0]) + 7
+        }
+
+        {(d.getHours() - parseInt(gio[0]) == 0) ?
+                            ( x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
+                                (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
+                            ((d.getDate() - parseInt(ngay[2]) == 0 ) ?
+                                    (x = String(d.getHours() - parseInt(gio[0])) + " giờ") :
+                                    (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0])))}
+        return x            
+    }
     return (
         <React.Fragment>
             <div className="user-post">
@@ -81,12 +149,7 @@ function UserPost({ Post }) {
                     <div className="space" ></div>
                     <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
                     <p className="thoigian">
-                        {/* {(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ?
-                            (String(d.getMinutes() - parseInt(Post.createdAt.split(":")[1]) == 0 ? "Vừa xong" :
-                                (d.getMinutes() - parseInt(Post.createdAt.split(":")[1])) + " phút")) :
-                            (d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7 > 0 ?
-                                (String(d.getHours() - parseInt(Post.createdAt.split(":")[0].split("T")[1]) - 7) + " giờ") :
-                                Post.createdAt.split(":")[0].split("T")[0])} */}
+                        {timeCalculate(Post.createdAt)}
                     </p>
                 </div>
                 <p className="status">{Post.caption} #{Post.hashtag}</p>

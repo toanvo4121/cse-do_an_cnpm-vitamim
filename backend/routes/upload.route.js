@@ -44,6 +44,30 @@ UploadRouter.route('/like/:id').post(function (req, res) {
         }
     });
 });
+UploadRouter.route('/unlike/:id').post(function (req, res) {
+    Img.findById(req.params.id,function(err,img){
+        if(err){
+            console.log(err);
+        }
+        else {
+            let ind;
+            for(let i=0;i<img.likers.length;i++)
+            {
+                if(img.likers[i] == req.body.likers){
+                    ind = i;
+                }
+            }
+            img.likers.splice(ind,1)
+            img.save()
+            .then(img => {  
+                res.status(200).json({'Like': 'Like in added successfully'});
+            })
+            .catch(err => {
+                res.status(400).send("unable to save to database");
+            });
+        }
+    });
+});
 UploadRouter.route('/dislike/:id').post(function (req, res) {
     Img.findById(req.params.id,function(err,img){
         if(err){
@@ -54,6 +78,31 @@ UploadRouter.route('/dislike/:id').post(function (req, res) {
             img.save()
             .then(img => {
                 res.status(200).json({'DisLike': 'DisLike in added successfully'});
+            })
+            .catch(err => {
+                res.status(400).send("unable to save to database");
+            });
+        }
+    });
+});
+
+UploadRouter.route('/undislike/:id').post(function (req, res) {
+    Img.findById(req.params.id,function(err,img){
+        if(err){
+            console.log(err);
+        }
+        else {
+            let ind;
+            for(let i=0;i<img.haters.length;i++)
+            {
+                if(img.haters[i] == req.body.haters){
+                    ind = i;
+                }
+            }
+            img.haters.splice(ind,1)
+            img.save()
+            .then(img => {  
+                res.status(200).json({'Like': 'Like in added successfully'});
             })
             .catch(err => {
                 res.status(400).send("unable to save to database");

@@ -12,24 +12,53 @@ function ShowMimDetail({ userpost,close }) {
     const [Dislike, setDislike] = useState(userpost.haters.length);
     const [Comment, setComment] = useState(userpost.comments.length);
     const [ShowComment, setShowComment] = useState(userpost.comments);
-    console.log(ShowComment)
+    const [CheckLike, setCheckLike] =useState(0)
+    const [CheckDislike, setCheckDislike] =useState(0)
 
     const likeHandler = () => {
-
-        try {
-            axios.post("http://localhost:4000/upload/like/" + String(userpost._id), { userId: userpost._id });
-        } catch (err) { }
-        setLike(like + 1);
-
+        if (User == null) {
+            window.location = "/login"
+        }
+        else {
+            if(CheckLike === 0){
+                try {
+                    console.log(User._id)
+                    axios.post("http://localhost:4000/upload/like/" + String(userpost._id), {likers:User._id} );
+                } catch (err) { }
+                setLike(like + 1);
+                setCheckLike(1)
+            }
+            else{
+                try {
+                    axios.post("http://localhost:4000/upload/unlike/" + String(userpost._id), { likers:User._id});
+                } catch (err) { }
+                setLike(like - 1);
+                setCheckLike(0)
+            }
+        }
     };
     const DislikeHandler = () => {
-
-        try {
-            axios.post("http://localhost:4000/upload/dislike/" + String(userpost._id), { userId: userpost._id });
-        } catch (err) { }
-        setDislike(Dislike + 1);
-
+        if (User == null) {
+            window.location = "/login"
+        }
+        else {
+            if(CheckDislike ===0 ){
+                try {
+                    axios.post("http://localhost:4000/upload/dislike/" + String(userpost._id), { haters:User._id});
+                } catch (err) { }
+                setDislike(Dislike + 1);
+                setCheckDislike(1)
+            }
+            else{
+                try {
+                    axios.post("http://localhost:4000/upload/undislike/" + String(userpost._id), { haters:User._id});
+                } catch (err) { }
+                setDislike(Dislike - 1);
+                setCheckDislike(0)
+            }
+        }
     };
+
     function CommentHandler (cmts){
         if(User == null){
             window.location = "/login"
@@ -59,6 +88,31 @@ function ShowMimDetail({ userpost,close }) {
         }
         
     };
+    var d = new Date()
+    function timeCalculate(time){
+        var x;
+        let ngay = time.split("T")[0].split("-")
+        let gio = time.split("T")[1].split(".")[0].split(":")
+        if (parseInt(gio[0])+ 7 >= 24) {
+            gio[0] = parseInt(gio[0]) + 7 - 24
+            ngay[2] = parseInt(ngay[2])+ 1
+            if(ngay[2] == 31 && parseInt(ngay[1]) == 11){
+                ngay[2] = 1
+                ngay[1] = parseInt(12)
+            }
+        }
+        else {
+            gio[0] = parseInt(gio[0]) + 7
+        }
+
+        {(d.getHours() - parseInt(gio[0]) == 0) ?
+                            ( x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
+                                (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
+                            ((d.getDate() - parseInt(ngay[2]) == 0 ) ?
+                                    (x = String(d.getHours() - parseInt(gio[0])) + " giờ") :
+                                    (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0])))}
+        return x            
+    }
     return (
         <div className="dangmim-overlay" id="post" >
             <div className="showpost-content">
@@ -75,12 +129,7 @@ function ShowMimDetail({ userpost,close }) {
                             <div className="space" ></div>
                             <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
                             <p className="thoigian">
-                                {(d.getHours() - parseInt(userpost.createdAt.split(":")[0].split("T")[1]) - 7 == 0) ?
-                                 (String(d.getMinutes() - parseInt(userpost.createdAt.split(":")[1]) == 0 ? "Vừa xong" :
-                                  (d.getMinutes() - parseInt(userpost.createdAt.split(":")[1])) + " phút")) :
-                                   (d.getHours() - parseInt(userpost.createdAt.split(":")[0].split("T")[1]) - 7 >0 ?
-                                    (String(d.getHours() - parseInt(userpost.createdAt.split(":")[0].split("T")[1]) - 7) + " giờ") :
-                                     userpost.createdAt.split(":")[0].split("T")[0])}
+                            {timeCalculate(userpost.createdAt)}
                                      </p>
                         </div>
                         <p className="status">{userpost.caption} #{userpost.hashtag}</p>
