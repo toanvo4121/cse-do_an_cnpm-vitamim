@@ -2,10 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix ../frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node seeder",
     "data:destroy": "node seeder -d"
   },
@@ -14,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -25,6 +28,7 @@
     "multer-gridfs-storage": "^5.0.2"
   },
   "devDependencies": {
+    "concurrently": "^6.4.0",
     "nodemon": "^2.0.15"
   }
 }
