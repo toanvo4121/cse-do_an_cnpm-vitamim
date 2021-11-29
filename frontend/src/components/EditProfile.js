@@ -14,7 +14,7 @@ function EditProfile() {
     const [Users,setUsers] = useState("")
     if (Users === "") {
         getUsers().then((res) => {
-            setUsers(res.find(p=>p._id == User._id))  
+            setUsers(res.find(p=>p._id === User._id))  
         })
     }
 if(Users){
@@ -40,7 +40,7 @@ if(Users){
     }
     const ChangeUserInfo = ()=>{
         let Img;
-        if(document.getElementById('loadavt').value == '')
+        if(document.getElementById('loadavt').value === '')
         {
             Img = Users.avatar
         }
@@ -74,7 +74,7 @@ if(Users){
                 <div className="edit-user">
                     <div className="edit-user1">
                     <div id="showavt" style={{ backgroundImage: ('url(' + String(Image) + ')') }}></div>
-                    <img id="loadavt1" src="source/camera.png" />
+                    <img id="loadavt1" alt="" src="source/camera.png" />
                     <input id="loadavt" type="file" onChange={(event)=>{console.log(event.target.files[0]);setUploadImg(event.target.files[0])}}/>
                     </div>
                     <button  id="upload-avt" onClick={Upload}>upload</button>

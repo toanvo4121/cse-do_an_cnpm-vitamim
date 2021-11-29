@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.css';
-import { TopMem } from "../Constant/Variable"
 import axios from "axios"
 import { useState } from 'react'
 

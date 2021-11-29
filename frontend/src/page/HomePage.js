@@ -1,29 +1,29 @@
 import React from 'react'
-
+import axios from 'axios'
 import Header from "../components/Header"
 import SubHeader from "../components/SubHeader"
-import ShowTemplate from "../components/ShowTemplate"
+import TopTrending from "../components/TopTrending"
+import ShowMim from "../components/ShowMim"
 import DangMim from "../components/DangMim"
-import {dangmim,CheckLogin} from "../Constant/Variable"
-import { useState } from 'react'
-import axios from 'axios'
-
+import {useState} from 'react'
 const getMims = () => axios.get('http://localhost:4000/upload')
     .then((res) => res.data)
-function Template(){
+
+function HomePage() {
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.categ == "Cs mim"))  
+            setPosts(res.filter(p=>p.isAccept !== 0))
         })
     }
     if(Posts !== null){
         return (
             <React.Fragment>
                 <Header />
-                <SubHeader  checkMim={"template"}/>
-                <ShowTemplate />
-                {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
+                <SubHeader />
+                <TopTrending />
+                <ShowMim Post={Posts.reverse()} />
+                {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
             </React.Fragment>
         )
     }
@@ -32,11 +32,12 @@ function Template(){
             <React.Fragment>
                 <Header />
                 <SubHeader />
-                <ShowTemplate />
-                {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
+                <TopTrending />
+                <ShowMim Post={Posts} />
+                {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
             </React.Fragment>
         )
     }
 
 }
-export default Template
+export default HomePage

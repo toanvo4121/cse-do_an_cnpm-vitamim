@@ -26,7 +26,7 @@ function Header() {
 
     if (Users === "" && User !== null) {
         getUsers().then((res) => {
-            setUsers(res.find(p=>p._id == User._id))  
+            setUsers(res.find(p=>p._id === User._id))  
         })
     }
 
@@ -55,7 +55,7 @@ function Header() {
 
     function SearchHandle(){
             localStorage.removeItem('search')
-        setSearchPost(SearchPost.push(Posts.filter(p=>p.hashtag == document.getElementById("search").value)))
+        setSearchPost(SearchPost.push(Posts.filter(p=>p.hashtag === document.getElementById("search").value)))
             localStorage.setItem('search',JSON.stringify(SearchPost))
     }
     if (User == null) {
@@ -64,7 +64,7 @@ function Header() {
                 <Link to="/"><img src="https://res.cloudinary.com/vitamim/image/upload/v1637942806/vitamim/v9j2i2bsbqiiwldlreki.png" onClick={window.location.reload} alt="" className="Logo" /></Link>
                 <div className="search-bar">
                     <input type="text" className="search" placeholder="Search..." />
-                    <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" alt="" className="search-button"  alt="search"/>
+                    <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" className="search-button"  alt="search"/>
                 </div>
                 <div className="header-btn">
                     <Link to="/signup"><p className="signup-btn">Signup</p></Link>
@@ -80,7 +80,7 @@ function Header() {
                 <a href="/"><img src="https://res.cloudinary.com/vitamim/image/upload/v1637942806/vitamim/v9j2i2bsbqiiwldlreki.png" onClick={window.location.reload} alt="" className="Logo" /></a>
                 <div className="search-bar">
                     <input type="text" className="search" id="search" name="q" placeholder="Search..." />
-                    <a className="button-search" href="/search"><img onClick={SearchHandle} src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" alt="" className="search-button"  alt="search"/></a>
+                    <a className="button-search" href="/search"><img onClick={SearchHandle} src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" className="search-button"  alt="search"/></a>
                 </div>
                 <div className="UserInfo">
                     <div className="name"><p>{Users.ten_tai_khoan}</p></div>

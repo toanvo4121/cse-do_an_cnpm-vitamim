@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.css';
-import { Link } from "react-router-dom"
 import axios from "axios"
 import { useState } from 'react'
 
@@ -14,7 +13,7 @@ function ViewUserPage() {
 
     if (User === "") {
         getUser().then((res) => {
-            setUser(res.find(p=>p._id == userId))
+            setUser(res.find(p=>p._id === userId))
             
         })
     };

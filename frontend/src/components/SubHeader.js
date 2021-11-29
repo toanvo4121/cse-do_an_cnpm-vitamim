@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.css';
-import { useState } from 'react';
 import { Link } from "react-router-dom"
 const User = JSON.parse(localStorage.getItem('user'))
 

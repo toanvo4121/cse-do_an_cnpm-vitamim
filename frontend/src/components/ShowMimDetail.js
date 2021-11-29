@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.css';
-import { post, CheckLogin, Mem } from "../Constant/Variable"
 import convert from "../action/convert"
 import { useState } from 'react'
 import axios from 'axios'
@@ -8,13 +7,11 @@ import axios from 'axios'
 const getMims = () => axios.get('http://localhost:4000/upload')
     .then((res) => res.data)
 const User = JSON.parse(localStorage.getItem('user'))
-var d = new Date()
+
 function ShowMimDetail({ userpost,close }) {
 
     const [Comment, setComment] = useState(userpost.comments.length);
     const [ShowComment, setShowComment] = useState(userpost.comments);
-
- 
 
     function CommentHandler (cmts){
         if(User == null){
@@ -45,15 +42,15 @@ function ShowMimDetail({ userpost,close }) {
         }
         
     };
-    var d = new Date()
+    let d = new Date()
     function timeCalculate(time){
-        var x;
+        let x;
         let ngay = time.split("T")[0].split("-")
         let gio = time.split("T")[1].split(".")[0].split(":")
         if (parseInt(gio[0])+ 7 >= 24) {
             gio[0] = parseInt(gio[0]) + 7 - 24
             ngay[2] = parseInt(ngay[2])+ 1
-            if(ngay[2] == 31 && parseInt(ngay[1]) == 11){
+            if(ngay[2] === 31 && parseInt(ngay[1]) === 11){
                 ngay[2] = 1
                 ngay[1] = parseInt(12)
             }
@@ -62,12 +59,12 @@ function ShowMimDetail({ userpost,close }) {
             gio[0] = parseInt(gio[0]) + 7
         }
 
-        {(d.getHours() - parseInt(gio[0]) == 0) ?
+        (d.getHours() - parseInt(gio[0]) === 0) ?
                             ( x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
                                 (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
-                            ((d.getDate() - parseInt(ngay[2]) == 0 ) ?
+                            ((d.getDate() - parseInt(ngay[2]) === 0 ) ?
                                     (x = String(d.getHours() - parseInt(gio[0])) + " giờ") :
-                                    (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0])))}
+                                    (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0])))
         return x            
     }
     return (

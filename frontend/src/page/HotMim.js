@@ -9,21 +9,21 @@ import axios from 'axios'
 
 const getMims = () => axios.get('http://localhost:4000/upload')
     .then((res) => res.data)
-function CsMim(){
+function HotMim(){
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.categ == "Cs mim" && p.isAccept !== 0))
+            setPosts(res.filter(p=>p.categ === "Hotmim" && p.isAccept !== 0))  
         })
     }
     if(Posts !== null){
         return (
             <React.Fragment>
                 <Header />
-                <SubHeader  checkMim={"csmim"}/>
+                <SubHeader  checkMim={"hotmim"}/>
                 <TopTrending />
                 <ShowMim Post={Posts.reverse()} />
-                {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
+                {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
             </React.Fragment>
         )
     }
@@ -34,10 +34,10 @@ function CsMim(){
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={Posts} />
-                {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
+                {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
             </React.Fragment>
         )
     }
 
 }
-export default CsMim
+export default HotMim

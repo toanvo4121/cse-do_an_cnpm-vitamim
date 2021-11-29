@@ -20,7 +20,6 @@ function DeletePost(Post) {
     }
 
 }
-var d = new Date()
 function ShowMim({ CheckRank }) {
 
     const [Posts, setPosts] = useState(null)
@@ -29,7 +28,7 @@ function ShowMim({ CheckRank }) {
     let u 
     if (Posts === null) {
         getPosts().then((res) => {
-            setPosts(res.filter(p => p.isAccept == 0))
+            setPosts(res.filter(p => p.isAccept === 0))
         })
     }
     if (Users === null) {
@@ -45,7 +44,7 @@ function ShowMim({ CheckRank }) {
     function AcpHandler(Post) {
         
         // console.log(Users)
-        Users.map((p)=>{
+        Users.map((p) => {
             console.log(p._id)
             if(p._id === Post.user)
             {
@@ -88,15 +87,15 @@ function ShowMim({ CheckRank }) {
             } catch (err) { }
         }
     };
-    var d = new Date()
+    let d = new Date()
     function timeCalculate(time) {
-        var x;
+        let x;
         let ngay = time.split("T")[0].split("-")
         let gio = time.split("T")[1].split(".")[0].split(":")
         if (parseInt(gio[0]) + 7 >= 24) {
             gio[0] = parseInt(gio[0]) + 7 - 24
             ngay[2] = parseInt(ngay[2]) + 1
-            if (ngay[2] == 31 && parseInt(ngay[1]) == 11) {
+            if (ngay[2] === 31 && parseInt(ngay[1]) === 11) {
                 ngay[2] = 1
                 ngay[1] = parseInt(12)
             }
@@ -105,14 +104,14 @@ function ShowMim({ CheckRank }) {
             gio[0] = parseInt(gio[0]) + 7
         }
 
-        {
-            (d.getHours() - parseInt(gio[0]) === 0) ?
-            (x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
-                (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
-            ((d.getDate() - parseInt(ngay[2]) === 0) ?
-                (x = String(d.getHours() - parseInt(gio[0])) + " giờ") :
-                (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0])))
-        }
+        
+        (d.getHours() - parseInt(gio[0]) === 0) ?
+        (x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
+            (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
+        ((d.getDate() - parseInt(ngay[2]) === 0) ?
+            (x = String(d.getHours() - parseInt(gio[0])) + " giờ") :
+            (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0])))
+        
         return x
     }
     if (Posts !== null && Member !==null) {
@@ -134,7 +133,7 @@ function ShowMim({ CheckRank }) {
                                     </div>
                                     <p className="status">{Post.caption} #{Post.hashtag}</p>
                                     <button className="mim" style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></button>
-                                       
+                                    
                                     <div className="react_admin">
                                         <div className="delbtn" onClick={() => {AcpHandler(Post) }}>
 

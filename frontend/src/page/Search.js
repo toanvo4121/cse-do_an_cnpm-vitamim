@@ -1,11 +1,9 @@
 import React from 'react'
-import axios from 'axios'
 import Header from "../components/Header"
 import SubHeader from "../components/SubHeader"
 import TopTrending from "../components/TopTrending"
 import ShowMim from "../components/ShowMim"
 import DangMim from "../components/DangMim"
-import {useState} from 'react'
 const Posts = JSON.parse(localStorage.getItem('search'))
 function HomePage() {
     console.log(Posts)
@@ -16,7 +14,7 @@ function HomePage() {
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={Posts[0].reverse()} />
-                {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
+                {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
             </React.Fragment>
         )
     }
@@ -27,7 +25,7 @@ function HomePage() {
                 <SubHeader />
                 <TopTrending />
                 <ShowMim Post={null} />
-                {JSON.parse(localStorage.getItem('showdangmim')) == 1 ? <DangMim /> : ''}
+                {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
             </React.Fragment>
         )
     }

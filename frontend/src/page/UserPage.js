@@ -13,7 +13,7 @@ function OwnPage(){
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.user == user_id))   
+            setPosts(res.filter(p=>p.user === user_id))   
         })
     }
     return (
@@ -22,7 +22,7 @@ function OwnPage(){
             <SubHeader />
             <ViewUserPage />
             <ShowMim Post={Posts} CheckRank={1}/>
-            {JSON.parse(localStorage.getItem('showdangmim'))== 1 ? <DangMim /> : ''}
+            {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
         </React.Fragment>
     )
 }

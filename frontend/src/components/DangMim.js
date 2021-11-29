@@ -61,7 +61,7 @@ function DangMim() {
                         <div id="showanh" style={{backgroundImage:('url('+String(Image)+')')}}></div>
                         <input id="loadanh" type="file" onChange={(event)=>{setUploadImg(event.target.files[0])}} />
                     </div>
-                    <img className="upload-button" src="../source/upload.jpg"  onClick={Upload}/>
+                    <img className="upload-button" src="../source/upload.jpg" alt="" onClick={Upload}/>
                 </div>
                 </div>
                 {Loading===1?<p>Loading...</p>:''}

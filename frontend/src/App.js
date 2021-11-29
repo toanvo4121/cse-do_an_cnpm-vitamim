@@ -3,22 +3,22 @@ import './App.css';
 import React from "react";
 import {Routes, Route } from "react-router-dom";
 
-import SignUp from "./frontend/action/SignUp"
-import Login from "./frontend/components/LoginPage"
-import OwnPage from './frontend/page/OwnPage';
-import UserPage from './frontend/page/UserPage';
-import TheLoai from "./frontend/page/HomePage";
-import MimThuong from "./frontend/page/MimThuong";
-import DarkMim from "./frontend/page/DarkMim";
-import CsMim from "./frontend/page/CsMim";
-import HotMim from "./frontend/page/HotMim";
-import Follow from "./frontend/page/Follow";
-import Template from './frontend/page/Template'
-import BinhChon from './frontend/page/BinhChon'
-import EditProfilePage from './frontend/page/EditProfilePage'
-import Search from './frontend/page/Search'
-import Admin from './frontend/page/Admin'
-import ShowMimDetail from './frontend/components/ShowMimDetail'
+import SignUp from "./action/SignUp"
+import Login from "./components/LoginPage"
+import OwnPage from './page/OwnPage';
+import UserPage from './page/UserPage';
+import TheLoai from "./page/HomePage";
+import MimThuong from "./page/MimThuong";
+import DarkMim from "./page/DarkMim";
+import CsMim from "./page/CsMim";
+import HotMim from "./page/HotMim";
+import Follow from "./page/Follow";
+import Template from './page/Template'
+import BinhChon from './page/BinhChon'
+import EditProfilePage from './page/EditProfilePage'
+import Search from './page/Search'
+import Admin from './page/Admin'
+import ShowMimDetail from './components/ShowMimDetail'
 
 function App() {
   return (

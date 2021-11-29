@@ -10,7 +10,7 @@ function EditProfilePage(){
             <Header />
             <SubHeader />
             <EditProfile />
-            {JSON.parse(localStorage.getItem('showdangmim'))== 1 ? <DangMim /> : ''}
+            {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
         </React.Fragment>
     )
 }

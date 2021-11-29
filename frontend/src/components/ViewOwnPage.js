@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.css';
-import { Link } from "react-router-dom"
 import axios from "axios"
 import { useState } from 'react'
 
@@ -14,13 +13,13 @@ function ViewOwnPage() {
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.user == User._id && p.isAccept !==0))  
+            setPosts(res.filter(p=>p.user === User._id && p.isAccept !== 0))  
         })
     }
     const [Users,setUsers] = useState("")
     if (Users === "") {
         getUser().then((res) => {
-            setUsers(res.find(p=>p._id == User._id))  
+            setUsers(res.find(p=>p._id === User._id))  
         })
     }
     if(Users !== null)

@@ -11,7 +11,7 @@ function ShowTemplate() {
                 <a href={temp} className="templategr" download="">
                     <div className="template" style={{ backgroundImage: ('url(' + String(temp) + ')') }}>
                         <div className="hover">
-                            <img className="download-icon" src="source/download.png" />
+                            <img className="download-icon" alt="" src="source/download.png" />
                         </div>
                     </div>
                 </a>
