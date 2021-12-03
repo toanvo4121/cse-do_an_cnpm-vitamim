@@ -11,6 +11,7 @@ import axios from 'axios'
 const User = JSON.parse(localStorage.getItem('user'))
 
 function Admin(){
+    if(User){
         if(User.email !== "admin") {
             return(
                 <React.Fragment>
@@ -20,7 +21,6 @@ function Admin(){
                 </React.Fragment>
             )
         }
-    
         return (
             <React.Fragment>
                 <Header />
@@ -28,5 +28,16 @@ function Admin(){
                 <AdminShowMim />
             </React.Fragment>
         )
+    }
+    else{
+        return(
+            <React.Fragment>
+                <Header />
+                <SubHeader />
+                <div className="admin"><p className="quay-lai">Quay lại đi bạn, khum có gì ở đây đâu</p></div>
+            </React.Fragment>
+        )
+    }
+        
 }
 export default Admin
