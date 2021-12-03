@@ -16,14 +16,29 @@ function OwnPage(){
             setPosts(res.filter(p=>p.user === User._id))   
         })
     }
-    return (
-        <React.Fragment>
-            <Header/>
-            <SubHeader />
-            <ViewOwnPage />
-            <ShowMim Post={Posts.reverse()} CheckRank={1}/>
-            {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
-        </React.Fragment>
-    )
+    if(Posts !== null){
+        return (
+            <React.Fragment>
+                <Header/>
+                <SubHeader />
+                <ViewOwnPage />
+                <ShowMim Post={Posts.reverse()}/>
+                {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
+            </React.Fragment>
+        )
+    }
+
+    else{
+        return (
+            <React.Fragment>
+                <Header/>
+                <SubHeader />
+                <ViewOwnPage />
+                <ShowMim Post={Posts}/>
+                {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
+            </React.Fragment>
+        )
+    }
+
 }
 export default OwnPage
