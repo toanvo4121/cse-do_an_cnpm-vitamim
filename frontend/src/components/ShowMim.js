@@ -5,7 +5,7 @@ import ShowRank from '../components/ShowRank';
 import ShowThongKe from '../components/ShowThongKe';
 import UserPost from './UserPost';
 
-function ShowMim({ Post, CheckRank }) {
+function ShowMim({ Post }) {
     if (Post !==null) {
         return (
             <div className="main-content">
@@ -18,7 +18,7 @@ function ShowMim({ Post, CheckRank }) {
                         </div>
                     </div>
                     <div className="main-content_thong-ke">
-                        {CheckRank === 1 ? <ShowRank /> : <ShowThongKe />}
+                       <ShowThongKe />
                         <div className="footer">
                             <p>Contact us:</p>
                             <img id="fb" src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/fb_lkegwt.png" alt="" onClick={() => { window.location = "https://www.facebook.com/hailinh.nguyen.359126/" }} />
@@ -40,7 +40,7 @@ function ShowMim({ Post, CheckRank }) {
                         </div>
                     </div>
                     <div className="main-content_thong-ke">
-                        {CheckRank === 1 ? <ShowRank /> : <ShowThongKe />}
+                       <ShowThongKe />
                         <div className="footer">
                             <p>Contact us:</p>
                             <img id="fb" src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/fb_lkegwt.png" alt="" onClick={() => { window.location = "https://www.facebook.com/hailinh.nguyen.359126/" }} />
