@@ -61,7 +61,7 @@ function Header() {
     if (User == null) {
         return (
             <div className="header">
-                <Link to="/"><img src="https://res.cloudinary.com/vitamim/image/upload/v1637942806/vitamim/v9j2i2bsbqiiwldlreki.png" onClick={window.location.reload} alt="" className="Logo" /></Link>
+                <Link to="/"><img src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/logo-page_ojcfim.png" onClick={window.location.reload} alt="" className="Logo" /></Link>
                 <div className="search-bar">
                     <input type="text" className="search" placeholder="Search..." />
                     <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" className="search-button"  alt="search"/>
@@ -77,7 +77,7 @@ function Header() {
     else {
         return (
             <div className="header">
-                <a href="/"><img src="https://res.cloudinary.com/vitamim/image/upload/v1637942806/vitamim/v9j2i2bsbqiiwldlreki.png" onClick={window.location.reload} alt="" className="Logo" /></a>
+                <a href="/"><img src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/logo-page_ojcfim.png" onClick={window.location.reload} alt="" className="Logo" /></a>
                 <div className="search-bar">
                     <input type="text" className="search" id="search" name="q" placeholder="Search..." />
                     <a className="button-search" href="/search"><img onClick={SearchHandle} src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" className="search-button"  alt="search"/></a>
@@ -85,7 +85,7 @@ function Header() {
                 <div className="UserInfo">
                     <div className="name"><p>{Users.ten_tai_khoan}</p></div>
                     <img src={Users.avatar} className="avt" alt="avt" />
-                    <img src="https://res.cloudinary.com/vitamim/image/upload/v1637942816/vitamim/ms3g98ctfkv3gecw7qdd.png" className="tamgiacxoxuong" alt="anh" onClick={handleControl} />
+                    <img src="https://res.cloudinary.com/vitamim/image/upload/v1638543088/source/tamgiacxoxuong_h0tkxz.png" className="tamgiacxoxuong" alt="anh" onClick={handleControl} />
                     {show === 1 ? <ShowControl /> : ''}
                 </div>
             </div>

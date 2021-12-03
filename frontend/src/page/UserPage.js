@@ -13,7 +13,7 @@ function OwnPage(){
     const [Posts,setPosts] = useState(null)
     if (Posts === null) {
         getMims().then((res) => {
-            setPosts(res.filter(p=>p.user === user_id))   
+            setPosts(res.filter(p=>p.user === user_id && p.isAccept === 1))   
         })
     }
     return (

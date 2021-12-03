@@ -83,7 +83,7 @@ function ShowMim({ CheckRank }) {
                     // setPosts(Posts.filter(p=>p._id !== Post._id))
                     window.location.reload()
                 }, 500);
-                localStorage.setItem('user', JSON.stringify(newInfo))
+                // localStorage.setItem('user', JSON.stringify(newInfo))
             } catch (err) { }
         }
     };
