@@ -21,7 +21,7 @@ function OwnPage(){
             <Header/>
             <SubHeader />
             <ViewUserPage />
-            <ShowMim Post={Posts} CheckRank={1}/>
+            <ShowMim Post={Posts.reverse()} CheckRank={1}/>
             {JSON.parse(localStorage.getItem('showdangmim')) === 1 ? <DangMim /> : ''}
         </React.Fragment>
     )
