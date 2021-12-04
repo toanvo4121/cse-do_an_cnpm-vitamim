@@ -38,7 +38,7 @@ function Header() {
                     <a href="/user"><p onClick={() => { handleShowOffControl() }}><img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/avatar_u5anhm.png" alt="anh" />Xem trang cá nhân</p></a>
                     <a href="/edit-profile"><p onClick={() => { handleShowOffControl() }}><img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/avatar_u5anhm.png" alt="anh" />Sửa thông tin cá nhân</p></a>
                     <p onClick={() => { handleShowOffControl() }}><img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/avatar_u5anhm.png" alt="anh" />Trợ giúp & hỗ trợ</p>
-                    <a href='/login'><p onClick={() => { handleShowOffControl();}}><img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/avatar_u5anhm.png" alt="anh" />Đăng xuất</p></a>
+                    <a href='/login'><p onClick={() => { handleShowOffControl();localStorage.removeItem('user')}}><img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/avatar_u5anhm.png" alt="anh" />Đăng xuất</p></a>
                 </div>
             </React.Fragment>
         )
