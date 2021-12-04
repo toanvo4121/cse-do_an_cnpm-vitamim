@@ -49,8 +49,8 @@ function timeCalculate(time) {
         }
 
 
-         (d.getDate() - parseInt(ngay[2]) === 0) ?
-        ((d.getDate() - parseInt(ngay[2]) === 0)? 
+        (d.getDate() - parseInt(ngay[2]) === 0) ?
+        ((d.getHours() - parseInt(gio[0]) === 0)? 
         (x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
             (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
             ((x = String(d.getHours() - parseInt(gio[0])) + " giờ"))):
