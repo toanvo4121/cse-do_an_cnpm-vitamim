@@ -1455,6 +1455,7 @@ body{
     border: 2px solid #000;
     border-radius:40px;
     box-shadow:3px 4px 10px 0px #000;
+    text-align: center;
   }
   
   .ownpage-avt{
