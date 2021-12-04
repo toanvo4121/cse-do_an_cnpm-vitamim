@@ -79,7 +79,7 @@ function ShowThongKe() {
             </div>
             <div className="ads">
                 <p>Ads</p>
-                <div className="ads-info" style={{ backgroundImage: "url(source/ads.png)" }}></div>
+                <div className="ads-info" style={{ backgroundImage: "url(https://res.cloudinary.com/vitamim/image/upload/v1638640102/source/ads_mz1rwf.png)" }}></div>
             </div>
         </React.Fragment>
     )
