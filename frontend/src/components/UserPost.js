@@ -201,12 +201,12 @@ function UserPost({ Post }) {
         }
 
         
-        (d.getHours() - parseInt(gio[0]) === 0) ?
+        (d.getDate() - parseInt(ngay[2]) === 0) ?
+        ((d.getDate() - parseInt(ngay[2]) === 0)? 
         (x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
             (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
-        ((d.getDate() - parseInt(ngay[2]) === 0) ?
-            (x = String(d.getHours() - parseInt(gio[0])) + " giờ") :
-            (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0])))
+            ((x = String(d.getHours() - parseInt(gio[0])) + " giờ"))):
+            (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0]))
         
         return x
     }
