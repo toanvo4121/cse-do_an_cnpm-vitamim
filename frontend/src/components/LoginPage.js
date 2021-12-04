@@ -52,7 +52,7 @@ function LoginPage() {
     return (
         <div className="login-page">
             <div className="logo">
-                <Link to="/"><img src="source/logo-page.png" onClick={window.location.reload} alt=""/></Link>
+            <Link to="/"><img src="source/logo-page.png" onClick={window.location.reload} alt=""/></Link>
                 <p className="slogan">Ôi bạn ơi !!! <br />
                     Hôm nay chưa cười là <br />
                     tại thiếu Vitamim đấy !</p>
