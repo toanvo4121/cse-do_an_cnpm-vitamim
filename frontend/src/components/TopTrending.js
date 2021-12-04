@@ -63,7 +63,7 @@ function timeCalculate(time) {
 function pushPosts(a, n, scr, id) {
     var j, count = 0
     for (j = n - 1; j >= 0; j--) {
-        if (a[j].user === id) {
+        if (a[j].user === id && a[j].isAccept !== 0) {
             scr.push(a[j].mim_src)
             //time.push(a[j].createdAt)
             count = count + 1
@@ -76,7 +76,7 @@ function pushPosts(a, n, scr, id) {
 function pushTimes(a, n, scr, id) {
     var j, count = 0
     for (j = n - 1; j >= 0; j--) {
-        if (a[j].user === id) {
+        if (a[j].user === id && a[j].isAccept !== 0) {
             scr.push(a[j].createdAt)
             //time.push(a[j].createdAt)
             count = count + 1
@@ -116,9 +116,9 @@ function TopTrending() {
     let Top1 = []
     let Top2 = []
     let Top3 = []
-    let TimeTop1= []
-    let TimeTop2= []
-    let TimeTop3= []
+    let TimeTop1 = []
+    let TimeTop2 = []
+    let TimeTop3 = []
 
     if (Posts) {
         pushPosts(Posts, Posts.length, Top1, id[0])
@@ -128,140 +128,158 @@ function TopTrending() {
         pushTimes(Posts, Posts.length, TimeTop2, id[1])
         pushTimes(Posts, Posts.length, TimeTop3, id[2])
     }
-    
+
 
     if (Top1 && Top2 && Top3 && TimeTop1 && TimeTop2 && TimeTop3) {
-        
+
         return (
             <div className="top-trending">
                 <p className="top-trending_name">Nơi vinh danh</p>
                 <Carousel >
                     <Carousel.Item >
                         <div className="trending">
-                                <div className="trend" style={{ backgroundImage: ('url(' + String(Top1[0]) + ')') }}>
-                                    <div className="hover" onClick={() => { ShowUserPage(id[0]) }}>
-                                        <div className="trending-info">
-                                            <img className="trending-avt" src={avt[0]} alt="" />
-                                            <p className="trending-name">{name[0]}</p>
-                                        </div>
-                                        <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        { <p className="thoigian">
+                            <div className="trend" style={{ backgroundImage: ('url(' + String(Top1[0]) + ')') }}>
+                                <div className="hov" onClick={() => { ShowUserPage(id[0]) }}>
+                                    <div className="trending-info">
+                                        <img className="trending-avt" src={avt[0]} alt="" />
+                                        <p className="trending-name">{name[0]}</p>
+                                    </div>
+                                    <div className="trending-timer">
+                                        <img className="time-clock" src="https://res.cloudinary.com/vitamim/image/upload/v1638602634/source/clock1_ovkoed.png" alt="" />
+                                        <p className="trending-time">
                                             {timeCalculate(TimeTop1[0])}
-                                        </p> }
+                                        </p>
                                     </div>
-                               </div>
+                                </div>
+                            </div>
 
-                                <div className="trend" style={{ backgroundImage: ('url(' + String(Top1[1]) + ')') }}>
-                                    <div className="hover" onClick={() => { ShowUserPage(id[0]) }}>
-                                        <div className="trending-info">
-                                            <img className="trending-avt" src={avt[0]} alt="" />
-                                            <p className="trending-name">{name[0]}</p>
-                                        </div>
-                                        <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        {/* <p className="thoigian">
+                            <div className="trend" style={{ backgroundImage: ('url(' + String(Top1[1]) + ')') }}>
+                                <div className="hov" onClick={() => { ShowUserPage(id[0]) }}>
+                                    <div className="trending-info">
+                                        <img className="trending-avt" src={avt[0]} alt="" />
+                                        <p className="trending-name">{name[0]}</p>
+                                    </div>
+                                    <div className="trending-timer">
+                                        <img className="time-clock" src="https://res.cloudinary.com/vitamim/image/upload/v1638602634/source/clock1_ovkoed.png" alt="" />
+                                        <p className="trending-time">
                                             {timeCalculate(TimeTop1[1])}
-                                        </p> */}
+                                        </p>
                                     </div>
-                               </div>
- 
-                                <div className="trend" style={{ backgroundImage: ('url(' + String(Top1[2]) + ')') }}>
-                                    <div className="hover" onClick={() => { ShowUserPage(id[0]) }}>
-                                        <div className="trending-info">
-                                            <img className="trending-avt" src={avt[0]} alt="" />
-                                            <p className="trending-name">{name[0]}</p>
-                                        </div>
-                                        <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        {/* <p className="thoigian">
+                                </div>
+                            </div>
+
+                            <div className="trend" style={{ backgroundImage: ('url(' + String(Top1[2]) + ')') }}>
+                                <div className="hov" onClick={() => { ShowUserPage(id[0]) }}>
+                                    <div className="trending-info">
+                                        <img className="trending-avt" src={avt[0]} alt="" />
+                                        <p className="trending-name">{name[0]}</p>
+                                    </div>
+                                    <div className="trending-timer">
+                                        <img className="time-clock" src="https://res.cloudinary.com/vitamim/image/upload/v1638602634/source/clock1_ovkoed.png" alt="" />
+                                        <p className="trending-time">
                                             {timeCalculate(TimeTop1[2])}
-                                        </p> */}
+                                        </p>
                                     </div>
-                               </div>
+                                </div>
+                            </div>
                         </div>
                     </Carousel.Item>
                     <Carousel.Item >
                         <div className="trending">
-                                <div className="trend" style={{ backgroundImage: ('url(' + String(Top2[0]) + ')') }}>   
-                                    <div className="hover"  onClick={() => { ShowUserPage(id[1]) }}>
-                                        <div className="trending-info">
-                                            <img className="trending-avt" src={avt[1]} alt="" />
-                                            <p className="trending-name">{name[1]}</p>
-                                        </div>
-                                        <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        {/* <p className="thoigian">
+                            <div className="trend" style={{ backgroundImage: ('url(' + String(Top2[0]) + ')') }}>
+                                <div className="hov" onClick={() => { ShowUserPage(id[1]) }}>
+                                    <div className="trending-info">
+                                        <img className="trending-avt" src={avt[1]} alt="" />
+                                        <p className="trending-name">{name[1]}</p>
+                                    </div>
+                                    <div className="trending-timer">
+                                        <img className="time-clock" src="https://res.cloudinary.com/vitamim/image/upload/v1638602634/source/clock1_ovkoed.png" alt="" />
+                                        <p className="trending-time">
                                             {timeCalculate(TimeTop2[0])}
-                                        </p> */}
+                                        </p>
                                     </div>
-                               </div>
-                        
+                                </div>
+                            </div>
 
-                                <div className="trend" style={{ backgroundImage: ('url(' + String(Top2[1]) + ')') }}>   
-                                    <div className="hover"  onClick={() => { ShowUserPage(id[1]) }}>
-                                        <div className="trending-info">
-                                            <img className="trending-avt" src={avt[1]} alt="" />
-                                            <p className="trending-name">{name[1]}</p>
-                                        </div>
-                                        <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        {/* <p className="thoigian">
+
+                            <div className="trend" style={{ backgroundImage: ('url(' + String(Top2[1]) + ')') }}>
+                                <div className="hov" onClick={() => { ShowUserPage(id[1]) }}>
+                                    <div className="trending-info">
+                                        <img className="trending-avt" src={avt[1]} alt="" />
+                                        <p className="trending-name">{name[1]}</p>
+                                    </div>
+                                    <div className="trending-timer">
+                                        <img className="time-clock" src="https://res.cloudinary.com/vitamim/image/upload/v1638602634/source/clock1_ovkoed.png" alt="" />
+                                        <p className="trending-time">
                                             {timeCalculate(TimeTop2[1])}
-                                        </p> */}
+                                        </p>
                                     </div>
-                               </div>
+                                </div>
+                            </div>
 
 
-                                <div className="trend" style={{ backgroundImage: ('url(' + String(Top2[2]) + ')') }}>   
-                                    <div className="hover"  onClick={() => { ShowUserPage(id[1]) }}>
-                                        <div className="trending-info">
-                                            <img className="trending-avt" src={avt[1]} alt="" />
-                                            <p className="trending-name">{name[1]}</p>
-                                        </div>
-                                        <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        {/* <p className="thoigian">
+                            <div className="trend" style={{ backgroundImage: ('url(' + String(Top2[2]) + ')') }}>
+                                <div className="hov" onClick={() => { ShowUserPage(id[1]) }}>
+                                    <div className="trending-info">
+                                        <img className="trending-avt" src={avt[1]} alt="" />
+                                        <p className="trending-name">{name[1]}</p>
+                                    </div>
+                                    <div className="trending-timer">
+                                        <img className="time-clock" src="https://res.cloudinary.com/vitamim/image/upload/v1638602634/source/clock1_ovkoed.png" alt="" />
+                                        <p className="trending-time">
                                             {timeCalculate(TimeTop2[2])}
-                                        </p> */}
+                                        </p>
                                     </div>
-                               </div>
+                                </div>
+                            </div>
                         </div>
                     </Carousel.Item>
                     <Carousel.Item >
                         <div className="trending">
-                               <div className="trend" style={{ backgroundImage: ('url(' + String(Top3[0]) + ')') }}>
-                                    <div className="hover"  onClick={() => { ShowUserPage(id[2]) }}>
-                                        <div className="trending-info">
-                                            <img className="trending-avt" src={avt[2]} alt="" />
-                                            <p className="trending-name">{name[2]}</p>
-                                        </div>
-                                        <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        {/* <p className="thoigian">
+                            <div className="trend" style={{ backgroundImage: ('url(' + String(Top3[0]) + ')') }}>
+                                <div className="hov" onClick={() => { ShowUserPage(id[2]) }}>
+                                    <div className="trending-info">
+                                        <img className="trending-avt" src={avt[2]} alt="" />
+                                        <p className="trending-name">{name[2]}</p>
+                                    </div>
+                                    <div className="trending-timer">
+                                        <img className="time-clock" src="https://res.cloudinary.com/vitamim/image/upload/v1638602634/source/clock1_ovkoed.png" alt="" />
+                                        <p className="trending-time">
                                             {timeCalculate(TimeTop3[0])}
-                                        </p> */}
+                                        </p>
                                     </div>
-                               </div>
+                                </div>
+                            </div>
 
-                               <div className="trend" style={{ backgroundImage: ('url(' + String(Top3[1]) + ')') }}>
-                                    <div className="hover"  onClick={() => { ShowUserPage(id[2]) }}>
-                                        <div className="trending-info">
-                                            <img className="trending-avt" src={avt[2]} alt="" />
-                                            <p className="trending-name">{name[2]}</p>
-                                        </div>
-                                        <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        {/* <p className="thoigian">
+                            <div className="trend" style={{ backgroundImage: ('url(' + String(Top3[1]) + ')') }}>
+                                <div className="hov" onClick={() => { ShowUserPage(id[2]) }}>
+                                    <div className="trending-info">
+                                        <img className="trending-avt" src={avt[2]} alt="" />
+                                        <p className="trending-name">{name[2]}</p>
+                                    </div>
+                                    <div className="trending-timer">
+                                        <img className="time-clock" src="https://res.cloudinary.com/vitamim/image/upload/v1638602634/source/clock1_ovkoed.png" alt="" />
+                                        <p className="trending-time">
                                             {timeCalculate(TimeTop3[1])}
-                                        </p> */}
+                                        </p>
                                     </div>
-                               </div>
+                                </div>
+                            </div>
 
-                               <div className="trend" style={{ backgroundImage: ('url(' + String(Top3[2]) + ')') }}>
-                                    <div className="hover"  onClick={() => { ShowUserPage(id[2]) }}>
-                                        <div className="trending-info">
-                                            <img className="trending-avt" src={avt[2]} alt="" />
-                                           <p className="trending-name">{name[2]}</p>
-                                        </div>
-                                        <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        {/* <p className="thoigian">
-                                            {timeCalculate(TimeTop3[2])}
-                                        </p> */}
+                            <div className="trend" style={{ backgroundImage: ('url(' + String(Top3[2]) + ')') }}>
+                                <div className="hov" onClick={() => { ShowUserPage(id[2]) }}>
+                                    <div className="trending-info">
+                                        <img className="trending-avt" src={avt[2]} alt="" />
+                                        <p className="trending-name">{name[2]}</p>
                                     </div>
-                               </div>
+                                    <div className="trending-timer">
+                                        <img className="time-clock" src="https://res.cloudinary.com/vitamim/image/upload/v1638602634/source/clock1_ovkoed.png" alt="" />
+                                        <p className="trending-time">
+                                            {timeCalculate(TimeTop3[2])}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </Carousel.Item>
                 </Carousel>

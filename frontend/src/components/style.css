@@ -129,11 +129,11 @@ body{
 }
 
 .carousel-control-prev {
-    left: -60px
+    left: -80px
 }
 
 .carousel-control-next {
-    right: -60px
+    right: -80px
 }
 
 .carousel-control-next-icon, .carousel-control-prev-icon {
@@ -144,14 +144,15 @@ body{
     background-position: 50%;
     background-size: 100% 100%;
     cursor: pointer;
+   
 }
 
 .carousel-control-prev-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e")
+    background-image: url("https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/back_d9cpee.png");
 }
 
 .carousel-control-next-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+    background-image: url("https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/next_u0deco.png");
 }
 
 .carousel-indicators {
@@ -809,14 +810,43 @@ body{
     background-repeat: no-repeat;
     background-position: center;
   }
-  .trending-info{
+  .hov{
+    width: 100%;
+    height: 100%;
+    border-radius:20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+
+  }
+  .hov:hover{
+    animation: hov 0.3s;
+    opacity: 1;
+  }
+  .trending-timer{
+    margin-top: 5px;
+    margin-right: 8px;
     align-self: flex-end;
+    display: flex;
+    align-items: center;
+  }
+  .time-clock{
+    width: 15px; 
+    height: 15px;
+    align-self: center;
+    margin-right: 0px;
+  }
+  .trending-info{
+    margin-left: 8px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     height: max-content;
     width: max-content;
-    margin-right: -50px;
-    margin-bottom: 5px;
   }
   .trending-avt{
     width:30px;
@@ -833,6 +863,13 @@ body{
     font-size: 20px;
     margin-left: 10px;
   }
+  .trending-time{
+    color: #f5f5f5;
+    width: fit-content;
+    font-size: 10px;
+    margin-left: 10px;
+  }
+
   .move{
     height:46px;
     width: 46px;

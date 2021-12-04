@@ -85,43 +85,30 @@ function UserPost({ Post }) {
         }
     }
     if(CheckLike === 1){
-        document.getElementById("react1").style.border="2px solid #18F607"
+        document.getElementById(`like${Post._id}`).style.border="2px solid #18F607"
     }
 
-    function LikeAction(){
+    function LikeAction(id){
         try {
 
             axios.post("http://localhost:4000/upload/like/" + String(Post._id), { likers: User._id });
         } catch (err) { }
         setCheckLike(1)
         setPs("")
-        document.getElementById("react1").style.border="2px solid #18F607"
+        document.getElementById(`like${id}`).style.border="2px solid #18F607"
         setLike(like + 1);
     }
-    function UnlikeAction(){
+    function UnlikeAction(id){
         try {
             axios.post("http://localhost:4000/upload/unlike/" + String(Post._id), { likers: User._id });
         } catch (err) { }
         setCheckLike(0)
         setPs("")
-        document.getElementById("react1").style.border="1px solid #000"
+        document.getElementById(`like${id}`).style.border="1px solid #000"
         if(like>=0){
             setLike(like - 1);
         }
     }
-    const likeHandler = () => {
-        if (User == null) {
-            window.location = "/login"
-        }
-        else {
-            if (CheckLike === 0) {
-                LikeAction()
-            }
-            else {
-                UnlikeAction()
-            }
-        }
-    };
 
     if (Ps.haters  && User) {
  
@@ -133,38 +120,59 @@ function UserPost({ Post }) {
         }
     }
     if(CheckDislike === 1){
-        document.getElementById("react2").style.border="2px solid #18F607"
+        document.getElementById(`dislike${Post._id}`).style.border="2px solid #18F607"
     }
-    function DislikeAction(){
+    function DislikeAction(id){
         try {
             axios.post("http://localhost:4000/upload/dislike/" + String(Post._id), { haters: User._id });
         } catch (err) { }
         setCheckDislike(1)
-        document.getElementById("react2").style.border="2px solid #18F607"
+        document.getElementById(`dislike${id}`).style.border="2px solid #18F607"
         setDislike(Dislike + 1);
         setPs("")
     }
-    function UnDislikeAction(){
+    function UnDislikeAction(id){
         try {
             axios.post("http://localhost:4000/upload/undislike/" + String(Post._id), { haters: User._id });
         } catch (err) { }
         setCheckDislike(0)
-        document.getElementById("react2").style.border="1px solid #000"
+        document.getElementById(`dislike${id}`).style.border="1px solid #000"
         if(Dislike>=0){
             setDislike(Dislike - 1);
         }
         setPs("")
     }
-    const DislikeHandler = () => {
+
+    function likeHandler (id) {
+        if (User == null) {
+            window.location = "/login"
+        }
+        else {
+            if (CheckLike === 0) {
+                LikeAction(id)
+                if(CheckDislike === 1){
+                    UnDislikeAction(id)
+                }
+            }
+            else {
+                UnlikeAction(id)
+            }
+        }
+    }
+
+    function DislikeHandler(id){
         if (User == null) {
             window.location = "/login"
         }
         else {
             if (CheckDislike === 0) {
-                DislikeAction()
+                DislikeAction(id)
+                if(CheckLike === 1){
+                    UnlikeAction(id)
+                }
             }
             else {
-                UnDislikeAction()
+                UnDislikeAction(id)
             }
         }
     };
@@ -220,11 +228,11 @@ function UserPost({ Post }) {
                 </Popup>
                 <div className="react">
 
-                    <button onClick={likeHandler} className="react1" id="react1" style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/react1_xgjunq.png)' }}></button>
+                    <button onClick={()=>{likeHandler(Post._id)}} className="react1" id={`like${Post._id}`} style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/react1_xgjunq.png)' }}></button>
 
                     <div className="count">{convert(like)}</div>
 
-                    <button onClick={DislikeHandler} className="react2" id="react2" style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/react2_uf5zj1.png)' }}></button>
+                    <button onClick={()=>{DislikeHandler(Post._id)}} className="react2" id={`dislike${Post._id}`} style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/react2_uf5zj1.png)' }}></button>
 
                     <div className="count">{convert(Dislike)}</div>
 
