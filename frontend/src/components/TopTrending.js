@@ -89,32 +89,28 @@ function TopTrending() {
                     <Carousel.Item >
                         <div className="trending">
                                 <div className="trend" style={{ backgroundImage: ('url(' + String(Top1[0]) + ')') }}>
-                                    <div className="hover">
-                                        <div className="user-info">
-                                            <img className="user-avt" src={avt[0]} alt="" />
-                                            <div onClick={() => { ShowUserPage(id[0]) }}><p className="user-name">{name[0]}</p></div>
+                                    <div className="hover" onClick={() => { ShowUserPage(id[0]) }}>
+                                        <div className="trending-info">
+                                            <img className="trending-avt" src={avt[0]} alt="" />
+                                            <p className="trending-name">{name[0]}</p>
                                         </div>
                                     </div>
                                </div>
-                        </div>
 
-                        <div className="trending">
                                 <div className="trend" style={{ backgroundImage: ('url(' + String(Top1[1]) + ')') }}>
-                                    <div className="hover">
-                                        <div className="user-info">
-                                            <img className="user-avt" src={avt[0]} alt="" />
-                                            <div onClick={() => { ShowUserPage(id[0]) }}><p className="user-name">{name[0]}</p></div>
+                                    <div className="hover" onClick={() => { ShowUserPage(id[0]) }}>
+                                        <div className="trending-info">
+                                            <img className="trending-avt" src={avt[0]} alt="" />
+                                            <p className="trending-name">{name[0]}</p>
                                         </div>
                                     </div>
                                </div>
-                        </div>
-
-                        <div className="trending">
+ 
                                 <div className="trend" style={{ backgroundImage: ('url(' + String(Top1[2]) + ')') }}>
-                                    <div className="hover">
-                                        <div className="user-info">
-                                            <img className="user-avt" src={avt[0]} alt="" />
-                                            <div onClick={() => { ShowUserPage(id[0]) }}><p className="user-name">{name[0]}</p></div>
+                                    <div className="hover" onClick={() => { ShowUserPage(id[0]) }}>
+                                        <div className="trending-info">
+                                            <img className="trending-avt" src={avt[0]} alt="" />
+                                            <p className="trending-name">{name[0]}</p>
                                         </div>
                                     </div>
                                </div>
@@ -123,32 +119,30 @@ function TopTrending() {
                     <Carousel.Item >
                         <div className="trending">
                                 <div className="trend" style={{ backgroundImage: ('url(' + String(Top2[0]) + ')') }}>   
-                                    <div className="hover">
-                                        <div className="user-info">
-                                            <img className="user-avt" src={avt[1]} alt="" />
-                                            <div onClick={() => { ShowUserPage(id[1]) }}><p className="user-name">{name[1]}</p></div>
+                                    <div className="hover"  onClick={() => { ShowUserPage(id[1]) }}>
+                                        <div className="trending-info">
+                                            <img className="trending-avt" src={avt[1]} alt="" />
+                                            <p className="trending-name">{name[1]}</p>
                                         </div>
                                     </div>
                                </div>
-                        </div>
+                        
 
-                        <div className="trending">
                                 <div className="trend" style={{ backgroundImage: ('url(' + String(Top2[1]) + ')') }}>   
-                                    <div className="hover">
-                                        <div className="user-info">
-                                            <img className="user-avt" src={avt[1]} alt="" />
-                                            <div onClick={() => { ShowUserPage(id[1]) }}><p className="user-name">{name[1]}</p></div>
+                                    <div className="hover"  onClick={() => { ShowUserPage(id[1]) }}>
+                                        <div className="trending-info">
+                                            <img className="trending-avt" src={avt[1]} alt="" />
+                                            <p className="trending-name">{name[1]}</p>
                                         </div>
                                     </div>
                                </div>
-                        </div>
 
-                        <div className="trending">
+
                                 <div className="trend" style={{ backgroundImage: ('url(' + String(Top2[2]) + ')') }}>   
-                                    <div className="hover">
-                                        <div className="user-info">
-                                            <img className="user-avt" src={avt[1]} alt="" />
-                                            <div onClick={() => { ShowUserPage(id[1]) }}><p className="user-name">{name[1]}</p></div>
+                                    <div className="hover"  onClick={() => { ShowUserPage(id[1]) }}>
+                                        <div className="trending-info">
+                                            <img className="trending-avt" src={avt[1]} alt="" />
+                                            <p className="trending-name">{name[1]}</p>
                                         </div>
                                     </div>
                                </div>
@@ -157,32 +151,28 @@ function TopTrending() {
                     <Carousel.Item >
                         <div className="trending">
                                <div className="trend" style={{ backgroundImage: ('url(' + String(Top3[0]) + ')') }}>
-                                    <div className="hover">
-                                        <div className="user-info">
-                                            <img className="user-avt" src={avt[2]} alt="" />
-                                            <div onClick={() => { ShowUserPage(id[2]) }}><p className="user-name">{name[2]}</p></div>
+                                    <div className="hover"  onClick={() => { ShowUserPage(id[2]) }}>
+                                        <div className="trending-info">
+                                            <img className="trending-avt" src={avt[2]} alt="" />
+                                            <p className="trending-name">{name[2]}</p>
                                         </div>
                                     </div>
                                </div>
-                        </div>
 
-                        <div className="trending">
                                <div className="trend" style={{ backgroundImage: ('url(' + String(Top3[1]) + ')') }}>
-                                    <div className="hover">
-                                        <div className="user-info">
-                                            <img className="user-avt" src={avt[2]} alt="" />
-                                            <div onClick={() => { ShowUserPage(id[2]) }}><p className="user-name">{name[2]}</p></div>
+                                    <div className="hover"  onClick={() => { ShowUserPage(id[2]) }}>
+                                        <div className="trending-info">
+                                            <img className="trending-avt" src={avt[2]} alt="" />
+                                            <p className="trending-name">{name[2]}</p>
                                         </div>
                                     </div>
                                </div>
-                        </div>
 
-                        <div className="trending">
                                <div className="trend" style={{ backgroundImage: ('url(' + String(Top3[2]) + ')') }}>
-                                    <div className="hover">
-                                        <div className="user-info">
-                                            <img className="user-avt" src={avt[2]} alt="" />
-                                            <div onClick={() => { ShowUserPage(id[2]) }}><p className="user-name">{name[2]}</p></div>
+                                    <div className="hover"  onClick={() => { ShowUserPage(id[2]) }}>
+                                        <div className="trending-info">
+                                            <img className="trending-avt" src={avt[2]} alt="" />
+                                           <p className="trending-name">{name[2]}</p>
                                         </div>
                                     </div>
                                </div>

@@ -74,19 +74,23 @@ function UserPost({ Post }) {
     };
     if(Ps){
         if (Ps.likers && User) {
- 
+            console.log(User._id )
+            console.log(Ps.likers)
+            console.log(Ps.likers.find(p=>p === User._id ))
             if(Ps.likers.find(p=>p === User._id ))
             {
-                
                 if(CheckLike ===0){
-                    setCheckLike(1)   
+                    setCheckLike(1)  
+                    console.log("checklike "+CheckLike)
                 }
             }
+            
         }
     }
     if(CheckLike === 1){
         document.getElementById("react1").style.border="2px solid #18F607"
     }
+
     function LikeAction(){
         try {
             console.log(User._id)
@@ -104,7 +108,9 @@ function UserPost({ Post }) {
         setCheckLike(0)
         setPs("")
         document.getElementById("react1").style.border="1px solid #000"
-        setLike(like - 1);
+        if(like>=0){
+            setLike(like - 1);
+        }
     }
     const likeHandler = () => {
         if (User == null) {
@@ -129,27 +135,39 @@ function UserPost({ Post }) {
             }
         }
     }
-
+    if(CheckDislike === 1){
+        document.getElementById("react2").style.border="2px solid #18F607"
+    }
+    function DislikeAction(){
+        try {
+            axios.post("http://localhost:4000/upload/dislike/" + String(Post._id), { haters: User._id });
+        } catch (err) { }
+        setCheckDislike(1)
+        document.getElementById("react2").style.border="2px solid #18F607"
+        setDislike(Dislike + 1);
+        setPs("")
+    }
+    function UnDislikeAction(){
+        try {
+            axios.post("http://localhost:4000/upload/undislike/" + String(Post._id), { haters: User._id });
+        } catch (err) { }
+        setCheckDislike(0)
+        document.getElementById("react2").style.border="1px solid #000"
+        if(Dislike>=0){
+            setDislike(Dislike - 1);
+        }
+        setPs("")
+    }
     const DislikeHandler = () => {
         if (User == null) {
             window.location = "/login"
         }
         else {
             if (CheckDislike === 0) {
-                try {
-                    axios.post("http://localhost:4000/upload/dislike/" + String(Post._id), { haters: User._id });
-                } catch (err) { }
-                setCheckDislike(1)
-                setDislike(Dislike + 1);
-                setPs("")
+                DislikeAction()
             }
             else {
-                try {
-                    axios.post("http://localhost:4000/upload/undislike/" + String(Post._id), { haters: User._id });
-                } catch (err) { }
-                setCheckDislike(0)
-                setDislike(Dislike - 1);
-                setPs("")
+                UnDislikeAction()
             }
         }
     };
