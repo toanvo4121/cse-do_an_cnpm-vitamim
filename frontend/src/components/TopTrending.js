@@ -30,9 +30,11 @@ function InterchangeSort(a, n, name, avt, id) {
 
 function timeCalculate(time) {
     let d = new Date()
-    if (time !== null) {
+    if (time) {
         let x;
         let ngay = time.split("T")[0].split("-")
+        // console.log('time')
+        // console.log(time)
         let gio = time.split("T")[1].split(".")[0].split(":")
         if (parseInt(gio[0]) + 7 >= 24) {
             gio[0] = parseInt(gio[0]) + 7 - 24
@@ -56,7 +58,6 @@ function timeCalculate(time) {
 
         return x
     }
-    else return d;
 }
 
 function pushPosts(a, n, scr, id) {
@@ -128,7 +129,6 @@ function TopTrending() {
         pushTimes(Posts, Posts.length, TimeTop3, id[2])
     }
     
-    console.log("c"+TimeTop1)
 
     if (Top1 && Top2 && Top3 && TimeTop1 && TimeTop2 && TimeTop3) {
         
@@ -145,9 +145,9 @@ function TopTrending() {
                                             <p className="trending-name">{name[0]}</p>
                                         </div>
                                         <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
-                                        {/* { <p className="thoigian">
+                                        { <p className="thoigian">
                                             {timeCalculate(TimeTop1[0])}
-                                        </p> } */}
+                                        </p> }
                                     </div>
                                </div>
 

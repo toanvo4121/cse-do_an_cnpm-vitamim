@@ -74,14 +74,11 @@ function UserPost({ Post }) {
     };
     if(Ps){
         if (Ps.likers && User) {
-            console.log(User._id )
-            console.log(Ps.likers)
-            console.log(Ps.likers.find(p=>p === User._id ))
             if(Ps.likers.find(p=>p === User._id ))
             {
                 if(CheckLike ===0){
                     setCheckLike(1)  
-                    console.log("checklike "+CheckLike)
+
                 }
             }
             
@@ -93,7 +90,7 @@ function UserPost({ Post }) {
 
     function LikeAction(){
         try {
-            console.log(User._id)
+
             axios.post("http://localhost:4000/upload/like/" + String(Post._id), { likers: User._id });
         } catch (err) { }
         setCheckLike(1)
