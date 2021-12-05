@@ -129,11 +129,11 @@ body{
 }
 
 .carousel-control-prev {
-    left: -80px
+    left: -10%
 }
 
 .carousel-control-next {
-    right: -80px
+    right: -10%
 }
 
 .carousel-control-next-icon, .carousel-control-prev-icon {
@@ -769,11 +769,17 @@ body{
     width: 15px;
     height: 10px;
   }
+  .top-trending-overlay{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+  }
+
   .top-trending{
     width: 47.2%;
-    height: 200px;
-    margin-left: 26.4%;
-    margin-top:160px;
+    height: max-content;
   }
   .top-trending_name{
     color:#f76f43;
@@ -793,6 +799,7 @@ body{
   }
   .trending{
     display: flex;
+    justify-content: center;
     
   }
 

@@ -133,7 +133,8 @@ function TopTrending() {
     if (Top1 && Top2 && Top3 && TimeTop1 && TimeTop2 && TimeTop3) {
 
         return (
-            <div className="top-trending">
+            <div className="top-trending-overlay">
+                <div className="top-trending">
                 <p className="top-trending_name">Nơi vinh danh</p>
                 <Carousel >
                     <Carousel.Item >
@@ -284,6 +285,7 @@ function TopTrending() {
                     </Carousel.Item>
                 </Carousel>
 
+            </div>
             </div>
         )
     }
