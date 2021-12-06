@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
 import './style.css';
+import { Link } from 'react-router-dom'
 import axios from "axios"
 const User = JSON.parse(localStorage.getItem('user'))
 function DangMim() {
-    const [UploadImg,setUploadImg] = useState("")
-    const [Loading,setLoading] = useState(0)
-    const [Image,setImage] = useState(null)
-    const Upload = ()=>{
+    const [UploadImg, setUploadImg] = useState("")
+    const [Loading, setLoading] = useState(0)
+    const [Image, setImage] = useState(null)
+    const Upload = () => {
         const formData = new FormData()
-        formData.append("file",UploadImg)
-        formData.append("upload_preset","vitamim")
+        formData.append("file", UploadImg)
+        formData.append("upload_preset", "vitamim")
         setLoading(1)
-        axios.post("https://api.cloudinary.com/v1_1/vitamim/image/upload",formData)
-        .then((res)=>{
-            setImage(res.data.url)
-            setLoading(0)
-        })
+        axios.post("https://api.cloudinary.com/v1_1/vitamim/image/upload", formData)
+            .then((res) => {
+                setImage(res.data.url)
+                setLoading(0)
+            })
     }
-    function PostMim(){
+    function PostMim() {
         const Mim = {
             user: User._id,
-            user_name:User.ten_tai_khoan,
+            user_name: User.ten_tai_khoan,
             mim_src: Image,
-            avatar:User.avatar,
+            avatar: User.avatar,
             caption: document.getElementById('status').value,
             hashtag: document.getElementById('hashtag').value,
             categ: document.getElementById('category').value,
@@ -38,9 +39,11 @@ function DangMim() {
         <div className="dangmim-overlay">
             <form className="dangmim-content">
                 <div className="dangmim-header">
-                    <p className="dangmim-template">Template</p>
+                    <Link to="/template">
+                        <p className="dangmim-template" onClick={() => { localStorage.removeItem('showdangmim'); }}>Template</p>
+                    </Link>
                     <p className="dangmim-tieude">Đăng mim</p>
-                    <img src="../source/exit.png" className="dangmim-exit" alt="exit" onClick={()=>{localStorage.removeItem('showdangmim');window.location.reload()}}/>
+                    <img src="../source/exit.png" className="dangmim-exit" alt="exit" onClick={() => { localStorage.removeItem('showdangmim'); window.location.reload() }} />
                 </div>
                 <div className="dangmim-title">
                     <div className="dangmim-input">
@@ -56,15 +59,15 @@ function DangMim() {
                             <option value="Hotmim">Hot mim</option>
                         </select>
                     </div>
-                <div className="loadanh-overlay">
-                <div className="dangmim-loadanh">
-                        <div id="showanh" style={{backgroundImage:('url('+String(Image)+')')}}></div>
-                        <input id="loadanh" type="file" onChange={(event)=>{setUploadImg(event.target.files[0])}} />
+                    <div className="loadanh-overlay">
+                        <div className="dangmim-loadanh">
+                            <div id="showanh" style={{ backgroundImage: ('url(' + String(Image) + ')') }}></div>
+                            <input id="loadanh" type="file" onChange={(event) => { setUploadImg(event.target.files[0]) }} />
+                        </div>
+                        <img className="upload-button" src="../source/upload.jpg" alt="" onClick={Upload} />
                     </div>
-                    <img className="upload-button" src="../source/upload.jpg" alt="" onClick={Upload}/>
                 </div>
-                </div>
-                {Loading===1?<p>Loading...</p>:''}
+                {Loading === 1 ? <p>Loading...</p> : ''}
                 <p className="dangmim-check-button" onClick={PostMim}>Đăng</p>
             </form>
         </div>
