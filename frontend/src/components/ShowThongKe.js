@@ -47,32 +47,47 @@ function ShowThongKe() {
                     <div className="mem">
                         <h3>{1}</h3>
                         <img src={avt[0]} alt="" className="top-avt" />
-                        <h3 onClick={()=>{ShowUserPage(id[0])}}>{ans[0]}</h3>
+                        <div className="user">
+                            <h3 className="user-name" onClick={()=>{ShowUserPage(id[0])}}>{ans[0]}</h3>
+                            <span class="tooltiptext">Xem trang cá nhân</span>
+                        </div>
 
                     </div>
                     <div className="mem">
                         <h3>{2}</h3>
                         <img src={avt[1]} alt="" className="top-avt" />
-                        <h3 onClick={()=>{ShowUserPage(id[1])}}>{ans[1]}</h3>
+                        <div className="user">
+                            <h3 className="user-name" onClick={()=>{ShowUserPage(id[1])}}>{ans[1]}</h3>
+                            <span class="tooltiptext">Xem trang cá nhân</span>
+                        </div>
                     </div>
 
                     <div className="mem">
                         <h3>{3}</h3>
                         <img src={avt[2]} alt="" className="top-avt" />
-                        <h3 onClick={()=>{ShowUserPage(id[2])}}>{ans[2]}</h3>
+                        <div className="user">
+                            <h3 className="user-name" onClick={()=>{ShowUserPage(id[2])}}>{ans[2]}</h3>
+                            <span class="tooltiptext">Xem trang cá nhân</span>
+                        </div>
                     </div>
 
                     <div className="mem">
                         <h3>{4}</h3>
                         <img src={avt[3]} alt="" className="top-avt" />
-                        <h3 onClick={()=>{ShowUserPage(id[3])}}>{ans[3]}</h3>
+                        <div className="user">
+                            <h3 className="user-name" onClick={()=>{ShowUserPage(id[3])}}>{ans[3]}</h3>
+                            <span class="tooltiptext">Xem trang cá nhân</span>
+                        </div>
                     </div>
 
 
                     <div className="mem">
                         <h3>{5}</h3>
                         <img src={avt[4]} alt="" className="top-avt" />
-                        <h3  onClick={()=>{ShowUserPage(id[4])}}>{ans[4]}</h3>
+                        <div className="user">
+                            <h3 className="user-name" onClick={()=>{ShowUserPage(id[4])}}>{ans[4]}</h3>
+                            <span class="tooltiptext">Xem trang cá nhân</span>
+                        </div>
                     </div>
                 </div>
 

@@ -101,7 +101,7 @@ body{
     position: absolute;
     top: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,7 +144,6 @@ body{
     background-position: 50%;
     background-size: 100% 100%;
     cursor: pointer;
-   
 }
 
 .carousel-control-prev-icon {
@@ -577,11 +576,44 @@ body{
     z-index: 5;
     
   }
-  .Logo{
+  .vitamim{
     margin: 0px 0px;
     height: 50px;
     cursor: pointer;
     margin-left: 30px;
+  }
+  .Logo {
+    position: relative;
+    display: inline-block;
+  }
+  .Logo .tooltiptext{
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    width: max-content;
+    opacity: 0.7;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 120%;
+    left: 55%;
+    margin-left: -60px;
+  }
+  .Logo .tooltiptext::after{
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+
+  }
+  .Logo:hover .tooltiptext {
+    visibility: visible;
   }
   .search-bar{
     display: flex;
@@ -614,6 +646,43 @@ body{
     width: 35px;
     margin-top: 5px;
     margin-left: 5px;
+  }
+  .button-search, .user {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .button-search .tooltiptext, .user .tooltiptext {
+    visibility: hidden;
+    width: max-content;
+    background-color: black;
+    color: #fff;
+    opacity: 0.7;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    left: 130%;
+  }
+  .user .tooltiptext {
+    top: -30%;
+    left: 100%;
+  }
+  .button-search .tooltiptext::after, .user .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+    
+  }
+  .button-search:hover .tooltiptext, .user:hover .tooltiptext {
+    visibility: visible;
   }
   .UserInfo{
     display: flex;
@@ -722,7 +791,7 @@ body{
     border-radius:40px;
     position: fixed;
     top:60px;
-    z-index: 5;
+    z-index: 1;
   }
   .sub-header-space{
     width: 44%;
@@ -790,6 +859,7 @@ body{
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    z-index: -1;
   }
   .slide{
     display: flex;
@@ -944,6 +1014,9 @@ body{
     margin-left: 10px;
     margin-right: 10px;
   }
+  .user-name:hover{
+    text-decoration: underline;
+  }
   .timer{
     width: 15px; 
     height: 15px;
@@ -964,10 +1037,10 @@ body{
     width: 92%;
     height:340px;
     margin-left: 4%;
-    margin-top:10px;
+    margin-top: 10px;
     border: 1px solid #000;
     border-radius: 20px;
-    margin-bottom: 10px ;
+    margin-bottom: 2px ;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -975,7 +1048,9 @@ body{
   }
   .react{
     display: flex;
-    justify-content:flex-start;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 10px;
   }
   .reactdetail{
     display: flex;
@@ -1018,8 +1093,54 @@ body{
   }
   .count{
     align-self: center;
-    margin: 10px 10px;
+    margin: 5px 5px;
     cursor: pointer;
+  }
+  .react1-overlay, .react2-overlay, .comment{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 5px;
+    margin: 2px;
+    margin-top: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  .react1-overlay:hover, .react2-overlay:hover{
+    background: #dadada;
+  }
+  .react1-overlay, .react2-overlay {
+    position: relative;
+  }
+  .react1-overlay .tooltiptext, .react2-overlay .tooltiptext{
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    width: max-content;
+    opacity: 0.7;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 130%;
+    left: 75%;
+    margin-left: -60px;
+  }
+  .react1-overlay .tooltiptext::after, .react2-overlay .tooltiptext::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+
+  }
+  .react2-overlay:hover .tooltiptext, .react1-overlay:hover .tooltiptext {
+    visibility: visible;
   }
   .comment{
     height:29px;
@@ -1074,9 +1195,6 @@ body{
     align-items: center;
     margin: 5px 0px;
     cursor: pointer;
-  }
-  .mem:hover{
-    text-decoration: underline;
   }
   h3{
     margin: 0px 0px;
@@ -1588,12 +1706,6 @@ body{
     align-items: flex-start;
     margin-top: -10px;
     margin-left: 0;
-  }
-  .reaction{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin: 5px 0px;
   }
   .react11{
     height: 30px;
