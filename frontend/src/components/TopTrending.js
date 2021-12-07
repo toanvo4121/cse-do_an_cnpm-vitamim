@@ -5,6 +5,8 @@ import { useState } from 'react'
 import axios from 'axios'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { TopTrend } from "../Constant/Variable"
+
 const getUser = () => axios.get('http://localhost:4000/Member')
     .then((res) => res.data)
 const getMims = () => axios.get('http://localhost:4000/upload')
@@ -133,7 +135,7 @@ function TopTrending() {
         return (
             <div className="top-trending-overlay">
                 <div className="top-trending">
-                <p className="top-trending_name">Hall of Fame</p>
+                <p className="top-trending_name">Nơi vinh danh</p>
                 <Carousel >
                     <Carousel.Item >
                         <div className="trending">

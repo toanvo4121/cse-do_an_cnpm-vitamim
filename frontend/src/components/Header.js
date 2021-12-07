@@ -61,18 +61,10 @@ function Header() {
     if (User == null) {
         return (
             <div className="header">
-                <Link to="/">
-                    <div className="Logo">
-                        <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/logo-page_ojcfim.png" onClick={window.location.reload} alt="" className="vitamim"/>
-                        <span class="tooltiptext">Homepage</span>
-                    </div>
-                </Link>
+                <Link to="/"><img src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/logo-page_ojcfim.png" onClick={window.location.reload} alt="" className="Logo" /></Link>
                 <div className="search-bar">
                     <input type="text" className="search" placeholder="Search..." />
-                    <div className="button-search">
-                        <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" className="search-button"  alt="search"/>
-                        <span class="tooltiptext">Search</span>
-                    </div>
+                    <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" className="search-button"  alt="search"/>
                 </div>
                 <div className="header-btn">
                     <Link to="/signup"><p className="signup-btn">Signup</p></Link>
@@ -85,18 +77,10 @@ function Header() {
     else {
         return (
             <div className="header">
-                <Link to="/">
-                    <div className="Logo">
-                        <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/logo-page_ojcfim.png" onClick={window.location.reload} alt="" className="vitamim"/>
-                        <span class="tooltiptext">Homepage</span>
-                    </div>
-                </Link>
+                <a href="/"><img src="https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/logo-page_ojcfim.png" onClick={window.location.reload} alt="" className="Logo" /></a>
                 <div className="search-bar">
                     <input type="text" className="search" id="search" name="q" placeholder="Search..." />
-                    <a className="button-search" href="/search">
-                        <img onClick={SearchHandle} src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" className="search-button"  alt="search"/>
-                        <span class="tooltiptext">Search</span>
-                    </a>
+                    <a className="button-search" href="/search"><img onClick={SearchHandle} src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/search_fterh6.png" className="search-button"  alt="search"/></a>
                 </div>
                 <div className="UserInfo">
                     <div className="name"><p>{Users.ten_tai_khoan}</p></div>

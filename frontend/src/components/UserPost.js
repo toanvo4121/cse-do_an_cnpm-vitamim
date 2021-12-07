@@ -57,98 +57,100 @@ function UserPost({ Post }) {
     const [CheckLike, setCheckLike] = useState(0)
     const [CheckDislike, setCheckDislike] = useState(0)
     const [Ps, setPs] = useState("")
-    const [Users, setUsers] = useState("")
+    const [Users,setUsers] = useState("")
 
     if (Users === "") {
         getUsers().then((res) => {
-            setUsers(res.find(p => p._id === Post.user))
+            setUsers(res.find(p=>p._id === Post.user))  
         })
     }
 
     if (Ps === "") {
-        setTimeout(() => {
+        setTimeout(()=>{
             getMims().then((res) => {
                 setPs(res.find(p => p._id === Post._id))
             })
-        }, 500)
+        },500)
     };
-    if (Ps) {
+    if(Ps){
         if (Ps.likers && User) {
-            if (Ps.likers.find(p => p === User._id)) {
-                if (CheckLike === 0) {
-                    setCheckLike(1)
+            if(Ps.likers.find(p=>p === User._id ))
+            {
+                if(CheckLike ===0){
+                    setCheckLike(1)  
 
                 }
             }
-
+            
         }
     }
-    if (CheckLike === 1) {
-        document.getElementById(`like${Post._id}`).style.border = "2px solid #18F607"
+    if(CheckLike === 1){
+        document.getElementById(`like${Post._id}`).style.border="2px solid #18F607"
     }
 
-    function LikeAction(id) {
+    function LikeAction(id){
         try {
 
             axios.post("http://localhost:4000/upload/like/" + String(Post._id), { likers: User._id });
         } catch (err) { }
         setCheckLike(1)
         setPs("")
-        document.getElementById(`like${id}`).style.border = "2px solid #18F607"
+        document.getElementById(`like${id}`).style.border="2px solid #18F607"
         setLike(like + 1);
     }
-    function UnlikeAction(id) {
+    function UnlikeAction(id){
         try {
             axios.post("http://localhost:4000/upload/unlike/" + String(Post._id), { likers: User._id });
         } catch (err) { }
         setCheckLike(0)
         setPs("")
-        document.getElementById(`like${id}`).style.border = "1px solid #000"
-        if (like >= 0) {
+        document.getElementById(`like${id}`).style.border="1px solid #000"
+        if(like>=0){
             setLike(like - 1);
         }
     }
 
-    if (Ps.haters && User) {
-
-        if (Ps.haters.find(p => p === User._id)) {
-            if (CheckDislike === 0) {
+    if (Ps.haters  && User) {
+ 
+        if(Ps.haters.find(p=>p ===User._id ))
+        {
+            if(CheckDislike ===0){
                 setCheckDislike(1)
             }
         }
     }
-    if (CheckDislike === 1) {
-        document.getElementById(`dislike${Post._id}`).style.border = "2px solid #18F607"
+    if(CheckDislike === 1){
+        document.getElementById(`dislike${Post._id}`).style.border="2px solid #18F607"
     }
-    function DislikeAction(id) {
+    function DislikeAction(id){
         try {
             axios.post("http://localhost:4000/upload/dislike/" + String(Post._id), { haters: User._id });
         } catch (err) { }
         setCheckDislike(1)
-        document.getElementById(`dislike${id}`).style.border = "2px solid #18F607"
+        document.getElementById(`dislike${id}`).style.border="2px solid #18F607"
         setDislike(Dislike + 1);
         setPs("")
     }
-    function UnDislikeAction(id) {
+    function UnDislikeAction(id){
         try {
             axios.post("http://localhost:4000/upload/undislike/" + String(Post._id), { haters: User._id });
         } catch (err) { }
         setCheckDislike(0)
-        document.getElementById(`dislike${id}`).style.border = "1px solid #000"
-        if (Dislike >= 0) {
+        document.getElementById(`dislike${id}`).style.border="1px solid #000"
+        if(Dislike>=0){
             setDislike(Dislike - 1);
         }
         setPs("")
     }
 
-    function likeHandler(id) {
+    function likeHandler (id) {
         if (User == null) {
             window.location = "/login"
         }
         else {
             if (CheckLike === 0) {
                 LikeAction(id)
-                if (CheckDislike === 1) {
+                if(CheckDislike === 1){
                     UnDislikeAction(id)
                 }
             }
@@ -158,14 +160,14 @@ function UserPost({ Post }) {
         }
     }
 
-    function DislikeHandler(id) {
+    function DislikeHandler(id){
         if (User == null) {
             window.location = "/login"
         }
         else {
             if (CheckDislike === 0) {
                 DislikeAction(id)
-                if (CheckLike === 1) {
+                if(CheckLike === 1){
                     UnlikeAction(id)
                 }
             }
@@ -199,12 +201,12 @@ function UserPost({ Post }) {
         }
 
         (d.getDate() - parseInt(ngay[2]) === 0) ?
-            ((d.getHours() - parseInt(gio[0]) === 0) ?
-                (x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
-                    (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
-                ((x = String(d.getHours() - parseInt(gio[0])) + " giờ"))) :
+        ((d.getHours() - parseInt(gio[0]) === 0)? 
+        (x = String(d.getMinutes() - parseInt(gio[1]) <= 0 ? "Vừa xong" :
+            (d.getMinutes() - parseInt(gio[1]) + " phút"))) :
+            ((x = String(d.getHours() - parseInt(gio[0])) + " giờ"))):
             (x = String(ngay[2] + "/" + ngay[1] + "/" + ngay[0]))
-
+        
         return x
     }
     return (
@@ -212,10 +214,7 @@ function UserPost({ Post }) {
             <div className="user-post">
                 <div className="user-info">
                     <img className="user-avt" src={Users.avatar} alt="" />
-                    <div onClick={() => { ShowUserPage(Post.user) }} className="user">
-                        <p className="user-name">{Users.ten_tai_khoan}</p>
-                        <span class="tooltiptext">Xem trang cá nhân</span>
-                    </div>
+                    <div onClick={() => { ShowUserPage(Post.user) }}><p className="user-name">{Users.ten_tai_khoan}</p></div>
                     <div className="space" ></div>
                     <img className="timer" src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/clock_fqwtxq.png" alt="" />
                     <p className="thoigian">
@@ -224,20 +223,20 @@ function UserPost({ Post }) {
                 </div>
                 <p className="status">{Post.caption} #{Post.hashtag}</p>
                 <Popup modal trigger={<button className="mim" style={{ backgroundImage: ('url(' + String(Post.mim_src) + ')') }}></button>}>
-                    {close => <ShowMimDetail userpost={Post} close={close} />}
+                {close => <ShowMimDetail userpost={Post} close={close} />}
                 </Popup>
                 <div className="react">
-                    <div className="react1-overlay">
-                        <button onClick={() => { likeHandler(Post._id) }} className="react1" id={`like${Post._id}`} style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/react1_xgjunq.png)' }}></button>
-                        <div className="count">{convert(like)}</div>
-                        <span class="tooltiptext">Quá dảk</span>
-                    </div>
-                    <div className="react2-overlay">
-                        <button onClick={() => { DislikeHandler(Post._id) }} className="react2" id={`dislike${Post._id}`} style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/react2_uf5zj1.png)' }}></button>
-                        <div className="count">{convert(Dislike)}</div>
-                        <span class="tooltiptext">So weak</span>
-                    </div>
+
+                    <button onClick={()=>{likeHandler(Post._id)}} className="react1" id={`like${Post._id}`} style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/react1_xgjunq.png)' }}></button>
+
+                    <div className="count">{convert(like)}</div>
+
+                    <button onClick={()=>{DislikeHandler(Post._id)}} className="react2" id={`dislike${Post._id}`} style={{ backgroundImage: 'url(https://res.cloudinary.com/vitamim/image/upload/v1637943119/source/react2_uf5zj1.png)' }}></button>
+
+                    <div className="count">{convert(Dislike)}</div>
+
                     <img src="https://res.cloudinary.com/vitamim/image/upload/v1637943120/source/comment_itv1py.png" alt="" className="comment" />
+
                     <div className="space" ></div>
                     <div className="delbtn" onClick={() => { DeletePost(Post) }}>
 
