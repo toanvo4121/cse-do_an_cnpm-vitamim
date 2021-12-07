@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const config = require('./config/db');
 const MemberRoutes = require('./routes/member.route');
 const UploadImg = require('./routes/upload.route');
-const path = require('path');
 
 //load anh
 // app.use(cors());
@@ -38,14 +37,9 @@ app.use(bodyParser.json());
 app.use('/Member', MemberRoutes);
 app.use('/upload', UploadImg);
 
-// Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static('frontend/build'));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-  });
-}
 
-app.listen(process.env.PORT || 5000);
+
+app.listen(PORT, function () {
+  console.log('Server is running on Port:', PORT);
+});
